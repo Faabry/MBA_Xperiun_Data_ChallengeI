@@ -1,0 +1,17 @@
+createOrReplace
+
+	relationship 4a18a480-8745-f70c-0b1c-0fe8ef4810e4
+		crossFilteringBehavior: bothDirections
+		fromColumn: products.product_category_name
+		toColumn: product_category_name_translation.product_category_name
+
+	relationship e35e9e20-8d81-3bce-bd38-61dc378f538c
+		crossFilteringBehavior: bothDirections
+		fromColumn: order_payments.order_id
+		toColumn: orders.order_id
+
+	relationship fa168308-3e3a-ee55-8b83-35fcadab3842
+		crossFilteringBehavior: bothDirections
+		fromColumn: order_reviews.order_id
+		toColumn: orders.order_id
+

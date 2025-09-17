@@ -1,0 +1,96 @@
+table fact_order_reviews
+	lineageTag: db015f43-84f9-4e06-ae3d-82c537ccebd3
+
+	column review_id
+		dataType: string
+		lineageTag: 2d0ea88f-e7ca-4a50-8689-49011a9be533
+		summarizeBy: none
+		sourceColumn: review_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_id
+		dataType: string
+		lineageTag: 91ca003b-001f-4d4c-bab0-09f584fd42de
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_score
+		dataType: int64
+		formatString: 0
+		lineageTag: 00ecc7ed-23f2-4cdf-b5bb-9f8977558c16
+		summarizeBy: sum
+		sourceColumn: review_score
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_comment_title
+		dataType: string
+		lineageTag: fda15cf9-0675-4bc6-96cc-260c6ac248e0
+		summarizeBy: none
+		sourceColumn: review_comment_title
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_comment_message
+		dataType: string
+		lineageTag: f88b0080-e57a-474a-88ad-fe078b4ab824
+		summarizeBy: none
+		sourceColumn: review_comment_message
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_creation_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: da1b94a5-b9da-4ce2-947d-0990624da780
+		summarizeBy: none
+		sourceColumn: review_creation_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column review_answer_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 31bc329a-e96b-44cd-988d-38d751d23882
+		summarizeBy: none
+		sourceColumn: review_answer_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column review_answer_time
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 45a4024c-aa48-4f06-8c0e-53192eb532e9
+		summarizeBy: none
+		sourceColumn: review_answer_time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	partition fact_order_reviews = m
+		mode: import
+		queryGroup: Facts
+		source =
+				let
+				    Fonte = Csv.Document(File.Contents(Source & "order_reviews.csv"),[Delimiter=",", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+				    #"Extracted Text Before Delimiter" = Table.TransformColumns(#"Cabeçalhos Promovidos", {{"review_creation_date", each Text.BeforeDelimiter(_, " "), type text}}),
+				    #"Changed Type with Locale" = Table.TransformColumnTypes(#"Extracted Text Before Delimiter", {{"review_creation_date", type date}}, "ja-JP"),
+				    #"Split Column by Delimiter" = Table.SplitColumn(#"Changed Type with Locale", "review_answer_timestamp", Splitter.SplitTextByDelimiter(" ", QuoteStyle.Csv), {"review_answer_timestamp.1", "review_answer_timestamp.2"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"review_id", type text}, {"order_id", type text}, {"review_score", Int64.Type}, {"review_comment_title", type text}, {"review_comment_message", type text}, {"review_answer_timestamp.1", type date}, {"review_answer_timestamp.2", type time}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"review_answer_timestamp.1", "review_answer_date"}, {"review_answer_timestamp.2", "review_answer_time"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

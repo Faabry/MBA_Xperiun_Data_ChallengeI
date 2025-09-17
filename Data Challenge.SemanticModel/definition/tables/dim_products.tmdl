@@ -1,0 +1,110 @@
+table dim_products
+	lineageTag: 5f059243-5f12-4a95-be99-88475ddcbd39
+
+	column product_id
+		dataType: string
+		lineageTag: b044dafe-905f-4c8e-8fe6-9355081bc86b
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_category_name
+		dataType: string
+		lineageTag: 5b2bcea9-a247-4acf-93c8-1bc59259d173
+		summarizeBy: none
+		sourceColumn: product_category_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_name_lenght
+		dataType: int64
+		formatString: 0
+		lineageTag: d79c705e-40b3-4614-b392-59731ec47fc7
+		summarizeBy: none
+		sourceColumn: product_name_lenght
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_description_lenght
+		dataType: int64
+		formatString: 0
+		lineageTag: 4ac266b0-475f-46e2-ae9c-ed1218e7080a
+		summarizeBy: none
+		sourceColumn: product_description_lenght
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_photos_qty
+		dataType: int64
+		formatString: 0
+		lineageTag: 5e120060-859a-488c-abf9-f5d3e50362a2
+		summarizeBy: none
+		sourceColumn: product_photos_qty
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_weight_g
+		dataType: int64
+		formatString: 0
+		lineageTag: a3b90f27-d285-4ab4-885b-d2c83273bb58
+		summarizeBy: none
+		sourceColumn: product_weight_g
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_length_cm
+		dataType: int64
+		formatString: 0
+		lineageTag: 43a7f5c1-8544-4d7a-aac2-7d2877159e73
+		summarizeBy: none
+		sourceColumn: product_length_cm
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_height_cm
+		dataType: int64
+		formatString: 0
+		lineageTag: da341494-5fe8-470a-8f15-1b5baf8240b5
+		summarizeBy: none
+		sourceColumn: product_height_cm
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_width_cm
+		dataType: int64
+		formatString: 0
+		lineageTag: 71c00da4-9ec2-4002-9b2e-885244eef894
+		summarizeBy: none
+		sourceColumn: product_width_cm
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_category_name_english
+		dataType: string
+		lineageTag: 280e0ca6-38a2-4772-a817-a08304f41954
+		summarizeBy: none
+		sourceColumn: product_category_name_english
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_products = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				    Fonte = Csv.Document(File.Contents(Source & "products.csv"),[Delimiter=",", Columns=9, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"product_id", type text}, {"product_category_name", type text}, {"product_name_lenght", Int64.Type}, {"product_description_lenght", Int64.Type}, {"product_photos_qty", Int64.Type}, {"product_weight_g", Int64.Type}, {"product_length_cm", Int64.Type}, {"product_height_cm", Int64.Type}, {"product_width_cm", Int64.Type}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Tipo Alterado","","não_informado",Replacer.ReplaceValue,{"product_category_name"}),
+				    #"Merged Queries" = Table.NestedJoin(#"Replaced Value", {"product_category_name"}, dim_product_category_name_translation, {"product_category_name"}, "dim_product_category_name_translation", JoinKind.LeftOuter),
+				    #"Expanded dim_product_category_name_translation" = Table.ExpandTableColumn(#"Merged Queries", "dim_product_category_name_translation", {"product_category_name_english"}, {"product_category_name_english"}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Expanded dim_product_category_name_translation",{"product_id", "product_category_name", "product_category_name_english", "product_name_lenght", "product_description_lenght", "product_photos_qty", "product_weight_g", "product_length_cm", "product_height_cm", "product_width_cm"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Reordered Columns",null,"not_available",Replacer.ReplaceValue,{"product_category_name_english"})
+				in
+				    #"Replaced Value1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

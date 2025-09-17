@@ -1,0 +1,49 @@
+table dim_geolocation
+	lineageTag: ad6a5a6a-31c6-4f6c-946f-acab6ebcd377
+
+	column geolocation_zip_code_prefix
+		dataType: int64
+		formatString: 0
+		lineageTag: a306a628-a654-407c-884d-8c7a53512b85
+		summarizeBy: none
+		sourceColumn: geolocation_zip_code_prefix
+
+		annotation SummarizationSetBy = Automatic
+
+	column geolocation_city
+		dataType: string
+		lineageTag: 7f9a083b-d03c-448b-942d-52439d6df261
+		summarizeBy: none
+		sourceColumn: geolocation_city
+
+		annotation SummarizationSetBy = Automatic
+
+	column geolocation_state
+		dataType: string
+		lineageTag: f88ff7e6-6244-4428-8082-1dc9efa99cee
+		summarizeBy: none
+		sourceColumn: geolocation_state
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_geolocation = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				    Fonte = Csv.Document(File.Contents(Source & "geolocation.csv"),[Delimiter=",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"geolocation_zip_code_prefix", Int64.Type}, {"geolocation_lat", Int64.Type}, {"geolocation_lng", Int64.Type}, {"geolocation_city", type text}, {"geolocation_state", type text}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado",{"geolocation_lng", "geolocation_lat"}),
+				    #"Duplicatas Removidas" = Table.Distinct(#"Colunas Removidas"),
+				    #"Adicionar Coluna de Acentos" = Table.AddColumn(#"Duplicatas Removidas", "TemAcento", each Text.Contains([geolocation_city], "á") or Text.Contains([geolocation_city], "Á") or Text.Contains([geolocation_city], "é") or Text.Contains([geolocation_city], "É") or Text.Contains([geolocation_city], "í") or Text.Contains([geolocation_city], "Í") or Text.Contains([geolocation_city], "ó") or Text.Contains([geolocation_city], "Ó") or Text.Contains([geolocation_city], "ú") or Text.Contains([geolocation_city], "Ú") or Text.Contains([geolocation_city], "ã") or Text.Contains([geolocation_city], "Ã") or Text.Contains([geolocation_city], "õ") or Text.Contains([geolocation_city], "Õ") or Text.Contains([geolocation_city], "ç") or Text.Contains([geolocation_city], "Ç")),
+				    #"Linhas Filtradas por Acento" = Table.SelectRows(#"Adicionar Coluna de Acentos", each [TemAcento] = true),
+				    #"Remover Coluna de Acentos" = Table.RemoveColumns(#"Linhas Filtradas por Acento", {"TemAcento"}),
+				    #"Duplicatas Removidas1" = Table.Distinct(#"Remover Coluna de Acentos", {"geolocation_zip_code_prefix"})
+				in
+				    #"Duplicatas Removidas1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

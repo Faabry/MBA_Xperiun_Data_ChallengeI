@@ -1,0 +1,199 @@
+table dim_leads_closed
+	isHidden
+	lineageTag: 59f9ea50-4c7b-47b9-91fb-a6206dbedb72
+
+	column mql_id
+		dataType: string
+		isHidden
+		lineageTag: 907a2d36-9739-41a4-b6c1-cbe6539689b9
+		summarizeBy: none
+		sourceColumn: mql_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column seller_id
+		dataType: string
+		isHidden
+		lineageTag: 5b95da08-903c-483c-8f8b-27c191a05a35
+		summarizeBy: none
+		sourceColumn: seller_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column sdr_id
+		dataType: string
+		isHidden
+		lineageTag: b40bf4db-32d3-4362-ab5d-3f5d84c61aac
+		summarizeBy: none
+		sourceColumn: sdr_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column sr_id
+		dataType: string
+		isHidden
+		lineageTag: a131668f-b723-4728-b17b-f4a600610d80
+		summarizeBy: none
+		sourceColumn: sr_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column business_segment
+		dataType: string
+		isHidden
+		lineageTag: 667df419-f8e8-4250-aa15-3308e0abe041
+		summarizeBy: none
+		sourceColumn: business_segment
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column lead_type
+		dataType: string
+		isHidden
+		lineageTag: 7b1a36a5-5078-49a8-b312-b5ee3007dcc9
+		summarizeBy: none
+		sourceColumn: lead_type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column lead_behaviour_profile
+		dataType: string
+		isHidden
+		lineageTag: 885e64cd-0d2d-46e4-80d1-11d3b77f0e62
+		summarizeBy: none
+		sourceColumn: lead_behaviour_profile
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column has_company
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d141aaa4-5fc5-4c84-a81f-3d015b3a0d4d
+		summarizeBy: sum
+		sourceColumn: has_company
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column has_gtin
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: dc3cc310-39a2-41b6-9957-2b3f265ed551
+		summarizeBy: sum
+		sourceColumn: has_gtin
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column average_stock
+		dataType: string
+		isHidden
+		lineageTag: d16f9402-f8ff-454a-a79f-fbe8022f4951
+		summarizeBy: none
+		sourceColumn: average_stock
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column business_type
+		dataType: string
+		isHidden
+		lineageTag: 731c1d09-098b-401c-8bdc-fac6863dcfa0
+		summarizeBy: none
+		sourceColumn: business_type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column declared_product_catalog_size
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a1da3415-335c-4150-9ed3-290926450956
+		summarizeBy: sum
+		sourceColumn: declared_product_catalog_size
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column declared_monthly_revenue
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e845c5ad-c484-425b-9502-e6c8ce2cec97
+		summarizeBy: sum
+		sourceColumn: declared_monthly_revenue
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column won_date
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: 30919419-dd40-4c7f-bef0-c0685b6640f9
+		summarizeBy: none
+		sourceColumn: won_date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column won_time
+		dataType: dateTime
+		isHidden
+		formatString: Long Time
+		lineageTag: 9ad411fb-e26d-469a-b2a2-b1e21a6efd28
+		summarizeBy: none
+		sourceColumn: won_time
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	partition dim_leads_closed = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				    Fonte = Csv.Document(File.Contents(Source & "leads_closed.csv"),[Delimiter=",", Columns=14, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"mql_id", type text}, {"seller_id", type text}, {"sdr_id", type text}, {"sr_id", type text}, {"won_date", type datetime}, {"business_segment", type text}, {"lead_type", type text}, {"lead_behaviour_profile", type text}, {"has_company", Int64.Type}, {"has_gtin", Int64.Type}, {"average_stock", type text}, {"business_type", type text}, {"declared_product_catalog_size", Int64.Type}, {"declared_monthly_revenue", Int64.Type}}),
+				    #"Split Column by Delimiter" = Table.SplitColumn(Table.TransformColumnTypes(#"Tipo Alterado", {{"won_date", type text}}, "pt-BR"), "won_date", Splitter.SplitTextByDelimiter(" ", QuoteStyle.Csv), {"won_date.1", "won_date.2"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"won_date.1", type date}, {"won_date.2", type time}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"won_date.1", "won_date"}, {"won_date.2", "won_time"}})
+				in
+				    #"Renamed Columns"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

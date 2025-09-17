@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Data Challenge"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "18907d05-a623-4f23-a230-06ba52f53125"
+  }
+}

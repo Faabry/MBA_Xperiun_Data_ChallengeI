@@ -1,0 +1,38 @@
+table Medidas
+	lineageTag: 24ea5130-a6c1-431f-979f-714007097df6
+
+	measure Filtros = ```
+			IF(ISCROSSFILTERED(dim_order_items) || 
+								ISCROSSFILTERED('dim_order_payments') ||
+									ISCROSSFILTERED('fact_order_reviews') ||
+										ISCROSSFILTERED('fact_orders') ||
+												ISCROSSFILTERED('dim_lead_qualified') ||
+													ISCROSSFILTERED('dim_leads_closed')||
+														ISCROSSFILTERED(dim_products)||
+															ISCROSSFILTERED('dim_sellers'),
+										"Limpar Filtros"," ")
+			```
+		lineageTag: bcf0cb02-2975-4ee4-a158-d0c6988118ab
+
+	column 'Coluna 1'
+		dataType: string
+		isHidden
+		lineageTag: 3bf2ea44-bc98-4a52-87e3-0a881af6aa53
+		summarizeBy: none
+		sourceColumn: Coluna 1
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Medidas = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Coluna 1", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+

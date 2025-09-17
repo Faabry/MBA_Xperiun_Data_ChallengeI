@@ -1,0 +1,86 @@
+relationship b1085bf7-ab7f-4b3d-0fc4-16adf781dca9
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: dim_leads_closed.mql_id
+	toColumn: dim_lead_qualified.mql_id
+
+relationship ed8ce8dc-eba0-5dc1-659d-a69e5323c75f
+	fromColumn: dim_sellers.seller_zip_code_prefix
+	toColumn: dim_geolocation.geolocation_zip_code_prefix
+
+relationship af105f47-7d7e-b643-bc37-46addd5362d7
+	fromColumn: dim_customers.customer_zip_code_prefix
+	toColumn: dim_geolocation.geolocation_zip_code_prefix
+
+relationship 62d2506d-8a9e-e866-3b84-3eae1123837c
+	fromColumn: fact_orders.order_approved_at_date
+	toColumn: dim_calendar.Date
+
+relationship c68b93aa-4581-e951-07f4-858280f27529
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: fact_order_reviews.order_id
+	toColumn: dim_order_payments.order_id
+
+relationship fc861639-7820-a930-410c-6da394802d87
+	isActive: false
+	fromColumn: fact_orders.order_delivered_carrier_date
+	toColumn: dim_calendar.Date
+
+relationship 7fd4d43e-197e-6cc4-a89f-458380079e11
+	isActive: false
+	fromColumn: fact_orders.order_delivered_customer_date
+	toColumn: dim_calendar.Date
+
+relationship 4892b986-dbe7-ecac-1276-5d704822991e
+	isActive: false
+	fromColumn: fact_orders.order_estimated_delivery_date
+	toColumn: dim_calendar.Date
+
+relationship 4b3d4399-ed56-aaf3-2386-37a17ef94585
+	isActive: false
+	fromColumn: fact_orders.order_purchase_date
+	toColumn: dim_calendar.Date
+
+relationship 965d8200-344d-2faa-3762-0052302828dc
+	fromColumn: fact_orders.order_approved_at_time
+	toColumn: dim_time.HorasDoDia
+
+relationship 50fa0787-d052-3a61-cdaa-a7e04a8696f6
+	isActive: false
+	fromColumn: fact_orders.order_delivered_carrier_time
+	toColumn: dim_time.HorasDoDia
+
+relationship 68807916-a5a6-470c-8457-07c532023a44
+	isActive: false
+	fromColumn: fact_orders.order_delivered_customer_time
+	toColumn: dim_time.HorasDoDia
+
+relationship 9a67283d-2e06-e0f2-d033-27e48aa0b79f
+	isActive: false
+	fromColumn: fact_orders.order_estimated_delivery_time
+	toColumn: dim_time.HorasDoDia
+
+relationship 6ca68c8a-bf78-0dae-edbf-7fe93c37369c
+	isActive: false
+	fromColumn: fact_orders.order_purchase_time
+	toColumn: dim_time.HorasDoDia
+
+relationship AutoDetected_1de72349-eb4d-4b14-8b0f-68ac179e7c6e
+	fromColumn: fact_orders.product_id
+	toColumn: dim_products.product_id
+
+relationship AutoDetected_b997c375-1741-4545-9c72-38cd9f9167c5
+	fromColumn: fact_orders.seller_id
+	toColumn: dim_sellers.seller_id
+
+relationship 15f950a2-3579-455f-a231-8b0b9aa1703e
+	toCardinality: many
+	fromColumn: fact_orders.customer_id
+	toColumn: dim_customers.customer_unique_id
+
+relationship 39bbb8a3-1c64-7f7e-7047-090ec7b735af
+	toCardinality: many
+	fromColumn: fact_orders.order_id
+	toColumn: dim_order_payments.order_id
+
