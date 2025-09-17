@@ -1,0 +1,114 @@
+table dim_time
+	lineageTag: a17408c7-5e4a-45b7-bd03-982b0c789292
+
+	column HorasDoDia
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 439ec1a3-6f37-4c6d-a644-1c343155fe3c
+		summarizeBy: none
+		sourceColumn: HorasDoDia
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column Hora
+		dataType: int64
+		formatString: 0
+		lineageTag: 5631c2ec-c40a-43c6-84ae-10d72e476e4d
+		summarizeBy: none
+		sourceColumn: Hora
+
+		annotation SummarizationSetBy = Automatic
+
+	column Minuto
+		dataType: int64
+		formatString: 0
+		lineageTag: d19e67b7-9356-488a-bba7-125fa8789b98
+		summarizeBy: none
+		sourceColumn: Minuto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Segundo
+		dataType: int64
+		formatString: 0
+		lineageTag: b36d0125-d821-4306-bee0-eb9fb40555b2
+		summarizeBy: none
+		sourceColumn: Segundo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Período
+		dataType: string
+		lineageTag: 137c0ee9-3f6d-4375-888a-17e1a2a6ea5e
+		summarizeBy: none
+		sourceColumn: Período
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Período Ordem'
+		dataType: int64
+		formatString: 0
+		lineageTag: 32476250-dafb-47f6-ba8b-2912a8c4a78d
+		summarizeBy: none
+		sourceColumn: Período Ordem
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_time = m
+		mode: import
+		queryGroup: Dimensions
+		source = ```
+				let
+				    Fonte = Table.FromList({0..86399}, Splitter.SplitByNothing()),
+				    Duracao = Table.AddColumn(
+				        Fonte,
+				        "Duração",
+				        each #duration(0,0,0, [Column1]),
+				        type duration
+				    ),
+				    Horas = Table.AddColumn(
+				      Duracao,
+				      "HorasDoDia",
+				      each #time(
+				        Duration.Hours([Duração]),
+				        Duration.Minutes([Duração]),
+				        Duration.Seconds([Duração])
+				        ),
+				      type time),
+				    RemoverColunas = Table.RemoveColumns(Horas, {"Duração", "Column1"}),
+				    Hora = Table.AddColumn(
+				      RemoverColunas, "Hora", each Time.Hour([HorasDoDia]), Int64.Type
+				      ),
+				    Minuto = Table.AddColumn(
+				      Hora, "Minuto", each Time.Minute([HorasDoDia]), Int64.Type
+				      ),
+				    Segundo = Table.AddColumn(
+				      Minuto, "Segundo", each Time.Second([HorasDoDia]), Int64.Type
+				      ),
+				    Periodo = 
+				        Table.AddColumn(Segundo, "Período", each 
+				            if      [Hora] >= 0  and [Hora] <= 5  then "Madrugada (0h - 6h)"
+				            else if [Hora] >= 6  and [Hora] <= 11 then "Manhã (6h - 12h)"
+				            else if [Hora] >= 12 and [Hora] <= 17 then "Tarde (12h - 18h)"
+				            else if [Hora] >= 18 and [Hora] <= 23 then "Noite (18h - 24h)"
+				            else "Nada", type text
+				            ),
+				    PeriodoOrdem = 
+				        Table.AddColumn(Periodo, "Período Ordem", each 
+				            if        [Hora] >= 0  and [Hora] <= 5  then 1
+				            else if   [Hora] >= 6  and [Hora] <= 11 then 2
+				            else if   [Hora] >= 12 and [Hora] <= 17 then 3
+				            else if   [Hora] >= 18 and [Hora] <= 23 then 4
+				            else 5, Int64.Type
+				        )
+				
+				in
+				    PeriodoOrdem
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

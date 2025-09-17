@@ -1,0 +1,201 @@
+table dim_calendar
+	lineageTag: 2e517a2c-f0ff-42b4-9f7e-52639f14e300
+	dataCategory: Time
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: Long Date
+		lineageTag: f8e34c9a-4e67-4468-8324-bdb7c9ce8889
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Ano
+		dataType: int64
+		formatString: 0
+		lineageTag: a6e4141d-0502-43f1-935f-2fc3812cecd7
+		summarizeBy: none
+		sourceColumn: Ano
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mês
+		dataType: int64
+		formatString: 0
+		lineageTag: 478a5ab6-8965-45ea-91d2-825ba958d2ee
+		summarizeBy: none
+		sourceColumn: Mês
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mês por extenso'
+		dataType: string
+		lineageTag: 8eeeb251-3cf6-49c8-bb73-a31512dfaad8
+		summarizeBy: none
+		sourceColumn: Mês por extenso
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dia
+		dataType: int64
+		formatString: 0
+		lineageTag: 1baf2c77-3785-4a85-be30-02c7f4f295d7
+		summarizeBy: none
+		sourceColumn: Dia
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dia da semana'
+		dataType: int64
+		formatString: 0
+		lineageTag: b0efdde2-4a61-44cf-89d1-ff6a940aa71d
+		summarizeBy: none
+		sourceColumn: Dia da semana
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dia da semana por extenso'
+		dataType: string
+		lineageTag: 16a4bf1a-77b6-4c28-8d56-8491bae191ea
+		summarizeBy: none
+		sourceColumn: Dia da semana por extenso
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mês/Ano
+		dataType: string
+		lineageTag: 6be1b156-1ca6-4cc0-b3ed-91b576936e81
+		summarizeBy: none
+		sourceColumn: Mês/Ano
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mês/Ano atual'
+		dataType: string
+		lineageTag: f0009af8-e62f-4786-8b49-3a0e6fa48e02
+		summarizeBy: none
+		sourceColumn: Mês/Ano atual
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mês/Ano ordenada'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3a4ce936-8ef3-4d9a-a95c-d46fc5e9c819
+		summarizeBy: none
+		sourceColumn: Mês/Ano ordenada
+
+		annotation SummarizationSetBy = Automatic
+
+	column Trimestre
+		dataType: string
+		lineageTag: 45008e38-3f43-4675-a942-3a0d91931799
+		summarizeBy: none
+		sourceColumn: Trimestre
+
+		annotation SummarizationSetBy = Automatic
+
+	column Semestre
+		dataType: string
+		lineageTag: 21ca747c-d6c8-45e0-b731-dd80868dd25c
+		summarizeBy: none
+		sourceColumn: Semestre
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Passado da fato'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 589ac3e6-b94e-4635-afb4-7936fc1b14c0
+		summarizeBy: none
+		sourceColumn: Passado da fato
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Futuro da fato'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 39067b83-23e4-4c65-a7f9-9c24caa51265
+		summarizeBy: none
+		sourceColumn: Futuro da fato
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_calendar = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				    Hoje = Date.From(DateTimeZone.UtcNow() - #duration(0, 3, 0, 0)),
+				    // Ou defina as datas iniciais e finais
+				    Coluna_data  = {
+				        #date(2025, 1, 1),   // data com ano inicial
+				        Hoje                 // data com ano final
+				    },
+				    // Ou indique a coluna de datas da Tabela Fato
+				    // Coluna_data  = List.Buffer(F_Vendas[Data]),
+				    Data_minima  = List.Min(Coluna_data),
+				    Data_maxima  = List.Max(Coluna_data),
+				    Data_inicial = Date.StartOfYear(Data_minima),
+				    Data_final   = Date.EndOfYear(Data_maxima),
+				    Total_dias   = Duration.Days(Data_final - Data_inicial) + 1,
+				    Datas        = List.Dates(Data_inicial, Total_dias, #duration(1, 0, 0, 0)),
+				    Fonte        =
+				        #table(
+				            type table [
+				                Date = date,
+				                Ano = Int64.Type,
+				                Mês = Int64.Type,
+				                Mês por extenso = text,
+				                Dia = Int64.Type,
+				                Dia da semana = Int64.Type,
+				                Dia da semana por extenso = text,
+				                #"Mês/Ano" = text,
+				                #"Mês/Ano atual" = text,
+				                #"Mês/Ano ordenada" = Int64.Type,
+				                Trimestre = text,
+				                Semestre = text,
+				                Passado da fato = logical,
+				                Futuro da fato = logical
+				            ],
+				            List.Transform(
+				                Datas, each {
+				                    _,
+				                    Date.Year(_),
+				                    Date.Month(_),
+				                    Text.Proper(Date.MonthName(_)),
+				                    Date.Day(_),
+				                    Date.DayOfWeek(_),
+				                    Date.DayOfWeekName(_),
+				                    Text.Combine({
+				                        Text.Start(Date.MonthName(_), 3),
+				                        "/",
+				                        Text.From(Date.Year(_))
+				                    }),
+				                    if Date.Year(Hoje) = Date.Year(_) and Date.Month(Hoje) = Date.Month(_) then
+				                        "Mês atual"
+				                    else
+				                        Text.Combine({
+				                            Text.Start(Date.MonthName(_), 3),
+				                            "/",
+				                            Text.From(Date.Year(_))
+				                        }),
+				                    (Date.Year(_) - Date.Year(Data_inicial)) * 12 + Date.Month(_),
+				                    Text.From(Date.QuarterOfYear(_)) & "º Trim.",
+				                    if Date.Month(_) <= 6 then "1º Sem." else "2º Sem.",
+				                    _ < Data_minima,
+				                    _ > Data_maxima
+				                }
+				            )
+				       )
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

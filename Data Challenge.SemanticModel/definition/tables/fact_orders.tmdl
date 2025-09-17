@@ -1,0 +1,240 @@
+table fact_orders
+	lineageTag: 3aeeee7d-c076-4825-ae25-1cd401cdf6b8
+
+	column order_id
+		dataType: string
+		lineageTag: 5d74b486-e70f-4d71-9e61-897364b7abe4
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: string
+		lineageTag: 725eb8e4-5489-46b6-a7f0-6c6fe1d55ddc
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_status
+		dataType: string
+		lineageTag: 4c58dda1-2d0e-48b2-a63f-f07f0ef6d310
+		summarizeBy: none
+		sourceColumn: order_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column Data = [order_delivered_carrier_date]
+		formatString: Short Date
+		lineageTag: 186fa06f-6d3b-4f5e-a22a-5406afebca91
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column order_purchase_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 765d581b-e3ca-488f-b7a3-b2b3c69ff095
+		summarizeBy: none
+		sourceColumn: order_purchase_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column order_purchase_time
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 05a59342-a249-4af6-9575-01e9b15717c9
+		summarizeBy: none
+		sourceColumn: order_purchase_time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column order_approved_at_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 43cb8366-fe54-4fd9-bc09-84eed8a2354b
+		summarizeBy: none
+		sourceColumn: order_approved_at_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column order_approved_at_time
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 1ced3089-2e79-4e8e-a9c5-69dc2b4f1869
+		summarizeBy: none
+		sourceColumn: order_approved_at_time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column order_delivered_carrier_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d398c14a-76ab-49c8-a943-3ab3690f4681
+		summarizeBy: none
+		sourceColumn: order_delivered_carrier_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column order_delivered_carrier_time
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 3e259a5a-3866-40a7-b0a5-cdfd3801a6a2
+		summarizeBy: none
+		sourceColumn: order_delivered_carrier_time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column order_delivered_customer_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4a37f97d-50af-4b76-81a3-f8e3723d11b0
+		summarizeBy: none
+		sourceColumn: order_delivered_customer_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column order_delivered_customer_time
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: ee81047f-c396-4d58-9096-0c5b396e40e5
+		summarizeBy: none
+		sourceColumn: order_delivered_customer_time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column order_estimated_delivery_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1cbd0fe7-fb05-468e-bd43-7b463d76cd70
+		summarizeBy: none
+		sourceColumn: order_estimated_delivery_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column order_estimated_delivery_time
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 5cd4471d-cdf1-40d2-b9ee-acc6b58a14a5
+		summarizeBy: none
+		sourceColumn: order_estimated_delivery_time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column order_item_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 17a8a861-a899-4bf2-881d-db4c7498231c
+		summarizeBy: sum
+		sourceColumn: order_item_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_id
+		dataType: string
+		lineageTag: 33360ed2-5f39-4669-a679-e9aa803ba030
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column seller_id
+		dataType: string
+		lineageTag: 1e69d103-d602-4b73-afb0-5ae8a6b17723
+		summarizeBy: none
+		sourceColumn: seller_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column shipping_limit_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 81977629-b0ab-47f4-b71c-cdf057e8c65f
+		summarizeBy: none
+		sourceColumn: shipping_limit_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column shipping_limit_time
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 04167d36-2034-4e6b-b156-0db3012071bf
+		summarizeBy: none
+		sourceColumn: shipping_limit_time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column price
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: aef6a8a0-ae36-4617-af9f-4ce8b46a683a
+		summarizeBy: sum
+		sourceColumn: price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column freight_value
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: b021f53a-debb-41bb-81f8-3e71d144dcab
+		summarizeBy: sum
+		sourceColumn: freight_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	partition fact_orders = m
+		mode: import
+		queryGroup: Facts
+		source =
+				let
+				    Fonte = Csv.Document(File.Contents(Source & "orders.csv"),[Delimiter=",", Columns=8, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+				    #"Split Column by Delimiter" = Table.SplitColumn(Table.TransformColumnTypes(#"Cabeçalhos Promovidos", {{"order_purchase_timestamp", type text}}, "pt-BR"), "order_purchase_timestamp", Splitter.SplitTextByDelimiter(" ", QuoteStyle.Csv), {"order_purchase_timestamp.1", "order_purchase_timestamp.2"}),
+				    #"Split Column by Delimiter1" = Table.SplitColumn(Table.TransformColumnTypes(#"Split Column by Delimiter", {{"order_approved_at", type text}}, "pt-BR"), "order_approved_at", Splitter.SplitTextByDelimiter(" ", QuoteStyle.Csv), {"order_approved_at.1", "order_approved_at.2"}),
+				    #"Split Column by Delimiter2" = Table.SplitColumn(Table.TransformColumnTypes(#"Split Column by Delimiter1", {{"order_delivered_carrier_date", type text}}, "pt-BR"), "order_delivered_carrier_date", Splitter.SplitTextByDelimiter(" ", QuoteStyle.Csv), {"order_delivered_carrier_date.1", "order_delivered_carrier_date.2"}),
+				    #"Split Column by Delimiter3" = Table.SplitColumn(Table.TransformColumnTypes(#"Split Column by Delimiter2", {{"order_delivered_customer_date", type text}}, "pt-BR"), "order_delivered_customer_date", Splitter.SplitTextByDelimiter(" ", QuoteStyle.Csv), {"order_delivered_customer_date.1", "order_delivered_customer_date.2"}),
+				    #"Split Column by Delimiter4" = Table.SplitColumn(Table.TransformColumnTypes(#"Split Column by Delimiter3", {{"order_estimated_delivery_date", type text}}, "pt-BR"), "order_estimated_delivery_date", Splitter.SplitTextByDelimiter(" ", QuoteStyle.Csv), {"order_estimated_delivery_date.1", "order_estimated_delivery_date.2"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Split Column by Delimiter4",{{"order_id", type text}, {"customer_id", type text}, {"order_status", type text}, {"order_purchase_timestamp.1", type date}, {"order_purchase_timestamp.2", type time}, {"order_approved_at.1", type date}, {"order_approved_at.2", type time}, {"order_delivered_carrier_date.1", type date}, {"order_delivered_carrier_date.2", type time}, {"order_delivered_customer_date.1", type date}, {"order_delivered_customer_date.2", type time}, {"order_estimated_delivery_date.1", type date}, {"order_estimated_delivery_date.2", type time}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"order_purchase_timestamp.1", "order_purchase_date"}, {"order_purchase_timestamp.2", "order_purchase_time"}, {"order_approved_at.1", "order_approved_at_date"}, {"order_approved_at.2", "order_approved_at_time"}, {"order_delivered_carrier_date.1", "order_delivered_carrier_date"}, {"order_delivered_carrier_date.2", "order_delivered_carrier_time"}, {"order_delivered_customer_date.1", "order_delivered_customer_date"}, {"order_delivered_customer_date.2", "order_delivered_customer_time"}, {"order_estimated_delivery_date.1", "order_estimated_delivery_date"}, {"order_estimated_delivery_date.2", "order_estimated_delivery_time"}}),
+				    #"Merged Queries" = Table.NestedJoin(#"Renamed Columns", {"order_id"}, dim_order_items, {"order_id"}, "dim_order_items", JoinKind.LeftOuter),
+				    #"Expanded dim_order_items" = Table.ExpandTableColumn(#"Merged Queries", "dim_order_items", {"order_item_id", "product_id", "seller_id", "shipping_limit_date", "shipping_limit_time", "price", "freight_value"}, {"order_item_id", "product_id", "seller_id", "shipping_limit_date", "shipping_limit_time", "price", "freight_value"})
+				in
+				    #"Expanded dim_order_items"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

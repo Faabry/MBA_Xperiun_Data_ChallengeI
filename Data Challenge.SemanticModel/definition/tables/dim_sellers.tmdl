@@ -1,0 +1,36 @@
+table dim_sellers
+	lineageTag: b8e278d7-07fc-4364-8d81-1a89b9ded7b1
+
+	column seller_id
+		dataType: string
+		lineageTag: ef1c71d7-df65-4498-b1f2-0b0bc47dcbc0
+		summarizeBy: none
+		sourceColumn: seller_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column seller_zip_code_prefix
+		dataType: int64
+		formatString: 0
+		lineageTag: ffa8c3a8-e7e8-4c22-b733-55def048d33a
+		summarizeBy: none
+		sourceColumn: seller_zip_code_prefix
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_sellers = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				    Fonte = Csv.Document(File.Contents(Source & "sellers.csv"),[Delimiter=",", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"seller_id", type text}, {"seller_zip_code_prefix", Int64.Type}, {"seller_city", type text}, {"seller_state", type text}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado",{"seller_city", "seller_state"})
+				in
+				    #"Colunas Removidas"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

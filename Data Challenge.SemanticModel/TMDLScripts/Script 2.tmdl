@@ -1,0 +1,2179 @@
+createOrReplace
+
+	model Model
+		culture: pt-BR
+		defaultPowerBIDataSourceVersion: powerBI_V3
+		sourceQueryCulture: pt-BR
+		dataAccessOptions
+			legacyRedirects
+			returnErrorValuesAsNull
+
+		table geolocation
+			lineageTag: ad6a5a6a-31c6-4f6c-946f-acab6ebcd377
+
+			column geolocation_zip_code_prefix
+				dataType: int64
+				formatString: 0
+				lineageTag: a306a628-a654-407c-884d-8c7a53512b85
+				summarizeBy: sum
+				sourceColumn: geolocation_zip_code_prefix
+
+				annotation SummarizationSetBy = Automatic
+
+			column geolocation_lat
+				dataType: int64
+				formatString: 0
+				lineageTag: 9b608f17-c112-4467-a777-0a25570a57c1
+				summarizeBy: sum
+				sourceColumn: geolocation_lat
+
+				annotation SummarizationSetBy = Automatic
+
+			column geolocation_lng
+				dataType: int64
+				formatString: 0
+				lineageTag: 4ea4669e-9319-4ce8-bdcd-3ab0ab393887
+				summarizeBy: sum
+				sourceColumn: geolocation_lng
+
+				annotation SummarizationSetBy = Automatic
+
+			column geolocation_city
+				dataType: string
+				lineageTag: 7f9a083b-d03c-448b-942d-52439d6df261
+				summarizeBy: none
+				sourceColumn: geolocation_city
+
+				annotation SummarizationSetBy = Automatic
+
+			column geolocation_state
+				dataType: string
+				lineageTag: f88ff7e6-6244-4428-8082-1dc9efa99cee
+				summarizeBy: none
+				sourceColumn: geolocation_state
+
+				annotation SummarizationSetBy = Automatic
+
+			partition geolocation = m
+				mode: import
+				source =
+						let
+						    Fonte = Csv.Document(File.Contents("C:\Users\renan\Downloads\Download-20250913T170905Z-1-002\Download\Turma 2 - Base de dados\geolocation.csv"),[Delimiter=",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+						    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+						    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"geolocation_zip_code_prefix", Int64.Type}, {"geolocation_lat", Int64.Type}, {"geolocation_lng", Int64.Type}, {"geolocation_city", type text}, {"geolocation_state", type text}})
+						in
+						    #"Tipo Alterado"
+
+			annotation PBI_ResultType = Table
+
+		table customers
+			lineageTag: 4a781a2d-9acc-4a36-b5b0-2170f221762b
+
+			column customer_id
+				dataType: string
+				lineageTag: d170cea4-c5bb-40df-a849-3c67ed58c3fb
+				summarizeBy: none
+				sourceColumn: customer_id
+
+				annotation SummarizationSetBy = Automatic
+
+			column customer_unique_id
+				dataType: string
+				lineageTag: df4ba0d0-ceee-45a6-90eb-0f82737f1ebe
+				summarizeBy: none
+				sourceColumn: customer_unique_id
+
+				annotation SummarizationSetBy = Automatic
+
+			column customer_zip_code_prefix
+				dataType: int64
+				formatString: 0
+				lineageTag: 86853a96-8c21-4166-8c51-d8bbdfc68cb9
+				summarizeBy: sum
+				sourceColumn: customer_zip_code_prefix
+
+				annotation SummarizationSetBy = Automatic
+
+			column customer_city
+				dataType: string
+				lineageTag: 602a9a65-7494-4971-8980-050ab474141a
+				summarizeBy: none
+				sourceColumn: customer_city
+
+				annotation SummarizationSetBy = Automatic
+
+			column customer_state
+				dataType: string
+				lineageTag: 95fcf5b5-2fb8-45c2-b7cd-61bec904c401
+				summarizeBy: none
+				sourceColumn: customer_state
+
+				annotation SummarizationSetBy = Automatic
+
+			partition customers = m
+				mode: import
+				source =
+						let
+						    Fonte = Csv.Document(File.Contents("C:\Users\renan\Downloads\Download-20250913T170905Z-1-001\Download\Turma 2 - Base de dados\customers.csv"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+						    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+						    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"customer_id", type text}, {"customer_unique_id", type text}, {"customer_zip_code_prefix", Int64.Type}, {"customer_city", type text}, {"customer_state", type text}})
+						in
+						    #"Tipo Alterado"
+
+			annotation PBI_ResultType = Table
+
+		table order_items
+			lineageTag: 5f9d3be6-1de7-433a-893b-30539ed19ec8
+
+			column order_id
+				dataType: string
+				lineageTag: a904cb1f-2dc4-4295-8ed8-8c911d6e1a44
+				summarizeBy: none
+				sourceColumn: order_id
+
+				annotation SummarizationSetBy = Automatic
+
+			column order_item_id
+				dataType: int64
+				formatString: 0
+				lineageTag: 7a13d4fd-4975-4b3a-9415-8a3ad0b9c1cb
+				summarizeBy: sum
+				sourceColumn: order_item_id
+
+				annotation SummarizationSetBy = Automatic
+
+			column product_id
+				dataType: string
+				lineageTag: 770ae825-df91-4d04-b7ce-54bab2dd8cfa
+				summarizeBy: none
+				sourceColumn: product_id
+
+				annotation SummarizationSetBy = Automatic
+
+			column seller_id
+				dataType: string
+				lineageTag: bc940b91-ce26-4172-b75b-9ae34d936aad
+				summarizeBy: none
+				sourceColumn: seller_id
+
+				annotation SummarizationSetBy = Automatic
+
+			column shipping_limit_date
+				dataType: dateTime
+				formatString: General Date
+				lineageTag: 1a06877b-9ef1-4b40-a40f-bca07ee4851d
+				summarizeBy: none
+				sourceColumn: shipping_limit_date
+
+				variation Variation
+					isDefault
+					relationship: c41d8d61-e395-41ac-b001-a462592f741a
+					defaultHierarchy: LocalDateTable_dc9aaa3e-6078-4ca6-afb5-b25d68fc0f4e.'Hierarquia de datas'
+
+				annotation SummarizationSetBy = Automatic
+
+			column price
+				dataType: int64
+				formatString: 0
+				lineageTag: 86df2936-60f3-40d8-aaaf-24065f28ba97
+				summarizeBy: sum
+				sourceColumn: price
+
+				annotation SummarizationSetBy = Automatic
+
+			column freight_value
+				dataType: int64
+				formatString: 0
+				lineageTag: d0069b7a-8c87-4f03-9f81-c9275b982cc7
+				summarizeBy: sum
+				sourceColumn: freight_value
+
+				annotation SummarizationSetBy = Automatic
+
+			partition order_items = m
+				mode: import
+				source =
+						let
+						    Fonte = Csv.Document(File.Contents("C:\Users\renan\Downloads\Download-20250913T170905Z-1-001\Download\Turma 2 - Base de dados\order_items.csv"),[Delimiter=",", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+						    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+						    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"order_id", type text}, {"order_item_id", Int64.Type}, {"product_id", type text}, {"seller_id", type text}, {"shipping_limit_date", type datetime}, {"price", Int64.Type}, {"freight_value", Int64.Type}})
+						in
+						    #"Tipo Alterado"
+
+			annotation PBI_ResultType = Table
+
+		table DateTableTemplate_161e5e41-15de-44bf-8879-d2a77550bdd4
+			isHidden
+			isPrivate
+			lineageTag: 8ff91d3a-ad8b-4aef-8ad6-8fff464aa5e5
+
+			column Date
+				dataType: dateTime
+				isHidden
+				formatString: General Date
+				lineageTag: 0553b717-58e4-48f0-9157-2cd7effaaee7
+				dataCategory: PaddedDateTableDates
+				summarizeBy: none
+				isNameInferred
+				sourceColumn: [Date]
+
+				annotation SummarizationSetBy = User
+
+			column Ano = YEAR([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: 787e6cea-e407-4d53-aba9-b2bebbde42e5
+				dataCategory: Years
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Year
+
+			column MonthNo = MONTH([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: 7d33d994-2417-42e9-ac5c-3f92d58181aa
+				dataCategory: MonthOfYear
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = MonthNumber
+
+			column Mês = FORMAT([Date], "MMMM")
+				dataType: string
+				isHidden
+				lineageTag: f6c325db-3109-43f2-926b-1b2e9eb1274b
+				dataCategory: Months
+				summarizeBy: none
+				sortByColumn: MonthNo
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Month
+
+			column QuarterNo = INT(([MonthNo] + 2) / 3)
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: c89530d5-d0b2-4689-96ab-9e19bc82ddb4
+				dataCategory: QuarterOfYear
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = QuarterNumber
+
+			column Trimestre = "Qtr " & [QuarterNo]
+				dataType: string
+				isHidden
+				lineageTag: 209205ce-f5be-4261-9f36-e49b67de779b
+				dataCategory: Quarters
+				summarizeBy: none
+				sortByColumn: QuarterNo
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Quarter
+
+			column Dia = DAY([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: 173a567e-5087-44ea-831c-def3b33fb738
+				dataCategory: DayOfMonth
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Day
+
+			hierarchy 'Hierarquia de datas'
+				lineageTag: d830d6c9-f693-40d0-983d-21d4d2dd8188
+
+				level Ano
+					lineageTag: af75b14a-7e7b-4f61-ac6e-fb53d7ec7785
+					column: Ano
+
+				level Trimestre
+					lineageTag: e7a04319-9cd3-4187-9629-5592ef834c5f
+					column: Trimestre
+
+				level Mês
+					lineageTag: d7f07fae-2319-427a-8fe7-8efd1d43b0a5
+					column: Mês
+
+				level Dia
+					lineageTag: 1702007d-cc95-479e-8468-8994ef8c24e0
+					column: Dia
+
+				annotation TemplateId = DateHierarchy
+
+			partition DateTableTemplate_161e5e41-15de-44bf-8879-d2a77550bdd4 = calculated
+				mode: import
+				source = Calendar(Date(2015,1,1), Date(2015,1,1))
+
+			annotation __PBI_TemplateDateTable = true
+
+			annotation DefaultItem = DateHierarchy
+
+		table LocalDateTable_dc9aaa3e-6078-4ca6-afb5-b25d68fc0f4e
+			isHidden
+			showAsVariationsOnly
+			lineageTag: 9033c2ad-c2be-4c54-b26c-e5b7f90cfd8f
+
+			column Date
+				dataType: dateTime
+				isHidden
+				formatString: General Date
+				lineageTag: e8608bfe-79a9-4a8a-87c7-9b65150d46d4
+				dataCategory: PaddedDateTableDates
+				summarizeBy: none
+				isNameInferred
+				sourceColumn: [Date]
+
+				annotation SummarizationSetBy = User
+
+			column Ano = YEAR([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: e5931bb6-110a-4632-b825-97d02ca3102b
+				dataCategory: Years
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Year
+
+			column MonthNo = MONTH([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: 3d087b61-27b9-403a-9d68-2cd6fd5c5643
+				dataCategory: MonthOfYear
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = MonthNumber
+
+			column Mês = FORMAT([Date], "MMMM")
+				dataType: string
+				isHidden
+				lineageTag: d3de0b41-e5f1-4e82-abda-71d33a3cab78
+				dataCategory: Months
+				summarizeBy: none
+				sortByColumn: MonthNo
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Month
+
+			column QuarterNo = INT(([MonthNo] + 2) / 3)
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: 9e017f63-9731-44a8-91b9-20c549da3691
+				dataCategory: QuarterOfYear
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = QuarterNumber
+
+			column Trimestre = "Qtr " & [QuarterNo]
+				dataType: string
+				isHidden
+				lineageTag: 0b55488a-2de6-4625-aeee-af9cdf8efd10
+				dataCategory: Quarters
+				summarizeBy: none
+				sortByColumn: QuarterNo
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Quarter
+
+			column Dia = DAY([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: 0e7cc449-b7df-4a19-9292-8904d9429296
+				dataCategory: DayOfMonth
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Day
+
+			hierarchy 'Hierarquia de datas'
+				lineageTag: d85ccb1c-1a1f-479f-b18b-72ea7c683d4c
+
+				level Ano
+					lineageTag: a7af4cf4-fdb3-4549-9889-b61b63c985a1
+					column: Ano
+
+				level Trimestre
+					lineageTag: fd067699-e0c7-450a-83bd-296d0baadfad
+					column: Trimestre
+
+				level Mês
+					lineageTag: 1e5875de-e607-4883-8a21-55b11a9a985d
+					column: Mês
+
+				level Dia
+					lineageTag: 74b585b1-85ad-40cc-9f5b-9f699e736938
+					column: Dia
+
+				annotation TemplateId = DateHierarchy
+
+			partition LocalDateTable_dc9aaa3e-6078-4ca6-afb5-b25d68fc0f4e = calculated
+				mode: import
+				source = Calendar(Date(Year(MIN('order_items'[shipping_limit_date])), 1, 1), Date(Year(MAX('order_items'[shipping_limit_date])), 12, 31))
+
+			annotation __PBI_LocalDateTable = true
+
+		table order_payments
+			lineageTag: d7accf2b-63d4-469d-a36f-280ac344c34b
+
+			column order_id
+				dataType: string
+				lineageTag: 7f292fa2-4770-4a38-b573-2f66cffddd73
+				summarizeBy: none
+				sourceColumn: order_id
+
+				annotation SummarizationSetBy = Automatic
+
+			column payment_sequential
+				dataType: int64
+				formatString: 0
+				lineageTag: a79e5e9d-71fb-49a7-8fb5-dcfe0685be2f
+				summarizeBy: sum
+				sourceColumn: payment_sequential
+
+				annotation SummarizationSetBy = Automatic
+
+			column payment_type
+				dataType: string
+				lineageTag: 28960cae-26fd-446e-95db-6b58103bbae5
+				summarizeBy: none
+				sourceColumn: payment_type
+
+				annotation SummarizationSetBy = Automatic
+
+			column payment_installments
+				dataType: int64
+				formatString: 0
+				lineageTag: 69447fd2-2802-4dc5-b4fe-28d76488eb4c
+				summarizeBy: sum
+				sourceColumn: payment_installments
+
+				annotation SummarizationSetBy = Automatic
+
+			column payment_value
+				dataType: int64
+				formatString: 0
+				lineageTag: ff9c8166-b1f1-4298-a803-a147a79e0ff0
+				summarizeBy: sum
+				sourceColumn: payment_value
+
+				annotation SummarizationSetBy = Automatic
+
+			partition order_payments = m
+				mode: import
+				source =
+						let
+						    Fonte = Csv.Document(File.Contents("C:\Users\renan\Downloads\Download-20250913T170905Z-1-001\Download\Turma 2 - Base de dados\order_payments.csv"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+						    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+						    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"order_id", type text}, {"payment_sequential", Int64.Type}, {"payment_type", type text}, {"payment_installments", Int64.Type}, {"payment_value", Int64.Type}})
+						in
+						    #"Tipo Alterado"
+
+			annotation PBI_ResultType = Table
+
+		table order_reviews
+			lineageTag: db015f43-84f9-4e06-ae3d-82c537ccebd3
+
+			column review_id
+				dataType: string
+				lineageTag: 2d0ea88f-e7ca-4a50-8689-49011a9be533
+				summarizeBy: none
+				sourceColumn: review_id
+
+				annotation SummarizationSetBy = Automatic
+
+			column order_id
+				dataType: string
+				lineageTag: 91ca003b-001f-4d4c-bab0-09f584fd42de
+				summarizeBy: none
+				sourceColumn: order_id
+
+				annotation SummarizationSetBy = Automatic
+
+			column review_score
+				dataType: int64
+				formatString: 0
+				lineageTag: 00ecc7ed-23f2-4cdf-b5bb-9f8977558c16
+				summarizeBy: sum
+				sourceColumn: review_score
+
+				annotation SummarizationSetBy = Automatic
+
+			column review_comment_title
+				dataType: string
+				lineageTag: fda15cf9-0675-4bc6-96cc-260c6ac248e0
+				summarizeBy: none
+				sourceColumn: review_comment_title
+
+				annotation SummarizationSetBy = Automatic
+
+			column review_comment_message
+				dataType: string
+				lineageTag: f88b0080-e57a-474a-88ad-fe078b4ab824
+				summarizeBy: none
+				sourceColumn: review_comment_message
+
+				annotation SummarizationSetBy = Automatic
+
+			column review_creation_date
+				dataType: dateTime
+				formatString: General Date
+				lineageTag: da1b94a5-b9da-4ce2-947d-0990624da780
+				summarizeBy: none
+				sourceColumn: review_creation_date
+
+				variation Variation
+					isDefault
+					relationship: d9b98780-83d1-433e-a223-a80caf9f8955
+					defaultHierarchy: LocalDateTable_c22d37f2-bfaa-445a-a554-2b494cefbf79.'Hierarquia de datas'
+
+				annotation SummarizationSetBy = Automatic
+
+			column review_answer_timestamp
+				dataType: dateTime
+				formatString: General Date
+				lineageTag: 944c6607-4227-4899-8894-d22f72977c43
+				summarizeBy: none
+				sourceColumn: review_answer_timestamp
+
+				variation Variation
+					isDefault
+					relationship: fe202fcb-e09e-46d6-9ac0-64a88d676c16
+					defaultHierarchy: LocalDateTable_b58ead3f-9f19-4012-98a5-688af565d845.'Hierarquia de datas'
+
+				annotation SummarizationSetBy = Automatic
+
+			partition order_reviews = m
+				mode: import
+				source =
+						let
+						    Fonte = Csv.Document(File.Contents("C:\Users\renan\Downloads\Download-20250913T170905Z-1-001\Download\Turma 2 - Base de dados\order_reviews.csv"),[Delimiter=",", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+						    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+						    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"review_id", type text}, {"order_id", type text}, {"review_score", Int64.Type}, {"review_comment_title", type text}, {"review_comment_message", type text}, {"review_creation_date", type datetime}, {"review_answer_timestamp", type datetime}})
+						in
+						    #"Tipo Alterado"
+
+			annotation PBI_ResultType = Table
+
+		table LocalDateTable_c22d37f2-bfaa-445a-a554-2b494cefbf79
+			isHidden
+			showAsVariationsOnly
+			lineageTag: f1be3afc-bbcc-4e4b-b60e-c4d6ec24dc68
+
+			column Date
+				dataType: dateTime
+				isHidden
+				formatString: General Date
+				lineageTag: 6e0d85ab-f0b6-4dcb-8250-55ee35bd375c
+				dataCategory: PaddedDateTableDates
+				summarizeBy: none
+				isNameInferred
+				sourceColumn: [Date]
+
+				annotation SummarizationSetBy = User
+
+			column Ano = YEAR([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: a86588d5-422e-4d46-a013-a67a2a367080
+				dataCategory: Years
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Year
+
+			column MonthNo = MONTH([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: 139eff5d-d342-4482-a5fc-e50f4308a327
+				dataCategory: MonthOfYear
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = MonthNumber
+
+			column Mês = FORMAT([Date], "MMMM")
+				dataType: string
+				isHidden
+				lineageTag: 477d2e18-92a7-402f-b0bc-29f4a3d8b7ce
+				dataCategory: Months
+				summarizeBy: none
+				sortByColumn: MonthNo
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Month
+
+			column QuarterNo = INT(([MonthNo] + 2) / 3)
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: 05df0351-d2aa-48da-bf08-850810d19af3
+				dataCategory: QuarterOfYear
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = QuarterNumber
+
+			column Trimestre = "Qtr " & [QuarterNo]
+				dataType: string
+				isHidden
+				lineageTag: 713309f7-b331-4c26-9cc5-dcfd386109b3
+				dataCategory: Quarters
+				summarizeBy: none
+				sortByColumn: QuarterNo
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Quarter
+
+			column Dia = DAY([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: b03b4208-a127-47bb-8007-69cc8fbefdf6
+				dataCategory: DayOfMonth
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Day
+
+			hierarchy 'Hierarquia de datas'
+				lineageTag: 615f61de-54ed-435c-93ac-31cdb2b72339
+
+				level Ano
+					lineageTag: 47539363-0ab5-4975-8189-6c368fa2caa4
+					column: Ano
+
+				level Trimestre
+					lineageTag: d2b6cf7a-af2f-4894-a741-a570c2874fde
+					column: Trimestre
+
+				level Mês
+					lineageTag: 0c2934eb-ade9-447d-83bd-640da6e3e659
+					column: Mês
+
+				level Dia
+					lineageTag: 2cf6e70c-91f8-4e89-bea8-4dcf64d0fceb
+					column: Dia
+
+				annotation TemplateId = DateHierarchy
+
+			partition LocalDateTable_c22d37f2-bfaa-445a-a554-2b494cefbf79 = calculated
+				mode: import
+				source = Calendar(Date(Year(MIN('order_reviews'[review_creation_date])), 1, 1), Date(Year(MAX('order_reviews'[review_creation_date])), 12, 31))
+
+			annotation __PBI_LocalDateTable = true
+
+		table LocalDateTable_b58ead3f-9f19-4012-98a5-688af565d845
+			isHidden
+			showAsVariationsOnly
+			lineageTag: 1825d1b2-22ca-47cd-b246-91a6955f1745
+
+			column Date
+				dataType: dateTime
+				isHidden
+				formatString: General Date
+				lineageTag: efa4450e-d40b-4e88-a749-ae16fd61b9d6
+				dataCategory: PaddedDateTableDates
+				summarizeBy: none
+				isNameInferred
+				sourceColumn: [Date]
+
+				annotation SummarizationSetBy = User
+
+			column Ano = YEAR([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: 7899cddc-e8d3-4729-9e0f-256946a1de8b
+				dataCategory: Years
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Year
+
+			column MonthNo = MONTH([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: af3e1aec-e1a5-4e98-ac47-dfe853db5dac
+				dataCategory: MonthOfYear
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = MonthNumber
+
+			column Mês = FORMAT([Date], "MMMM")
+				dataType: string
+				isHidden
+				lineageTag: 54d0467e-b4d7-45f0-82a5-6b88170deed0
+				dataCategory: Months
+				summarizeBy: none
+				sortByColumn: MonthNo
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Month
+
+			column QuarterNo = INT(([MonthNo] + 2) / 3)
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: 1f4b08f0-22f9-4ac0-a014-383cfde74384
+				dataCategory: QuarterOfYear
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = QuarterNumber
+
+			column Trimestre = "Qtr " & [QuarterNo]
+				dataType: string
+				isHidden
+				lineageTag: 6ba7790b-ffab-4ab6-846c-762a63a0cbf8
+				dataCategory: Quarters
+				summarizeBy: none
+				sortByColumn: QuarterNo
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Quarter
+
+			column Dia = DAY([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: cea2f7cb-506c-45c7-ba9c-d8bb92a3a3b4
+				dataCategory: DayOfMonth
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Day
+
+			hierarchy 'Hierarquia de datas'
+				lineageTag: 71a526c2-d6d7-41a4-8eb7-09a794e76c56
+
+				level Ano
+					lineageTag: b499a8e0-315d-4f74-8591-c3dcade2d423
+					column: Ano
+
+				level Trimestre
+					lineageTag: b9de48c8-0194-4e28-801d-d69f18c041e8
+					column: Trimestre
+
+				level Mês
+					lineageTag: 34a869e8-fb12-44ef-b09e-90f8b0397db5
+					column: Mês
+
+				level Dia
+					lineageTag: f0a8f454-d248-45eb-a161-a611f8e3d047
+					column: Dia
+
+				annotation TemplateId = DateHierarchy
+
+			partition LocalDateTable_b58ead3f-9f19-4012-98a5-688af565d845 = calculated
+				mode: import
+				source = Calendar(Date(Year(MIN('order_reviews'[review_answer_timestamp])), 1, 1), Date(Year(MAX('order_reviews'[review_answer_timestamp])), 12, 31))
+
+			annotation __PBI_LocalDateTable = true
+
+		table orders
+			lineageTag: 3aeeee7d-c076-4825-ae25-1cd401cdf6b8
+
+			column order_id
+				dataType: string
+				lineageTag: 5d74b486-e70f-4d71-9e61-897364b7abe4
+				summarizeBy: none
+				sourceColumn: order_id
+
+				annotation SummarizationSetBy = Automatic
+
+			column customer_id
+				dataType: string
+				lineageTag: 725eb8e4-5489-46b6-a7f0-6c6fe1d55ddc
+				summarizeBy: none
+				sourceColumn: customer_id
+
+				annotation SummarizationSetBy = Automatic
+
+			column order_status
+				dataType: string
+				lineageTag: 4c58dda1-2d0e-48b2-a63f-f07f0ef6d310
+				summarizeBy: none
+				sourceColumn: order_status
+
+				annotation SummarizationSetBy = Automatic
+
+			column order_purchase_timestamp
+				dataType: dateTime
+				formatString: General Date
+				lineageTag: 27fe290a-0574-40da-8010-cf70986a08a2
+				summarizeBy: none
+				sourceColumn: order_purchase_timestamp
+
+				variation Variation
+					isDefault
+					relationship: bcafe76b-3587-480b-bfb9-f74587fd90df
+					defaultHierarchy: LocalDateTable_b3659567-ec22-4472-a081-6eebeac4bcd7.'Hierarquia de datas'
+
+				annotation SummarizationSetBy = Automatic
+
+			column order_approved_at
+				dataType: dateTime
+				formatString: General Date
+				lineageTag: aa5a1079-52ce-4452-8b82-396da554d76c
+				summarizeBy: none
+				sourceColumn: order_approved_at
+
+				variation Variation
+					isDefault
+					relationship: 7dd65226-1ff8-4988-9762-8ce9f26ed8ef
+					defaultHierarchy: LocalDateTable_33121cad-c7b5-47df-8af5-e7f2daa3abb4.'Hierarquia de datas'
+
+				annotation SummarizationSetBy = Automatic
+
+			column order_delivered_carrier_date
+				dataType: dateTime
+				formatString: General Date
+				lineageTag: 72048d52-e841-4804-8ca0-398b16c24b03
+				summarizeBy: none
+				sourceColumn: order_delivered_carrier_date
+
+				variation Variation
+					isDefault
+					relationship: e3b611a3-2f47-4021-8beb-c98f9c327683
+					defaultHierarchy: LocalDateTable_7847fd7e-fc7f-473f-9d05-d9831376aa24.'Hierarquia de datas'
+
+				annotation SummarizationSetBy = Automatic
+
+			column order_delivered_customer_date
+				dataType: dateTime
+				formatString: General Date
+				lineageTag: 95f850af-1f54-45f4-8b80-8f58253549dc
+				summarizeBy: none
+				sourceColumn: order_delivered_customer_date
+
+				variation Variation
+					isDefault
+					relationship: b94abe5d-f4d8-4f01-9f64-1eec787a2cb8
+					defaultHierarchy: LocalDateTable_c3638ccc-9d2c-4c73-9577-460b168ee38e.'Hierarquia de datas'
+
+				annotation SummarizationSetBy = Automatic
+
+			column order_estimated_delivery_date
+				dataType: dateTime
+				formatString: General Date
+				lineageTag: 3efb6edc-1875-4742-8f05-ff765e8b4143
+				summarizeBy: none
+				sourceColumn: order_estimated_delivery_date
+
+				variation Variation
+					isDefault
+					relationship: 14ea64bd-3d8f-459a-a1e1-036457fb2d83
+					defaultHierarchy: LocalDateTable_36296d92-a505-4f8a-80a2-db9b7587a351.'Hierarquia de datas'
+
+				annotation SummarizationSetBy = Automatic
+
+			partition orders = m
+				mode: import
+				source =
+						let
+						    Fonte = Csv.Document(File.Contents("C:\Users\renan\Downloads\Download-20250913T170905Z-1-001\Download\Turma 2 - Base de dados\orders.csv"),[Delimiter=",", Columns=8, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+						    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+						    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"order_id", type text}, {"customer_id", type text}, {"order_status", type text}, {"order_purchase_timestamp", type datetime}, {"order_approved_at", type datetime}, {"order_delivered_carrier_date", type datetime}, {"order_delivered_customer_date", type datetime}, {"order_estimated_delivery_date", type datetime}})
+						in
+						    #"Tipo Alterado"
+
+			annotation PBI_ResultType = Table
+
+		table LocalDateTable_b3659567-ec22-4472-a081-6eebeac4bcd7
+			isHidden
+			showAsVariationsOnly
+			lineageTag: e8368324-15b1-4640-88b5-f2ca16cc380d
+
+			column Date
+				dataType: dateTime
+				isHidden
+				formatString: General Date
+				lineageTag: 164dafce-b017-4ef5-ab3e-d93fe65cc357
+				dataCategory: PaddedDateTableDates
+				summarizeBy: none
+				isNameInferred
+				sourceColumn: [Date]
+
+				annotation SummarizationSetBy = User
+
+			column Ano = YEAR([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: 6ba63330-d913-4c69-8550-584400f02f0b
+				dataCategory: Years
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Year
+
+			column MonthNo = MONTH([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: 3dc8cc07-ee21-473d-882f-81812c7a7ede
+				dataCategory: MonthOfYear
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = MonthNumber
+
+			column Mês = FORMAT([Date], "MMMM")
+				dataType: string
+				isHidden
+				lineageTag: c7d43415-a91c-463d-a243-6a6c47a75595
+				dataCategory: Months
+				summarizeBy: none
+				sortByColumn: MonthNo
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Month
+
+			column QuarterNo = INT(([MonthNo] + 2) / 3)
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: ec8f924d-3e9a-42a5-bded-59ef524a6298
+				dataCategory: QuarterOfYear
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = QuarterNumber
+
+			column Trimestre = "Qtr " & [QuarterNo]
+				dataType: string
+				isHidden
+				lineageTag: 44683241-7d58-4b3e-a6bd-bcd4c50b9a42
+				dataCategory: Quarters
+				summarizeBy: none
+				sortByColumn: QuarterNo
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Quarter
+
+			column Dia = DAY([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: 9f395384-5301-4893-adb9-5a21dd7da2a8
+				dataCategory: DayOfMonth
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Day
+
+			hierarchy 'Hierarquia de datas'
+				lineageTag: 72be9317-2451-4d62-9c11-991e79fea3e8
+
+				level Ano
+					lineageTag: 7a36f197-0439-48bb-8a9b-4e546d04664e
+					column: Ano
+
+				level Trimestre
+					lineageTag: dbc6c78d-a781-4440-8d29-b1d9a64dc9d3
+					column: Trimestre
+
+				level Mês
+					lineageTag: e4538a3e-9134-40a4-aa81-d715ef4eb116
+					column: Mês
+
+				level Dia
+					lineageTag: 4b9f07b6-3686-463d-9b07-72499421746b
+					column: Dia
+
+				annotation TemplateId = DateHierarchy
+
+			partition LocalDateTable_b3659567-ec22-4472-a081-6eebeac4bcd7 = calculated
+				mode: import
+				source = Calendar(Date(Year(MIN('orders'[order_purchase_timestamp])), 1, 1), Date(Year(MAX('orders'[order_purchase_timestamp])), 12, 31))
+
+			annotation __PBI_LocalDateTable = true
+
+		table LocalDateTable_33121cad-c7b5-47df-8af5-e7f2daa3abb4
+			isHidden
+			showAsVariationsOnly
+			lineageTag: fac6f2e0-adfb-4b8b-9227-5dcfd0d5fb3d
+
+			column Date
+				dataType: dateTime
+				isHidden
+				formatString: General Date
+				lineageTag: 4c16592f-1461-415d-b14f-7284d77e03ba
+				dataCategory: PaddedDateTableDates
+				summarizeBy: none
+				isNameInferred
+				sourceColumn: [Date]
+
+				annotation SummarizationSetBy = User
+
+			column Ano = YEAR([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: 6dbd3a2e-4bf2-442a-bf52-62815d8548e7
+				dataCategory: Years
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Year
+
+			column MonthNo = MONTH([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: 4ddc715c-023f-49d9-a644-2f631569ab6d
+				dataCategory: MonthOfYear
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = MonthNumber
+
+			column Mês = FORMAT([Date], "MMMM")
+				dataType: string
+				isHidden
+				lineageTag: 1a188c62-aa89-476f-ad62-98f469ae0b4f
+				dataCategory: Months
+				summarizeBy: none
+				sortByColumn: MonthNo
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Month
+
+			column QuarterNo = INT(([MonthNo] + 2) / 3)
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: 6b001ef3-d2e1-43f9-8090-ff2e03a2574a
+				dataCategory: QuarterOfYear
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = QuarterNumber
+
+			column Trimestre = "Qtr " & [QuarterNo]
+				dataType: string
+				isHidden
+				lineageTag: cb038d27-e305-4c5e-b5e6-a6d7bb719524
+				dataCategory: Quarters
+				summarizeBy: none
+				sortByColumn: QuarterNo
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Quarter
+
+			column Dia = DAY([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: a7d26850-cc7e-4b93-9297-bc4a6b7abdbf
+				dataCategory: DayOfMonth
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Day
+
+			hierarchy 'Hierarquia de datas'
+				lineageTag: a5d4a09c-d92d-43d3-b8c7-b426e6aceafb
+
+				level Ano
+					lineageTag: 655e2e9d-ac84-46cf-8986-60e769663247
+					column: Ano
+
+				level Trimestre
+					lineageTag: c04afd32-9e29-4e31-82cc-6193090dceb1
+					column: Trimestre
+
+				level Mês
+					lineageTag: 997e8031-df74-49dd-935c-85c33d7e7f9f
+					column: Mês
+
+				level Dia
+					lineageTag: 89411038-3dfa-47f7-bfd2-6a857c8f2ade
+					column: Dia
+
+				annotation TemplateId = DateHierarchy
+
+			partition LocalDateTable_33121cad-c7b5-47df-8af5-e7f2daa3abb4 = calculated
+				mode: import
+				source = Calendar(Date(Year(MIN('orders'[order_approved_at])), 1, 1), Date(Year(MAX('orders'[order_approved_at])), 12, 31))
+
+			annotation __PBI_LocalDateTable = true
+
+		table LocalDateTable_7847fd7e-fc7f-473f-9d05-d9831376aa24
+			isHidden
+			showAsVariationsOnly
+			lineageTag: e14fa672-1d4e-4682-b13c-7b4782290744
+
+			column Date
+				dataType: dateTime
+				isHidden
+				formatString: General Date
+				lineageTag: 8601564c-c44b-458c-8d58-041da76731ea
+				dataCategory: PaddedDateTableDates
+				summarizeBy: none
+				isNameInferred
+				sourceColumn: [Date]
+
+				annotation SummarizationSetBy = User
+
+			column Ano = YEAR([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: 49c5d11d-480f-43e3-bf30-f99e362c937b
+				dataCategory: Years
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Year
+
+			column MonthNo = MONTH([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: a7cfcc8e-422e-448a-935b-8944ce4619fb
+				dataCategory: MonthOfYear
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = MonthNumber
+
+			column Mês = FORMAT([Date], "MMMM")
+				dataType: string
+				isHidden
+				lineageTag: ff870c8e-526b-4110-8f85-adb22c8c137f
+				dataCategory: Months
+				summarizeBy: none
+				sortByColumn: MonthNo
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Month
+
+			column QuarterNo = INT(([MonthNo] + 2) / 3)
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: 4acebd83-9c97-4950-b182-cc54c80e5877
+				dataCategory: QuarterOfYear
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = QuarterNumber
+
+			column Trimestre = "Qtr " & [QuarterNo]
+				dataType: string
+				isHidden
+				lineageTag: 898559a4-d1ad-4e71-b7a3-a4ca10d2f4a5
+				dataCategory: Quarters
+				summarizeBy: none
+				sortByColumn: QuarterNo
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Quarter
+
+			column Dia = DAY([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: 7ef63831-11e5-43fc-abc8-2de0ae3c4e33
+				dataCategory: DayOfMonth
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Day
+
+			hierarchy 'Hierarquia de datas'
+				lineageTag: 27c6701a-bad4-4b56-af19-18add2e04b54
+
+				level Ano
+					lineageTag: 8a7eb8e1-3a31-48df-a032-4b67a3f00d5e
+					column: Ano
+
+				level Trimestre
+					lineageTag: c4c524af-5d3e-477c-acbb-72bc9dbf657d
+					column: Trimestre
+
+				level Mês
+					lineageTag: 4dee71e1-7877-4c53-8684-75f5afa7d0ca
+					column: Mês
+
+				level Dia
+					lineageTag: 0db71d14-824e-4d45-8e6e-6995eef0925d
+					column: Dia
+
+				annotation TemplateId = DateHierarchy
+
+			partition LocalDateTable_7847fd7e-fc7f-473f-9d05-d9831376aa24 = calculated
+				mode: import
+				source = Calendar(Date(Year(MIN('orders'[order_delivered_carrier_date])), 1, 1), Date(Year(MAX('orders'[order_delivered_carrier_date])), 12, 31))
+
+			annotation __PBI_LocalDateTable = true
+
+		table LocalDateTable_c3638ccc-9d2c-4c73-9577-460b168ee38e
+			isHidden
+			showAsVariationsOnly
+			lineageTag: 07cc3bbe-d114-4572-97a0-13b75d76982f
+
+			column Date
+				dataType: dateTime
+				isHidden
+				formatString: General Date
+				lineageTag: a1fb7d92-7d9e-4a07-ad08-b58a1a0c7bae
+				dataCategory: PaddedDateTableDates
+				summarizeBy: none
+				isNameInferred
+				sourceColumn: [Date]
+
+				annotation SummarizationSetBy = User
+
+			column Ano = YEAR([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: 80fecf0a-f8b2-4ae9-a032-666c15ec326f
+				dataCategory: Years
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Year
+
+			column MonthNo = MONTH([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: 1ba9d7b5-e892-4127-979d-2d2217835d1e
+				dataCategory: MonthOfYear
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = MonthNumber
+
+			column Mês = FORMAT([Date], "MMMM")
+				dataType: string
+				isHidden
+				lineageTag: 2c7e0da6-d133-4eac-bea3-bab11abdb70f
+				dataCategory: Months
+				summarizeBy: none
+				sortByColumn: MonthNo
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Month
+
+			column QuarterNo = INT(([MonthNo] + 2) / 3)
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: 9457770c-00d1-46b9-a78f-7baf669faba9
+				dataCategory: QuarterOfYear
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = QuarterNumber
+
+			column Trimestre = "Qtr " & [QuarterNo]
+				dataType: string
+				isHidden
+				lineageTag: 37555551-d01e-40ae-8d13-240a18e86c07
+				dataCategory: Quarters
+				summarizeBy: none
+				sortByColumn: QuarterNo
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Quarter
+
+			column Dia = DAY([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: 61356b14-8143-4d08-bcde-853309cb4f66
+				dataCategory: DayOfMonth
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Day
+
+			hierarchy 'Hierarquia de datas'
+				lineageTag: 6fb79f13-d621-44d0-ab7e-43e40326322d
+
+				level Ano
+					lineageTag: 2b2b2e97-4e9b-4a40-a290-25b862cf21bf
+					column: Ano
+
+				level Trimestre
+					lineageTag: 5b39b4cd-b7e3-43cc-950f-54c1cb8e6d06
+					column: Trimestre
+
+				level Mês
+					lineageTag: ed11802b-5751-4467-9d89-13311329bb5e
+					column: Mês
+
+				level Dia
+					lineageTag: 6769f711-66ff-49c5-932a-4c172e3d659a
+					column: Dia
+
+				annotation TemplateId = DateHierarchy
+
+			partition LocalDateTable_c3638ccc-9d2c-4c73-9577-460b168ee38e = calculated
+				mode: import
+				source = Calendar(Date(Year(MIN('orders'[order_delivered_customer_date])), 1, 1), Date(Year(MAX('orders'[order_delivered_customer_date])), 12, 31))
+
+			annotation __PBI_LocalDateTable = true
+
+		table LocalDateTable_36296d92-a505-4f8a-80a2-db9b7587a351
+			isHidden
+			showAsVariationsOnly
+			lineageTag: cfad813e-1e53-4866-97a3-d7052aace405
+
+			column Date
+				dataType: dateTime
+				isHidden
+				formatString: General Date
+				lineageTag: 22db312e-6227-4ba7-b863-45fa4ceaf10b
+				dataCategory: PaddedDateTableDates
+				summarizeBy: none
+				isNameInferred
+				sourceColumn: [Date]
+
+				annotation SummarizationSetBy = User
+
+			column Ano = YEAR([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: 8ca93263-d9ff-42eb-9d35-1c394edae18e
+				dataCategory: Years
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Year
+
+			column MonthNo = MONTH([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: 5271776d-46d5-422d-8f4a-49b6b6fabe9e
+				dataCategory: MonthOfYear
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = MonthNumber
+
+			column Mês = FORMAT([Date], "MMMM")
+				dataType: string
+				isHidden
+				lineageTag: b7bc0fea-7523-4f3c-8a72-d8df36fa76ea
+				dataCategory: Months
+				summarizeBy: none
+				sortByColumn: MonthNo
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Month
+
+			column QuarterNo = INT(([MonthNo] + 2) / 3)
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: 3cc05ff1-9771-468d-98dc-cfed5d901fc3
+				dataCategory: QuarterOfYear
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = QuarterNumber
+
+			column Trimestre = "Qtr " & [QuarterNo]
+				dataType: string
+				isHidden
+				lineageTag: 00e8a12b-c0ad-4f89-b90c-f82e2fcc1e53
+				dataCategory: Quarters
+				summarizeBy: none
+				sortByColumn: QuarterNo
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Quarter
+
+			column Dia = DAY([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: 276f9155-a146-4e0a-b5cd-d990e0d71a0e
+				dataCategory: DayOfMonth
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Day
+
+			hierarchy 'Hierarquia de datas'
+				lineageTag: 9de0c6ec-39b5-43ae-aef4-d64aad230d65
+
+				level Ano
+					lineageTag: 7620ddaa-b366-4983-acb5-ad2a4ed83b0c
+					column: Ano
+
+				level Trimestre
+					lineageTag: dd7900a8-3c2a-4715-84f9-f5a80ed102d1
+					column: Trimestre
+
+				level Mês
+					lineageTag: a9246ef9-6ae1-469d-b39a-522f190df92a
+					column: Mês
+
+				level Dia
+					lineageTag: 36a61dcb-e459-402e-aaca-77bb9cf26aa1
+					column: Dia
+
+				annotation TemplateId = DateHierarchy
+
+			partition LocalDateTable_36296d92-a505-4f8a-80a2-db9b7587a351 = calculated
+				mode: import
+				source = Calendar(Date(Year(MIN('orders'[order_estimated_delivery_date])), 1, 1), Date(Year(MAX('orders'[order_estimated_delivery_date])), 12, 31))
+
+			annotation __PBI_LocalDateTable = true
+
+		table lead_qualified
+			lineageTag: 9158e507-5fbc-4069-a4cb-c9659d1104a5
+
+			column mql_id
+				dataType: string
+				lineageTag: cd42bb99-4689-4ac3-87a1-72db64c4b401
+				summarizeBy: none
+				sourceColumn: mql_id
+
+				annotation SummarizationSetBy = Automatic
+
+			column first_contact_date
+				dataType: dateTime
+				formatString: Long Date
+				lineageTag: 6ed3103f-f28a-4230-9cf9-01608c7e3c50
+				summarizeBy: none
+				sourceColumn: first_contact_date
+
+				variation Variation
+					isDefault
+					relationship: 9c84ce45-8826-4b4b-9089-9aa76838519b
+					defaultHierarchy: LocalDateTable_07f62c33-2c31-451e-a114-a507d7c28b5b.'Hierarquia de datas'
+
+				annotation SummarizationSetBy = Automatic
+
+				annotation UnderlyingDateTimeDataType = Date
+
+			column landing_page_id
+				dataType: string
+				lineageTag: d752fcb9-ad89-430a-b6e9-d1104b00a264
+				summarizeBy: none
+				sourceColumn: landing_page_id
+
+				annotation SummarizationSetBy = Automatic
+
+			column origin
+				dataType: string
+				lineageTag: 034c4b8f-5309-4f21-8b63-724f7eb0c5b5
+				summarizeBy: none
+				sourceColumn: origin
+
+				annotation SummarizationSetBy = Automatic
+
+			partition lead_qualified = m
+				mode: import
+				source =
+						let
+						    Fonte = Csv.Document(File.Contents("C:\Users\renan\Downloads\Download-20250913T170905Z-1-001\Download\Turma 2 - Base de dados\lead_qualified.csv"),[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+						    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+						    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"mql_id", type text}, {"first_contact_date", type date}, {"landing_page_id", type text}, {"origin", type text}})
+						in
+						    #"Tipo Alterado"
+
+			annotation PBI_ResultType = Table
+
+		table LocalDateTable_07f62c33-2c31-451e-a114-a507d7c28b5b
+			isHidden
+			showAsVariationsOnly
+			lineageTag: 2ee7063a-ff6e-4523-a2e3-bc0567d62e76
+
+			column Date
+				dataType: dateTime
+				isHidden
+				formatString: General Date
+				lineageTag: 8ada6ad7-a5c4-41ea-a168-7385f03f9b55
+				dataCategory: PaddedDateTableDates
+				summarizeBy: none
+				isNameInferred
+				sourceColumn: [Date]
+
+				annotation SummarizationSetBy = User
+
+			column Ano = YEAR([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: 8293365d-13db-49bf-a860-c217debc402d
+				dataCategory: Years
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Year
+
+			column MonthNo = MONTH([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: 4827578e-6478-4ea4-b166-53b1f4398598
+				dataCategory: MonthOfYear
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = MonthNumber
+
+			column Mês = FORMAT([Date], "MMMM")
+				dataType: string
+				isHidden
+				lineageTag: 3f9b5fe2-3441-4d2e-80a5-25c56d23f9b4
+				dataCategory: Months
+				summarizeBy: none
+				sortByColumn: MonthNo
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Month
+
+			column QuarterNo = INT(([MonthNo] + 2) / 3)
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: c5d922e2-df5f-48e3-bbc9-2f61138b6e3e
+				dataCategory: QuarterOfYear
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = QuarterNumber
+
+			column Trimestre = "Qtr " & [QuarterNo]
+				dataType: string
+				isHidden
+				lineageTag: fe7fd1b6-d0e4-4b19-9845-42e276f507b2
+				dataCategory: Quarters
+				summarizeBy: none
+				sortByColumn: QuarterNo
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Quarter
+
+			column Dia = DAY([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: b9fede33-96eb-4e2b-86b0-1126721c0391
+				dataCategory: DayOfMonth
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Day
+
+			hierarchy 'Hierarquia de datas'
+				lineageTag: f4830f49-a069-4f50-8df9-ee0d7ee97fad
+
+				level Ano
+					lineageTag: 42c56204-d235-4a5a-b800-671572c1cc69
+					column: Ano
+
+				level Trimestre
+					lineageTag: cb2ac705-9a7c-4dfd-a667-3b5a459e456e
+					column: Trimestre
+
+				level Mês
+					lineageTag: 9d650da0-9eb2-4b3d-98d7-eb4629a7ba21
+					column: Mês
+
+				level Dia
+					lineageTag: 0f7b2ed8-7a24-4c08-b4f5-eaac804b6828
+					column: Dia
+
+				annotation TemplateId = DateHierarchy
+
+			partition LocalDateTable_07f62c33-2c31-451e-a114-a507d7c28b5b = calculated
+				mode: import
+				source = Calendar(Date(Year(MIN('lead_qualified'[first_contact_date])), 1, 1), Date(Year(MAX('lead_qualified'[first_contact_date])), 12, 31))
+
+			annotation __PBI_LocalDateTable = true
+
+		table leads_closed
+			lineageTag: 59f9ea50-4c7b-47b9-91fb-a6206dbedb72
+
+			column mql_id
+				dataType: string
+				lineageTag: 907a2d36-9739-41a4-b6c1-cbe6539689b9
+				summarizeBy: none
+				sourceColumn: mql_id
+
+				annotation SummarizationSetBy = Automatic
+
+			column seller_id
+				dataType: string
+				lineageTag: 5b95da08-903c-483c-8f8b-27c191a05a35
+				summarizeBy: none
+				sourceColumn: seller_id
+
+				annotation SummarizationSetBy = Automatic
+
+			column sdr_id
+				dataType: string
+				lineageTag: b40bf4db-32d3-4362-ab5d-3f5d84c61aac
+				summarizeBy: none
+				sourceColumn: sdr_id
+
+				annotation SummarizationSetBy = Automatic
+
+			column sr_id
+				dataType: string
+				lineageTag: a131668f-b723-4728-b17b-f4a600610d80
+				summarizeBy: none
+				sourceColumn: sr_id
+
+				annotation SummarizationSetBy = Automatic
+
+			column won_date
+				dataType: dateTime
+				formatString: General Date
+				lineageTag: 8a772a60-345a-4e3c-91fe-e394fef6e260
+				summarizeBy: none
+				sourceColumn: won_date
+
+				variation Variation
+					isDefault
+					relationship: e4c35b40-591a-41ea-8140-4046c8ec8d50
+					defaultHierarchy: LocalDateTable_f391e171-b996-4758-888d-af666ac104a9.'Hierarquia de datas'
+
+				annotation SummarizationSetBy = Automatic
+
+			column business_segment
+				dataType: string
+				lineageTag: 667df419-f8e8-4250-aa15-3308e0abe041
+				summarizeBy: none
+				sourceColumn: business_segment
+
+				annotation SummarizationSetBy = Automatic
+
+			column lead_type
+				dataType: string
+				lineageTag: 7b1a36a5-5078-49a8-b312-b5ee3007dcc9
+				summarizeBy: none
+				sourceColumn: lead_type
+
+				annotation SummarizationSetBy = Automatic
+
+			column lead_behaviour_profile
+				dataType: string
+				lineageTag: 885e64cd-0d2d-46e4-80d1-11d3b77f0e62
+				summarizeBy: none
+				sourceColumn: lead_behaviour_profile
+
+				annotation SummarizationSetBy = Automatic
+
+			column has_company
+				dataType: int64
+				formatString: 0
+				lineageTag: d141aaa4-5fc5-4c84-a81f-3d015b3a0d4d
+				summarizeBy: sum
+				sourceColumn: has_company
+
+				annotation SummarizationSetBy = Automatic
+
+			column has_gtin
+				dataType: int64
+				formatString: 0
+				lineageTag: dc3cc310-39a2-41b6-9957-2b3f265ed551
+				summarizeBy: sum
+				sourceColumn: has_gtin
+
+				annotation SummarizationSetBy = Automatic
+
+			column average_stock
+				dataType: string
+				lineageTag: d16f9402-f8ff-454a-a79f-fbe8022f4951
+				summarizeBy: none
+				sourceColumn: average_stock
+
+				annotation SummarizationSetBy = Automatic
+
+			column business_type
+				dataType: string
+				lineageTag: 731c1d09-098b-401c-8bdc-fac6863dcfa0
+				summarizeBy: none
+				sourceColumn: business_type
+
+				annotation SummarizationSetBy = Automatic
+
+			column declared_product_catalog_size
+				dataType: int64
+				formatString: 0
+				lineageTag: a1da3415-335c-4150-9ed3-290926450956
+				summarizeBy: sum
+				sourceColumn: declared_product_catalog_size
+
+				annotation SummarizationSetBy = Automatic
+
+			column declared_monthly_revenue
+				dataType: int64
+				formatString: 0
+				lineageTag: e845c5ad-c484-425b-9502-e6c8ce2cec97
+				summarizeBy: sum
+				sourceColumn: declared_monthly_revenue
+
+				annotation SummarizationSetBy = Automatic
+
+			partition leads_closed = m
+				mode: import
+				source =
+						let
+						    Fonte = Csv.Document(File.Contents("C:\Users\renan\Downloads\Download-20250913T170905Z-1-001\Download\Turma 2 - Base de dados\leads_closed.csv"),[Delimiter=",", Columns=14, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+						    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+						    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"mql_id", type text}, {"seller_id", type text}, {"sdr_id", type text}, {"sr_id", type text}, {"won_date", type datetime}, {"business_segment", type text}, {"lead_type", type text}, {"lead_behaviour_profile", type text}, {"has_company", Int64.Type}, {"has_gtin", Int64.Type}, {"average_stock", type text}, {"business_type", type text}, {"declared_product_catalog_size", Int64.Type}, {"declared_monthly_revenue", Int64.Type}})
+						in
+						    #"Tipo Alterado"
+
+			annotation PBI_ResultType = Table
+
+		table LocalDateTable_f391e171-b996-4758-888d-af666ac104a9
+			isHidden
+			showAsVariationsOnly
+			lineageTag: 5cbff34d-3123-4966-bf3c-e60c3f838e4f
+
+			column Date
+				dataType: dateTime
+				isHidden
+				formatString: General Date
+				lineageTag: 3fafb084-5915-466e-8f7d-9d584dcfc2f9
+				dataCategory: PaddedDateTableDates
+				summarizeBy: none
+				isNameInferred
+				sourceColumn: [Date]
+
+				annotation SummarizationSetBy = User
+
+			column Ano = YEAR([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: caa18a20-8c35-4819-899e-10aea1059010
+				dataCategory: Years
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Year
+
+			column MonthNo = MONTH([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: 98585909-3fc4-445e-8cdb-0e56e0a028a2
+				dataCategory: MonthOfYear
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = MonthNumber
+
+			column Mês = FORMAT([Date], "MMMM")
+				dataType: string
+				isHidden
+				lineageTag: dbb12f05-ff73-4f80-8006-cc25c2727f19
+				dataCategory: Months
+				summarizeBy: none
+				sortByColumn: MonthNo
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Month
+
+			column QuarterNo = INT(([MonthNo] + 2) / 3)
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: c4f43eaa-fef5-4b16-a269-9c612599de22
+				dataCategory: QuarterOfYear
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = QuarterNumber
+
+			column Trimestre = "Qtr " & [QuarterNo]
+				dataType: string
+				isHidden
+				lineageTag: 216d9b36-56fa-42f2-9c18-82416815f57f
+				dataCategory: Quarters
+				summarizeBy: none
+				sortByColumn: QuarterNo
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Quarter
+
+			column Dia = DAY([Date])
+				dataType: int64
+				isHidden
+				formatString: 0
+				lineageTag: e5f54353-2514-4b16-b38b-c78f3bf9f963
+				dataCategory: DayOfMonth
+				summarizeBy: none
+
+				annotation SummarizationSetBy = User
+
+				annotation TemplateId = Day
+
+			hierarchy 'Hierarquia de datas'
+				lineageTag: b1926546-ddf2-4045-b837-aad3929e4e61
+
+				level Ano
+					lineageTag: 6704dcb2-49a5-465f-bf83-f7ef6a475d95
+					column: Ano
+
+				level Trimestre
+					lineageTag: 998be90b-4312-4af0-8456-a2fa6c7a4f08
+					column: Trimestre
+
+				level Mês
+					lineageTag: 5166039d-0970-4e6f-9c80-5be617e0aedd
+					column: Mês
+
+				level Dia
+					lineageTag: e1ceac5d-8575-46c7-9534-1a93957ff2f7
+					column: Dia
+
+				annotation TemplateId = DateHierarchy
+
+			partition LocalDateTable_f391e171-b996-4758-888d-af666ac104a9 = calculated
+				mode: import
+				source = Calendar(Date(Year(MIN('leads_closed'[won_date])), 1, 1), Date(Year(MAX('leads_closed'[won_date])), 12, 31))
+
+			annotation __PBI_LocalDateTable = true
+
+		table product_category_name_translation
+			lineageTag: aaccc173-c60e-472c-8c20-869337f4b898
+
+			column product_category_name
+				dataType: string
+				lineageTag: 3b5bcb2c-e41c-4dd1-9907-6eb448bdc3fe
+				summarizeBy: none
+				sourceColumn: product_category_name
+
+				annotation SummarizationSetBy = Automatic
+
+			column product_category_name_english
+				dataType: string
+				lineageTag: ac2ef38b-e10c-48f4-9a51-180bcb3698e6
+				summarizeBy: none
+				sourceColumn: product_category_name_english
+
+				annotation SummarizationSetBy = Automatic
+
+			partition product_category_name_translation = m
+				mode: import
+				source =
+						let
+						    Fonte = Csv.Document(File.Contents("C:\Users\renan\Downloads\Download-20250913T170905Z-1-001\Download\Turma 2 - Base de dados\product_category_name_translation.csv"),[Delimiter=",", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+						    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Column1", type text}, {"Column2", type text}}),
+						    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(#"Tipo Alterado", [PromoteAllScalars=true]),
+						    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"product_category_name", type text}, {"product_category_name_english", type text}})
+						in
+						    #"Tipo Alterado1"
+
+			annotation PBI_ResultType = Table
+
+			annotation PBI_NavigationStepName = Navegação
+
+		table products
+			lineageTag: 5f059243-5f12-4a95-be99-88475ddcbd39
+
+			column product_id
+				dataType: string
+				lineageTag: b044dafe-905f-4c8e-8fe6-9355081bc86b
+				summarizeBy: none
+				sourceColumn: product_id
+
+				annotation SummarizationSetBy = Automatic
+
+			column product_category_name
+				dataType: string
+				lineageTag: 5b2bcea9-a247-4acf-93c8-1bc59259d173
+				summarizeBy: none
+				sourceColumn: product_category_name
+
+				annotation SummarizationSetBy = Automatic
+
+			column product_name_lenght
+				dataType: int64
+				formatString: 0
+				lineageTag: d79c705e-40b3-4614-b392-59731ec47fc7
+				summarizeBy: sum
+				sourceColumn: product_name_lenght
+
+				annotation SummarizationSetBy = Automatic
+
+			column product_description_lenght
+				dataType: int64
+				formatString: 0
+				lineageTag: 4ac266b0-475f-46e2-ae9c-ed1218e7080a
+				summarizeBy: sum
+				sourceColumn: product_description_lenght
+
+				annotation SummarizationSetBy = Automatic
+
+			column product_photos_qty
+				dataType: int64
+				formatString: 0
+				lineageTag: 5e120060-859a-488c-abf9-f5d3e50362a2
+				summarizeBy: sum
+				sourceColumn: product_photos_qty
+
+				annotation SummarizationSetBy = Automatic
+
+			column product_weight_g
+				dataType: int64
+				formatString: 0
+				lineageTag: a3b90f27-d285-4ab4-885b-d2c83273bb58
+				summarizeBy: sum
+				sourceColumn: product_weight_g
+
+				annotation SummarizationSetBy = Automatic
+
+			column product_length_cm
+				dataType: int64
+				formatString: 0
+				lineageTag: 43a7f5c1-8544-4d7a-aac2-7d2877159e73
+				summarizeBy: sum
+				sourceColumn: product_length_cm
+
+				annotation SummarizationSetBy = Automatic
+
+			column product_height_cm
+				dataType: int64
+				formatString: 0
+				lineageTag: da341494-5fe8-470a-8f15-1b5baf8240b5
+				summarizeBy: sum
+				sourceColumn: product_height_cm
+
+				annotation SummarizationSetBy = Automatic
+
+			column product_width_cm
+				dataType: int64
+				formatString: 0
+				lineageTag: 71c00da4-9ec2-4002-9b2e-885244eef894
+				summarizeBy: sum
+				sourceColumn: product_width_cm
+
+				annotation SummarizationSetBy = Automatic
+
+			partition products = m
+				mode: import
+				source =
+						let
+						    Fonte = Csv.Document(File.Contents("C:\Users\renan\Downloads\Download-20250913T170905Z-1-001\Download\Turma 2 - Base de dados\products.csv"),[Delimiter=",", Columns=9, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+						    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+						    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"product_id", type text}, {"product_category_name", type text}, {"product_name_lenght", Int64.Type}, {"product_description_lenght", Int64.Type}, {"product_photos_qty", Int64.Type}, {"product_weight_g", Int64.Type}, {"product_length_cm", Int64.Type}, {"product_height_cm", Int64.Type}, {"product_width_cm", Int64.Type}})
+						in
+						    #"Tipo Alterado"
+
+			annotation PBI_ResultType = Table
+
+		table sellers
+			lineageTag: b8e278d7-07fc-4364-8d81-1a89b9ded7b1
+
+			column seller_id
+				dataType: string
+				lineageTag: ef1c71d7-df65-4498-b1f2-0b0bc47dcbc0
+				summarizeBy: none
+				sourceColumn: seller_id
+
+				annotation SummarizationSetBy = Automatic
+
+			column seller_zip_code_prefix
+				dataType: int64
+				formatString: 0
+				lineageTag: ffa8c3a8-e7e8-4c22-b733-55def048d33a
+				summarizeBy: sum
+				sourceColumn: seller_zip_code_prefix
+
+				annotation SummarizationSetBy = Automatic
+
+			column seller_city
+				dataType: string
+				lineageTag: 9663a5e7-b067-45a5-908d-91a8dd8ef585
+				summarizeBy: none
+				sourceColumn: seller_city
+
+				annotation SummarizationSetBy = Automatic
+
+			column seller_state
+				dataType: string
+				lineageTag: 26a1d185-6a47-43c3-8147-445f5e1974e2
+				summarizeBy: none
+				sourceColumn: seller_state
+
+				annotation SummarizationSetBy = Automatic
+
+			partition sellers = m
+				mode: import
+				source =
+						let
+						    Fonte = Csv.Document(File.Contents("C:\Users\renan\Downloads\Download-20250913T170905Z-1-001\Download\Turma 2 - Base de dados\sellers.csv"),[Delimiter=",", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+						    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+						    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"seller_id", type text}, {"seller_zip_code_prefix", Int64.Type}, {"seller_city", type text}, {"seller_state", type text}})
+						in
+						    #"Tipo Alterado"
+
+			annotation PBI_ResultType = Table
+
+		relationship c41d8d61-e395-41ac-b001-a462592f741a
+			joinOnDateBehavior: datePartOnly
+			fromColumn: order_items.shipping_limit_date
+			toColumn: LocalDateTable_dc9aaa3e-6078-4ca6-afb5-b25d68fc0f4e.Date
+
+		relationship d9b98780-83d1-433e-a223-a80caf9f8955
+			joinOnDateBehavior: datePartOnly
+			fromColumn: order_reviews.review_creation_date
+			toColumn: LocalDateTable_c22d37f2-bfaa-445a-a554-2b494cefbf79.Date
+
+		relationship fe202fcb-e09e-46d6-9ac0-64a88d676c16
+			joinOnDateBehavior: datePartOnly
+			fromColumn: order_reviews.review_answer_timestamp
+			toColumn: LocalDateTable_b58ead3f-9f19-4012-98a5-688af565d845.Date
+
+		relationship bcafe76b-3587-480b-bfb9-f74587fd90df
+			joinOnDateBehavior: datePartOnly
+			fromColumn: orders.order_purchase_timestamp
+			toColumn: LocalDateTable_b3659567-ec22-4472-a081-6eebeac4bcd7.Date
+
+		relationship 7dd65226-1ff8-4988-9762-8ce9f26ed8ef
+			joinOnDateBehavior: datePartOnly
+			fromColumn: orders.order_approved_at
+			toColumn: LocalDateTable_33121cad-c7b5-47df-8af5-e7f2daa3abb4.Date
+
+		relationship e3b611a3-2f47-4021-8beb-c98f9c327683
+			joinOnDateBehavior: datePartOnly
+			fromColumn: orders.order_delivered_carrier_date
+			toColumn: LocalDateTable_7847fd7e-fc7f-473f-9d05-d9831376aa24.Date
+
+		relationship b94abe5d-f4d8-4f01-9f64-1eec787a2cb8
+			joinOnDateBehavior: datePartOnly
+			fromColumn: orders.order_delivered_customer_date
+			toColumn: LocalDateTable_c3638ccc-9d2c-4c73-9577-460b168ee38e.Date
+
+		relationship 14ea64bd-3d8f-459a-a1e1-036457fb2d83
+			joinOnDateBehavior: datePartOnly
+			fromColumn: orders.order_estimated_delivery_date
+			toColumn: LocalDateTable_36296d92-a505-4f8a-80a2-db9b7587a351.Date
+
+		relationship 9c84ce45-8826-4b4b-9089-9aa76838519b
+			joinOnDateBehavior: datePartOnly
+			fromColumn: lead_qualified.first_contact_date
+			toColumn: LocalDateTable_07f62c33-2c31-451e-a114-a507d7c28b5b.Date
+
+		relationship e4c35b40-591a-41ea-8140-4046c8ec8d50
+			joinOnDateBehavior: datePartOnly
+			fromColumn: leads_closed.won_date
+			toColumn: LocalDateTable_f391e171-b996-4758-888d-af666ac104a9.Date
+
+		relationship 4a18a480-8745-f70c-0b1c-0fe8ef4810e4
+			crossFilteringBehavior: bothDirections
+			fromColumn: products.product_category_name
+			toColumn: product_category_name_translation.product_category_name
+
+		relationship e35e9e20-8d81-3bce-bd38-61dc378f538c
+			crossFilteringBehavior: bothDirections
+			fromColumn: order_payments.order_id
+			toColumn: orders.order_id
+
+		relationship fa168308-3e3a-ee55-8b83-35fcadab3842
+			crossFilteringBehavior: bothDirections
+			fromColumn: order_reviews.order_id
+			toColumn: orders.order_id
+
+		cultureInfo pt-BR
+
+			linguisticMetadata = {"Version":"1.0.0","Language":"en-US"}
+				contentType: json
+
+		annotation PBI_QueryOrder = ["geolocation","customers","order_items","order_payments","order_reviews","orders","lead_qualified","leads_closed","product_category_name_translation","products","sellers"]
+
+		annotation __PBI_TimeIntelligenceEnabled = 1
+
+		annotation PBIDesktopVersion = 2.146.1454.0 (25.08)+901d6c338d1dea81ac3e53073ffb10469f0f37b8
+
+		annotation PBI_ProTooling = ["TMDLView_Desktop"]
+

@@ -1,0 +1,44 @@
+table dim_customers
+	lineageTag: 4a781a2d-9acc-4a36-b5b0-2170f221762b
+
+	column customer_id
+		dataType: string
+		lineageTag: d170cea4-c5bb-40df-a849-3c67ed58c3fb
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_unique_id
+		dataType: string
+		lineageTag: df4ba0d0-ceee-45a6-90eb-0f82737f1ebe
+		summarizeBy: none
+		sourceColumn: customer_unique_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_zip_code_prefix
+		dataType: int64
+		formatString: 0
+		lineageTag: 86853a96-8c21-4166-8c51-d8bbdfc68cb9
+		summarizeBy: none
+		sourceColumn: customer_zip_code_prefix
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_customers = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				    Fonte = Csv.Document(File.Contents(Source & "customers.csv"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"customer_id", type text}, {"customer_unique_id", type text}, {"customer_zip_code_prefix", Int64.Type}, {"customer_city", type text}, {"customer_state", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Tipo Alterado",{"customer_city", "customer_state"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

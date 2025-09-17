@@ -1,0 +1,39 @@
+expression Source = "C:\Users\airton.fabre\OneDrive\Documents\MBA\Squad\Data Challenge\drive-download-20250910T223548Z-1-001\Download\Turma 2 - Base de dados\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: d6fd4592-1aa3-413b-a5ca-c8e797d9751c
+	queryGroup: Parameters
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression dim_product_category_name_translation =
+		let
+		    Fonte = Csv.Document(File.Contents(Source & "product_category_name_translation.csv"),[Delimiter=",", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Column1", type text}, {"Column2", type text}}),
+		    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(#"Tipo Alterado", [PromoteAllScalars=true]),
+		    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"product_category_name", type text}, {"product_category_name_english", type text}})
+		in
+		    #"Tipo Alterado1"
+	lineageTag: aa4aed40-85e2-454b-9517-65c1f758fd3f
+	queryGroup: Dimensions
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+
+expression dim_order_items =
+		let
+		    Fonte = Csv.Document(File.Contents(Source & "order_items.csv"),[Delimiter=",", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+		    #"Split Column by Delimiter" = Table.SplitColumn(Table.TransformColumnTypes(#"Cabeçalhos Promovidos", {{"shipping_limit_date", type text}}, "pt-BR"), "shipping_limit_date", Splitter.SplitTextByDelimiter(" ", QuoteStyle.Csv), {"shipping_limit_date.1", "shipping_limit_date.2"}),
+		    #"Renamed Columns" = Table.RenameColumns(#"Split Column by Delimiter",{{"shipping_limit_date.1", "shipping_limit_date"}, {"shipping_limit_date.2", "shipping_limit_time"}}),
+		    #"Changed Type1" = Table.TransformColumnTypes(#"Renamed Columns",{{"price", Currency.Type}, {"freight_value", Currency.Type}, {"shipping_limit_time", type time}, {"shipping_limit_date", type date}, {"order_item_id", Int64.Type}})
+		in
+		    #"Changed Type1"
+	lineageTag: 877c7bf5-3e35-4672-8a76-698b5d00a328
+	queryGroup: Dimensions
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

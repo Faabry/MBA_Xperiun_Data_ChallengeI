@@ -1,0 +1,68 @@
+table dim_lead_qualified
+	isHidden
+	lineageTag: 9158e507-5fbc-4069-a4cb-c9659d1104a5
+
+	column mql_id
+		dataType: string
+		isHidden
+		lineageTag: cd42bb99-4689-4ac3-87a1-72db64c4b401
+		summarizeBy: none
+		sourceColumn: mql_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_contact_date
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: 6ed3103f-f28a-4230-9cf9-01608c7e3c50
+		summarizeBy: none
+		sourceColumn: first_contact_date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column landing_page_id
+		dataType: string
+		isHidden
+		lineageTag: d752fcb9-ad89-430a-b6e9-d1104b00a264
+		summarizeBy: none
+		sourceColumn: landing_page_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column origin
+		dataType: string
+		isHidden
+		lineageTag: 034c4b8f-5309-4f21-8b63-724f7eb0c5b5
+		summarizeBy: none
+		sourceColumn: origin
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_lead_qualified = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				    Fonte = Csv.Document(File.Contents(Source & "lead_qualified.csv"),[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"mql_id", type text}, {"first_contact_date", type date}, {"landing_page_id", type text}, {"origin", type text}})
+				in
+				    #"Tipo Alterado"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,35 @@
+createOrReplace
+
+	table Medidas
+		lineageTag: 3b58e070-da7a-44a7-bf37-1dc96b8aae51
+
+
+		measure Filtros = ```
+				IF(ISCROSSFILTERED(Colaborador) || 
+									ISCROSSFILTERED('Reajuste') ||
+										ISCROSSFILTERED('Hora Extra') ||
+											ISCROSSFILTERED('Folha Pagamento') ||
+													ISCROSSFILTERED('Absenteísmo') ||
+														ISCROSSFILTERED('Rescisões')||
+															ISCROSSFILTERED(Dependentes)||
+																		ISCROSSFILTERED('Alteração Setor')||
+																			ISCROSSFILTERED('Alteração Cargo') ||
+				                                                                
+																				    ISCROSSFILTERED('LinkTable'),
+											"Limpar Filtros"," ")
+				
+				```
+			lineageTag: 9f884cc0-2107-4f15-9619-294cb1713221
+
+		partition Medidas-07af4875-f622-4d8f-a6b3-bc21053e78dc = m
+			mode: import
+			source =
+					let
+					    Origem = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type text) meta [Serialized.Text = true]) in type table [Coluna1 = _t]),
+					    #"Tipo Alterado" = Table.TransformColumnTypes(Origem,{{"Coluna1", type text}}),
+					    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado",{"Coluna1"})
+					in
+					    #"Colunas Removidas"
+
+		annotation PBI_ResultType = Table
+
