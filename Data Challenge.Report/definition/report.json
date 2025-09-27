@@ -50,6 +50,37 @@
           "type": "BaseTheme"
         }
       ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "Capa_(1)5148049609127936.svg",
+          "path": "Capa_(1)5148049609127936.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Vis_o_Executiva_(1)300115228830214.svg",
+          "path": "Vis_o_Executiva_(1)300115228830214.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Clientes_&_Sellers30353486491205894.svg",
+          "path": "Clientes_&_Sellers30353486491205894.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Opera__es_e_Vendas2630618228960241.svg",
+          "path": "Opera__es_e_Vendas2630618228960241.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Produtos_&_Financeiro8602452151231511.svg",
+          "path": "Produtos_&_Financeiro8602452151231511.svg",
+          "type": "Image"
+        }
+      ]
     }
   ],
   "settings": {
