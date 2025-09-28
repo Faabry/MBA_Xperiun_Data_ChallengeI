@@ -1,0 +1,35 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
+  "name": "02580b855ec2075a6516",
+  "position": {
+    "x": 1127.6923076923076,
+    "y": 98.461538461538453,
+    "z": 3000,
+    "height": 61.538461538461533,
+    "width": 61.538461538461533,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "image",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "imageUrl": {
+              "expr": {
+                "ResourcePackageItem": {
+                  "PackageName": "RegisteredResources",
+                  "PackageType": 1,
+                  "ItemName": "typcn_arrow-left-outline-37283525736446819.png"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "f87179aad74e51006ed8",
+  "howCreated": "InsertVisualButton"
+}

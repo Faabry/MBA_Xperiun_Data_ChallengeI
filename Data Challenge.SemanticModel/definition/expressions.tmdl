@@ -1,4 +1,4 @@
-expression Source = "C:\Users\airton.fabre\OneDrive\Documents\MBA\Squad\Data Challenge\drive-download-20250910T223548Z-1-001\Download\Turma 2 - Base de dados\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+expression Source = "C:\Users\airton.fabre\OneDrive\Documents\MBA\Squad\MBA_Xperiun_Data_ChallengeI\Download\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
 	lineageTag: d6fd4592-1aa3-413b-a5ca-c8e797d9751c
 	queryGroup: Parameters
 

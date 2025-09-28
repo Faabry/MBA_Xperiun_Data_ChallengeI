@@ -36,6 +36,8 @@ ref table dim_sellers
 ref table Medidas
 ref table dim_time
 ref table dim_calendar
+ref table Parameter
+ref table 'Parameter 2'
 
 ref cultureInfo pt-BR
 
