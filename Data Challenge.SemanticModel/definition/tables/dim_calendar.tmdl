@@ -37,6 +37,9 @@ table dim_calendar
 		lineageTag: 8eeeb251-3cf6-49c8-bb73-a31512dfaad8
 		summarizeBy: none
 		sourceColumn: Mês por extenso
+		sortByColumn: Mês
+
+		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
 
@@ -125,6 +128,17 @@ table dim_calendar
 
 		annotation SummarizationSetBy = Automatic
 
+	column 'Mes Abrev'
+		dataType: string
+		lineageTag: 5f3c37b6-8161-404e-b9ce-4ccef451c606
+		summarizeBy: none
+		sourceColumn: Mes Abrev
+		sortByColumn: Mês
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
 	partition dim_calendar = m
 		mode: import
 		queryGroup: Dimensions
@@ -133,7 +147,7 @@ table dim_calendar
 				    Hoje = Date.From(DateTimeZone.UtcNow() - #duration(0, 3, 0, 0)),
 				    // Ou defina as datas iniciais e finais
 				    Coluna_data  = {
-				        #date(2025, 1, 1),   // data com ano inicial
+				        #date(2016, 1, 1),   // data com ano inicial
 				        Hoje                 // data com ano final
 				    },
 				    // Ou indique a coluna de datas da Tabela Fato
@@ -191,9 +205,10 @@ table dim_calendar
 				                    _ > Data_maxima
 				                }
 				            )
-				       )
+				       ),
+				    #"Inserted First Characters" = Table.AddColumn(Fonte, "Mes Abrev", each Text.Start([Mês por extenso], 3), type text)
 				in
-				    Fonte
+				    #"Inserted First Characters"
 
 	annotation PBI_NavigationStepName = Navigation
 

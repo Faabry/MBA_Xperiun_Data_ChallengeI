@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
+  "name": "851a8dfb62159e53195b",
+  "position": {
+    "x": 0,
+    "y": 0,
+    "z": 15000,
+    "height": 719.75283213182286,
+    "width": 1280,
+    "tabOrder": 10000
+  },
+  "visualGroup": {
+    "displayName": "Filtro Anos",
+    "groupMode": "ScaleMode"
+  },
+  "isHidden": true
+}

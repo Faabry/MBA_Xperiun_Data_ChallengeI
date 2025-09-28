@@ -1,0 +1,31 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmarksMetadata/1.0.0/schema.json",
+  "items": [
+    {
+      "name": "4701b36e3e86613e08d8",
+      "displayName": "Visao Exec",
+      "children": [
+        "91b0587b653d8002100e",
+        "6fd9209ca7ed053239db",
+        "745301a2382793899318"
+      ]
+    },
+    {
+      "name": "4df920b4695c99c85105",
+      "displayName": "Pedidos",
+      "children": [
+        "d981010f091008b095ab",
+        "e0bb119c070553099122"
+      ]
+    },
+    {
+      "name": "19bea2cd0ecccc2eac07",
+      "displayName": "Produto",
+      "children": [
+        "14fff89778b2b9855c19",
+        "109c2fab9a5dabd95850",
+        "068b2fd4ee0ec032ec70"
+      ]
+    }
+  ]
+}

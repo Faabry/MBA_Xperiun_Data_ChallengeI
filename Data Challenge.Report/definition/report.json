@@ -39,6 +39,9 @@
       }
     ]
   },
+  "publicCustomVisuals": [
+    "PBI_CV_25997FEB_F466_44FA_B562_AC4063283C4C"
+  ],
   "resourcePackages": [
     {
       "name": "SharedResources",
@@ -76,8 +79,68 @@
           "type": "Image"
         },
         {
-          "name": "Produtos_&_Financeiro8602452151231511.svg",
-          "path": "Produtos_&_Financeiro8602452151231511.svg",
+          "name": "typcn_arrow-back-outline-16370839010902075.png",
+          "path": "typcn_arrow-back-outline-16370839010902075.png",
+          "type": "Image"
+        },
+        {
+          "name": "Vector8170421986422924.png",
+          "path": "Vector8170421986422924.png",
+          "type": "Image"
+        },
+        {
+          "name": "typcn_arrow-back-outline-237792079095567077.png",
+          "path": "typcn_arrow-back-outline-237792079095567077.png",
+          "type": "Image"
+        },
+        {
+          "name": "typcn_arrow-left-outline-37283525736446819.png",
+          "path": "typcn_arrow-left-outline-37283525736446819.png",
+          "type": "Image"
+        },
+        {
+          "name": "typcn_arrow-back-outline8231632713867227.png",
+          "path": "typcn_arrow-back-outline8231632713867227.png",
+          "type": "Image"
+        },
+        {
+          "name": "mingcute_filter-line7452740509942745.png",
+          "path": "mingcute_filter-line7452740509942745.png",
+          "type": "Image"
+        },
+        {
+          "name": "Rectangle_2347634350254397695.png",
+          "path": "Rectangle_2347634350254397695.png",
+          "type": "Image"
+        },
+        {
+          "name": "Produtos_&_Financeiro29658794253587384.svg",
+          "path": "Produtos_&_Financeiro29658794253587384.svg",
+          "type": "Image"
+        },
+        {
+          "name": "business-report_25652488998597213.png",
+          "path": "business-report_25652488998597213.png",
+          "type": "Image"
+        },
+        {
+          "name": "sales_25548808958832449.png",
+          "path": "sales_25548808958832449.png",
+          "type": "Image"
+        },
+        {
+          "name": "analystics_26185663480006003.png",
+          "path": "analystics_26185663480006003.png",
+          "type": "Image"
+        },
+        {
+          "name": "analysis_23942389375512608.png",
+          "path": "analysis_23942389375512608.png",
+          "type": "Image"
+        },
+        {
+          "name": "analysis_3014227534769433947.png",
+          "path": "analysis_3014227534769433947.png",
           "type": "Image"
         }
       ]
