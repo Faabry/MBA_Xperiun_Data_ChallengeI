@@ -85,7 +85,7 @@ table Medidas
 
 	measure 'Axis X Faturamento' =
 			
-			var _MaxValue = MAXX(ALL(dim_products[product_category_name]), [$ Faturamento])
+			var _MaxValue = MAXX(ALL(dim_products[product_category_name]), [$ Receita Liq])
 			var _Multiplicador = 2.1
 			
 			return
@@ -170,7 +170,7 @@ table Medidas
 		displayFolder: Quantitative
 		lineageTag: a8ad3162-5bfa-466a-ab41-86f7621c23b2
 
-	measure '$ Faturamento Todos os Pedidos' = ```
+	measure '$ Custo Todos os Pedidos' = ```
 			
 			    SUMX(fact_orders, fact_orders[price] + fact_orders[freight_value])
 			```
@@ -178,7 +178,7 @@ table Medidas
 		lineageTag: ff32b8ea-8825-45b3-b3ef-dd4273396990
 
 		formatStringDefinition = ```
-				var _Value = [$ Faturamento Todos os Pedidos]
+				var _Value = [$ Custo Todos os Pedidos]
 				var _Format = 
 				SWITCH(
 				    TRUE(),
@@ -196,7 +196,7 @@ table Medidas
 			var _SelectedParameter = SELECTEDVALUE(Parameter[Parameter Order])
 			var _Result = 
 			IF(
-			    _SelectedParameter = 0, [$ Faturamento Todos os Pedidos],
+			    _SelectedParameter = 0, [$ Custo Todos os Pedidos],
 			    [Todos os Pedidos]
 			)
 			
@@ -210,7 +210,7 @@ table Medidas
 				var _SelectedParameter = SELECTEDVALUE(Parameter[Parameter Order])
 				var _Value = 
 				IF(
-				    _SelectedParameter = 0, [$ Faturamento Todos os Pedidos],
+				    _SelectedParameter = 0, [$ Custo Todos os Pedidos],
 				    [Todos os Pedidos]
 				)
 				var _Format = 
@@ -311,12 +311,12 @@ table Medidas
 			var _SelectedParameter = SELECTEDVALUE(Parameter[Parameter Order])
 			var _Value = 
 			IF(
-			    _SelectedParameter = 0, [$ Faturamento Todos os Pedidos], [Todos os Pedidos]
+			    _SelectedParameter = 0, [$ Custo Todos os Pedidos], [Todos os Pedidos]
 			    )
 			var _LastMonth = 
 			CALCULATE(
 			    IF(
-			    _SelectedParameter = 0, [$ Faturamento Todos os Pedidos], [Todos os Pedidos]
+			    _SelectedParameter = 0, [$ Custo Todos os Pedidos], [Todos os Pedidos]
 			    ),
 			    DATEADD(dim_calendar[Date], -1, MONTH)
 			)
@@ -335,12 +335,12 @@ table Medidas
 			var _SelectedParameter = SELECTEDVALUE(Parameter[Parameter Order])
 			var _Value = 
 			IF(
-			    _SelectedParameter = 0, [$ Faturamento Todos os Pedidos], [Todos os Pedidos]
+			    _SelectedParameter = 0, [$ Custo Todos os Pedidos], [Todos os Pedidos]
 			    )
 			var _LastMonth = 
 			CALCULATE(
 			    IF(
-			    _SelectedParameter = 0, [$ Faturamento Todos os Pedidos], [Todos os Pedidos]
+			    _SelectedParameter = 0, [$ Custo Todos os Pedidos], [Todos os Pedidos]
 			    ),
 			    DATEADD(dim_calendar[Date], -1, MONTH)
 			)
@@ -362,7 +362,7 @@ table Medidas
 	measure 'Axis Y Qtd Pedido' =
 			
 			var _MaxValueMonth = MAXX(ALL(dim_calendar[Mes Abrev]), [Qtd Pedidos Validos])
-			var _MaxValueStatus = MAXX(ALL(fact_orders[order_status]), [$ Faturamento Todos os Pedidos])
+			var _MaxValueStatus = MAXX(ALL(fact_orders[order_status]), [$ Custo Todos os Pedidos])
 			var _Multiplicador = 1.5
 			
 			return
@@ -378,8 +378,8 @@ table Medidas
 
 	measure 'Axis Y Faturamento' = ```
 			
-			var _MaxValueMonth = MAXX(ALL(dim_calendar[Mes Abrev]), [$ Faturamento Todos os Pedidos])
-			var _MaxValueStatus = MAXX(ALL(fact_orders[order_status]), [$ Faturamento Todos os Pedidos])
+			var _MaxValueMonth = MAXX(ALL(dim_calendar[Mes Abrev]), [$ Receita Liq])
+			var _MaxValueStatus = MAXX(ALL(fact_orders[order_status]), [$ Receita Liq])
 			var _Multiplicador = 1.5
 			
 			return
@@ -414,8 +414,8 @@ table Medidas
 
 	measure Measure =
 			
-			var _MaxValueMonth = MAXX(ALL(dim_products[product_category_name]), [$ Faturamento Todos os Pedidos])
-			var _MaxValueStatus = MAXX(ALL(fact_orders[order_status]), [$ Faturamento Todos os Pedidos])
+			var _MaxValueMonth = MAXX(ALL(dim_products[product_category_name]), [$ Custo Todos os Pedidos])
+			var _MaxValueStatus = MAXX(ALL(fact_orders[order_status]), [$ Custo Todos os Pedidos])
 			var _Multiplicador = 2.5
 			
 			return
@@ -428,12 +428,12 @@ table Medidas
 			var _SelectedParameter = SELECTEDVALUE(Parameter[Parameter Order])
 			var _Value = 
 			IF(
-			    _SelectedParameter = 0, [$ Faturamento Todos os Pedidos], [Todos os Pedidos]
+			    _SelectedParameter = 0, [$ Custo Todos os Pedidos], [Todos os Pedidos]
 			    )
 			var _LastMonth = 
 			CALCULATE(
 			    IF(
-			    _SelectedParameter = 0, [$ Faturamento Todos os Pedidos], [Todos os Pedidos]
+			    _SelectedParameter = 0, [$ Custo Todos os Pedidos], [Todos os Pedidos]
 			    ),
 			    DATEADD(dim_calendar[Date], -1, MONTH)
 			)
@@ -543,17 +543,17 @@ table Medidas
 		displayFolder: Pareto
 		lineageTag: a965e955-0d35-48ad-abff-f9a3340cef69
 
-	measure '$ Faturamento LY' =
+	measure '$ Receita Liq LY' =
 			
 			CALCULATE(
-			    [$ Faturamento],
+			    [$ Receita Liq],
 			    DATEADD(dim_calendar[Date], -1, YEAR)
 			)
 		displayFolder: Currency
 		lineageTag: 5036b30d-75ea-4328-8fcc-6104cf849531
 
 		formatStringDefinition = ```
-				var _Value = [$ Faturamento LY]
+				var _Value = [$ Receita Liq LY]
 				var _Format = 
 				SWITCH(
 				    TRUE(),
@@ -566,9 +566,9 @@ table Medidas
 				"""" & _Format & """"
 				```
 
-	measure '% Faturamento LY' = ```
+	measure '% Receita Liq LY' = ```
 			
-			var _vValue = DIVIDE( [$ Faturamento], [$ Faturamento LY])
+			var _vValue = DIVIDE( [$ Receita Liq], [$ Receita Liq LY])
 			var _vFormat = 
 			IF(
 			    _vValue > 1, "⮝" & FORMAT(_vValue, "0%"), 
@@ -654,6 +654,37 @@ table Medidas
 		lineageTag: 398d8dad-5c1c-4c01-a99a-0cae784c546c
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '$ Faturamento Bruto' =
+			
+			SUM(fact_orders[payment_value])
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: Currency
+		lineageTag: 46f19766-48a5-43a1-b03d-de235824dcd7
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure '$ Receita Liq' =
+			
+			[$ Faturamento Bruto] - [$ Custo Todos os Pedidos]
+		displayFolder: Currency
+		lineageTag: 9827cbaf-d7a0-4cea-8b38-e44f0486f881
+
+		formatStringDefinition = ```
+				var _Value = [$ Receita Liq]
+				var _Format = 
+				SWITCH(
+				    TRUE(),
+				    _Value > 1000000, FORMAT(_Value, "R$ #0,, M"),
+				    _Value > 1000, FORMAT(_Value, "R$ #0,.0 K"),
+				    FORMAT(_Value, "R$ #0")
+				)
+				
+				RETURN
+				"""" & _Format & """"
+				    
+				    
+				```
 
 	column 'Coluna 1'
 		dataType: string

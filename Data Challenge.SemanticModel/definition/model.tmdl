@@ -18,14 +18,13 @@ queryGroup Parameters
 
 	annotation PBI_QueryGroupOrder = 0
 
-annotation PBI_QueryOrder = ["fact_orders","fact_order_reviews","Medidas","Source","dim_time","dim_calendar","dim_geolocation","dim_customers","dim_sellers","dim_products","dim_order_payments","dim_lead_qualified","dim_leads_closed","dim_order_items","dim_product_category_name_translation"]
+annotation PBI_QueryOrder = ["fact_orders","fact_order_reviews","Medidas","Source","dim_time","dim_calendar","dim_geolocation","dim_customers","dim_sellers","dim_products","dim_lead_qualified","dim_leads_closed","dim_order_payments","dim_order_items","dim_product_category_name_translation"]
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation PBI_ProTooling = ["TMDLView_Desktop","DevMode"]
 
 ref table dim_customers
-ref table dim_order_payments
 ref table fact_order_reviews
 ref table fact_orders
 ref table dim_lead_qualified

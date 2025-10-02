@@ -51,3 +51,17 @@ expression dim_geolocation =
 
 	annotation PBI_ResultType = Table
 
+expression dim_order_payments =
+		let
+		    Fonte = Csv.Document(File.Contents(Source & "order_payments.csv"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+		    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"order_id", type text}, {"payment_sequential", Int64.Type}, {"payment_type", type text}, {"payment_installments", Int64.Type}, {"payment_value", Currency.Type}})
+		in
+		    #"Tipo Alterado"
+	lineageTag: c157dcfd-8832-4386-aa3e-91ad3f9c9e4c
+	queryGroup: Dimensions
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

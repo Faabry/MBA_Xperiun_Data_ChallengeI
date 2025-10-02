@@ -23,11 +23,11 @@
                       "Entity": "Medidas"
                     }
                   },
-                  "Property": "$ Faturamento"
+                  "Property": "$ Receita Liq"
                 }
               },
-              "queryRef": "Medidas.$ Faturamento",
-              "nativeQueryRef": "$ Faturamento"
+              "queryRef": "Medidas.$ Receita Liq",
+              "nativeQueryRef": "$ Receita Liq"
             },
             {
               "field": {
@@ -84,7 +84,7 @@
                     "Entity": "Medidas"
                   }
                 },
-                "Property": "$ Faturamento"
+                "Property": "$ Receita Liq"
               }
             },
             "direction": "Descending"
@@ -287,6 +287,20 @@
           },
           "selector": {
             "metadata": "Medidas.$ Faturamento"
+          }
+        },
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Faturamento'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Medidas.$ Receita Liq"
           }
         }
       ],
@@ -568,7 +582,7 @@
                       "Entity": "Medidas"
                     }
                   },
-                  "Property": "$ Faturamento LY"
+                  "Property": "$ Receita Liq LY"
                 }
               }
             }
@@ -596,7 +610,7 @@
                       "Entity": "Medidas"
                     }
                   },
-                  "Property": "% Faturamento LY"
+                  "Property": "% Receita Liq LY"
                 }
               }
             }
@@ -611,6 +625,62 @@
             ],
             "metadata": "Medidas.$ Faturamento",
             "id": "field-1b821dfc-5e6d-f238-21eb-912f66707ac7",
+            "order": 1
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "$ Receita Liq LY"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 0
+                }
+              }
+            ],
+            "metadata": "Medidas.$ Receita Liq",
+            "id": "field-df3d70b0-c51d-9c2b-5f66-1dc88253360c",
+            "order": 0
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "% Receita Liq LY"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 0
+                }
+              }
+            ],
+            "metadata": "Medidas.$ Receita Liq",
+            "id": "field-95662893-2b2d-ff2b-41e2-39cde7901517",
             "order": 1
           }
         }
@@ -981,6 +1051,50 @@
           "selector": {
             "metadata": "Medidas.$ Faturamento",
             "id": "field-1b821dfc-5e6d-f238-21eb-912f66707ac7"
+          }
+        },
+        {
+          "properties": {
+            "titleContentType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'custom'"
+                }
+              }
+            },
+            "titleText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Vs Ano Anterior: '"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Medidas.$ Receita Liq",
+            "id": "field-df3d70b0-c51d-9c2b-5f66-1dc88253360c"
+          }
+        },
+        {
+          "properties": {
+            "titleContentType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'custom'"
+                }
+              }
+            },
+            "titleText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'% Vs Ano Anteior: '"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Medidas.$ Receita Liq",
+            "id": "field-95662893-2b2d-ff2b-41e2-39cde7901517"
           }
         }
       ],
