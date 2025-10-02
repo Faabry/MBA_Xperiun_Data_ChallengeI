@@ -23,7 +23,7 @@
                   "ResourcePackageItem": {
                     "PackageName": "RegisteredResources",
                     "PackageType": 1,
-                    "ItemName": "Produtos_&_Financeiro29658794253587384.svg"
+                    "ItemName": "Produtos_&_Financeiro06897011886732118.svg"
                   }
                 }
               },
@@ -62,6 +62,16 @@
       "source": "a0cdee7eede73d9415ee",
       "target": "1ef2ae5b65071b0ae44d",
       "type": "NoFilter"
+    },
+    {
+      "source": "a0cdee7eede73d9415ee",
+      "target": "1d101c620020d2506b7a",
+      "type": "DataFilter"
+    },
+    {
+      "source": "1d101c620020d2506b7a",
+      "target": "a0cdee7eede73d9415ee",
+      "type": "DataFilter"
     }
   ]
 }

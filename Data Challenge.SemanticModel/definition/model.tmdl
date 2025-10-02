@@ -24,7 +24,6 @@ annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation PBI_ProTooling = ["TMDLView_Desktop","DevMode"]
 
-ref table dim_geolocation
 ref table dim_customers
 ref table dim_order_payments
 ref table fact_order_reviews
@@ -37,7 +36,7 @@ ref table Medidas
 ref table dim_time
 ref table dim_calendar
 ref table Parameter
-ref table 'Parameter 2'
+ref table Pareto
 
 ref cultureInfo pt-BR
 

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
   "name": "f1b80c10e7ccce02b331",
   "position": {
-    "x": 145.85209003215434,
-    "y": 89.131832797427649,
+    "x": 145.82278481012659,
+    "y": 89.113924050632917,
     "z": 4000,
-    "height": 147.00964630225079,
-    "width": 813.7620578778135,
-    "tabOrder": 4000
+    "height": 147.44303797468353,
+    "width": 1077.4683544303798,
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -15,6 +15,20 @@
       "queryState": {
         "Data": {
           "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "$ Faturamento"
+                }
+              },
+              "queryRef": "Medidas.$ Faturamento",
+              "nativeQueryRef": "$ Faturamento"
+            },
             {
               "field": {
                 "Measure": {
@@ -70,7 +84,7 @@
                     "Entity": "Medidas"
                   }
                 },
-                "Property": "Todos os Pedidos"
+                "Property": "$ Faturamento"
               }
             },
             "direction": "Descending"
@@ -259,6 +273,20 @@
           },
           "selector": {
             "metadata": "Medidas.Qtd Pedidos em Rota de Entrega"
+          }
+        },
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Faturamento'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Medidas.$ Faturamento"
           }
         }
       ],
@@ -484,7 +512,7 @@
                       "Entity": "Medidas"
                     }
                   },
-                  "Property": "Space"
+                  "Property": "% Taxa de pedidos em rota"
                 }
               }
             }
@@ -527,6 +555,62 @@
             ],
             "metadata": "Medidas.Qtd Pedidos em Rota de Entrega",
             "id": "field-6db384d4-1350-3ff2-bd87-7074d58ae7de",
+            "order": 1
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "$ Faturamento LY"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 0
+                }
+              }
+            ],
+            "metadata": "Medidas.$ Faturamento",
+            "id": "field-21243083-3bcd-56a4-ad1b-7f249d6a9c94",
+            "order": 0
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "% Faturamento LY"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 0
+                }
+              }
+            ],
+            "metadata": "Medidas.$ Faturamento",
+            "id": "field-1b821dfc-5e6d-f238-21eb-912f66707ac7",
             "order": 1
           }
         }
@@ -808,10 +892,24 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": 0
+                      "ColorId": 1,
+                      "Percent": 0.4
                     }
                   }
+                }
+              }
+            },
+            "titleContentType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'custom'"
+                }
+              }
+            },
+            "titleText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Tx pedidos em rota: '"
                 }
               }
             }
@@ -839,6 +937,50 @@
           "selector": {
             "metadata": "Medidas.Qtd Pedidos em Rota de Entrega",
             "id": "field-6db384d4-1350-3ff2-bd87-7074d58ae7de"
+          }
+        },
+        {
+          "properties": {
+            "titleContentType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'custom'"
+                }
+              }
+            },
+            "titleText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Vs Ano Anterior:'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Medidas.$ Faturamento",
+            "id": "field-21243083-3bcd-56a4-ad1b-7f249d6a9c94"
+          }
+        },
+        {
+          "properties": {
+            "titleContentType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'custom'"
+                }
+              }
+            },
+            "titleText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'% Vs Ano Anterior:'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Medidas.$ Faturamento",
+            "id": "field-1b821dfc-5e6d-f238-21eb-912f66707ac7"
           }
         }
       ],
@@ -985,9 +1127,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": 0
+                    "Literal": {
+                      "Value": "'#0D2AD0'"
                     }
                   }
                 }
@@ -1075,6 +1216,26 @@
           },
           "selector": {
             "id": "default"
+          }
+        }
+      ],
+      "layout": [
+        {
+          "properties": {
+            "maxTiles": {
+              "expr": {
+                "Literal": {
+                  "Value": "4L"
+                }
+              }
+            },
+            "cellPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "18L"
+                }
+              }
+            }
           }
         }
       ]

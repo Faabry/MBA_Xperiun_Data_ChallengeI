@@ -4,14 +4,6 @@ relationship b1085bf7-ab7f-4b3d-0fc4-16adf781dca9
 	fromColumn: dim_leads_closed.mql_id
 	toColumn: dim_lead_qualified.mql_id
 
-relationship ed8ce8dc-eba0-5dc1-659d-a69e5323c75f
-	fromColumn: dim_sellers.seller_zip_code_prefix
-	toColumn: dim_geolocation.geolocation_zip_code_prefix
-
-relationship af105f47-7d7e-b643-bc37-46addd5362d7
-	fromColumn: dim_customers.customer_zip_code_prefix
-	toColumn: dim_geolocation.geolocation_zip_code_prefix
-
 relationship 62d2506d-8a9e-e866-3b84-3eae1123837c
 	fromColumn: fact_orders.order_approved_at_date
 	toColumn: dim_calendar.Date

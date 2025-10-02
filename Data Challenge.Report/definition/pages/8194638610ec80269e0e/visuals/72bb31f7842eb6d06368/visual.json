@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
-  "name": "e9a6a01766c4a7ab2d18",
+  "name": "72bb31f7842eb6d06368",
   "position": {
-    "x": 744.61538461538464,
-    "y": 489.23076923076923,
-    "z": 6000,
-    "height": 75.384615384615387,
-    "width": 67.6923076923077,
-    "tabOrder": 7000
+    "x": 601.92926045016077,
+    "y": 32.411575562700961,
+    "z": 2000,
+    "height": 76.39871382636656,
+    "width": 78.713826366559488,
+    "tabOrder": 22000
   },
   "visual": {
     "visualType": "image",
@@ -20,7 +20,7 @@
                 "ResourcePackageItem": {
                   "PackageName": "RegisteredResources",
                   "PackageType": 1,
-                  "ItemName": "typcn_arrow-back-outline-237792079095567077.png"
+                  "ItemName": "typcn_arrow-back-outline-16370839010902075.png"
                 }
               }
             }

@@ -1,0 +1,147 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
+  "name": "9080770a1c3bb1ba8467",
+  "position": {
+    "x": 261.73320350535539,
+    "y": 518.48101265822788,
+    "z": 19000,
+    "height": 95.968841285296975,
+    "width": 189.44498539435247,
+    "tabOrder": 18000
+  },
+  "visual": {
+    "visualType": "enlightenWaffleChartC94C0BDE416B413A8071A92B5E75A718",
+    "query": {
+      "queryState": {
+        "measure": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "% Aux Qtd Produtos Pareto"
+                }
+              },
+              "queryRef": "Medidas.% Aux Qtd Produtos Pareto",
+              "nativeQueryRef": "% Aux Qtd Produtos Pareto"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "% Qtd Produtos Pareto Categoria"
+                }
+              },
+              "queryRef": "Medidas.% Qtd Produtos Pareto",
+              "nativeQueryRef": "% Qtd Produtos Pareto Categoria"
+            }
+          ]
+        },
+        "group": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_calendar"
+                    }
+                  },
+                  "Property": "Ano"
+                }
+              },
+              "queryRef": "dim_calendar.Ano",
+              "nativeQueryRef": "Ano"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Medidas"
+                  }
+                },
+                "Property": "% Aux Qtd Produtos Pareto"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "visual": [
+        {
+          "properties": {
+            "secondarycolour": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#0D2AD0'"
+                    }
+                  }
+                }
+              }
+            },
+            "primarycolour": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0.2
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

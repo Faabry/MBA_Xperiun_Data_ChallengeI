@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
   "name": "0fed09e0b53ce74ad703",
   "position": {
-    "x": 138.90675241157555,
-    "y": 149.32475884244371,
-    "z": 14000,
-    "height": 65.980707395498385,
-    "width": 180.57877813504822,
-    "tabOrder": 15000
+    "x": 137.72151898734177,
+    "y": 149.0632911392405,
+    "z": 17000,
+    "height": 100.45569620253164,
+    "width": 270.58227848101268,
+    "tabOrder": 11000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,9 +19,27 @@
               {
                 "textRuns": [
                   {
-                    "value": "Receita",
+                    "value": "Faturamento, vs o ano anterior",
                     "textStyle": {
-                      "fontSize": "18pt",
+                      "color": "#e6e6e6"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "center"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "(desconsiderando cancelamentos e indisponibilidades",
+                    "textStyle": {
+                      "fontStyle": "italic",
                       "color": "#e6e6e6"
                     }
                   }
