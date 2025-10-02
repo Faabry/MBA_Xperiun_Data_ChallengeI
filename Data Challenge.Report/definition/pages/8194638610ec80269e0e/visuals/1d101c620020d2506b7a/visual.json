@@ -7,7 +7,7 @@
     "z": 8000,
     "height": 427.13826366559482,
     "width": 329.90353697749197,
-    "tabOrder": 9000
+    "tabOrder": 6000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -27,8 +27,9 @@
                 }
               },
               "queryRef": "dim_products.product_category_name",
-              "nativeQueryRef": "product_category_name",
-              "active": true
+              "nativeQueryRef": "Categoria",
+              "active": true,
+              "displayName": "Categoria"
             }
           ]
         },
@@ -42,11 +43,28 @@
                       "Entity": "Medidas"
                     }
                   },
-                  "Property": "Bar Chart Parametrizado"
+                  "Property": "Todos os Pedidos"
                 }
               },
-              "queryRef": "Medidas.Parametro Selecionado",
-              "nativeQueryRef": "Bar Chart Parametrizado"
+              "queryRef": "Medidas.Todos os Pedidos",
+              "nativeQueryRef": "Pedidos",
+              "displayName": "Pedidos"
+            }
+          ],
+          "fieldParameters": [
+            {
+              "parameterExpr": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parameter"
+                    }
+                  },
+                  "Property": "Parameter"
+                }
+              },
+              "index": 0,
+              "length": 1
             }
           ]
         }
@@ -61,7 +79,7 @@
                     "Entity": "Medidas"
                   }
                 },
-                "Property": "Bar Chart Parametrizado"
+                "Property": "Todos os Pedidos"
               }
             },
             "direction": "Descending"

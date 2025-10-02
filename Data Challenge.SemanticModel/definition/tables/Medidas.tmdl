@@ -9,6 +9,7 @@ table Medidas
 			    fact_orders[order_status] <> "unavailable"
 			)
 		formatString: 0.00
+		displayFolder: Quantitative
 		lineageTag: bcf0cb02-2975-4ee4-a158-d0c6988118ab
 
 	measure '$ Faturamento' =
@@ -18,6 +19,7 @@ table Medidas
 			    fact_orders[order_status] <> "canceled",
 			    fact_orders[order_status] <> "unavailable"
 			)
+		displayFolder: Currency
 		lineageTag: fa3f14c7-9695-4223-9418-b3713b877c4a
 
 		formatStringDefinition = ```
@@ -43,11 +45,13 @@ table Medidas
 			    ALL(dim_products[product_category_name])
 			)
 		formatString: 0
+		displayFolder: Quantitative
 		lineageTag: 909a68f2-d848-4efe-84d9-7351d5e512dd
 
 	measure '% Pedidos por Categoria' =
 			
 			" | (" & FORMAT(DIVIDE([Qtd Pedidos Validos], [Qtd Pedidos ALL], 0), "0.0%") & ")"
+		displayFolder: Percent
 		lineageTag: 32b4460d-ac9d-4668-845f-03fde6cfcb8e
 
 	measure 'Axis X Qtd Pedido' =
@@ -58,6 +62,7 @@ table Medidas
 			return
 			_MaxValue * _Multiplicador
 		formatString: 0
+		displayFolder: Axis
 		lineageTag: 3fac77bd-913e-4f97-a4a3-d704e4dc78a9
 
 	measure '$ Faturamento Pedidos ALL' =
@@ -67,6 +72,7 @@ table Medidas
 			    ALL(dim_products[product_category_name])
 			)
 		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: Currency
 		lineageTag: 3beeb2f5-4b45-418b-848c-c4447e6b4d39
 
 		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
@@ -74,16 +80,18 @@ table Medidas
 	measure '% Faturamento por Categoria' =
 			
 			" | (" & FORMAT(DIVIDE([$ Faturamento], [$ Faturamento Pedidos ALL], 0), "0.0%") & ")"
+		displayFolder: Percent
 		lineageTag: 86e33d4b-7f01-40e7-b6ab-4dce4df6d332
 
 	measure 'Axis X Faturamento' =
 			
-			var _MaxValue = MAXX(ALL(dim_products[product_category_name]), [$ Faturamento])
+			var _MaxValue = MAXX(ALL(dim_products[product_category_name]), [$ Receita Liq])
 			var _Multiplicador = 2.1
 			
 			return
 			_MaxValue * _Multiplicador
 		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: Axis
 		lineageTag: 75ca3d77-061c-46dd-8777-660691728819
 
 		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
@@ -97,6 +105,7 @@ table Medidas
 			)
 			```
 		formatString: 0
+		displayFolder: Quantitative
 		lineageTag: da5be765-96de-490f-aee7-bf994c8730ac
 
 	measure '% Taxa de Cancelamento' =
@@ -105,6 +114,7 @@ table Medidas
 			    [Qtd Pedidos Cancelados], [Todos os Pedidos]
 			)
 		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Percent
 		lineageTag: f7756245-be60-4ee1-895d-eeb950f01530
 
 	measure 'Qtd Pedidos Finalizados' =
@@ -114,11 +124,13 @@ table Medidas
 			    fact_orders[order_status] = "delivered"
 			)
 		formatString: 0.00
+		displayFolder: Quantitative
 		lineageTag: 5266c30f-2b27-4659-9b02-f7a7ac297784
 
 	measure 'Todos os Pedidos' =
 			
 			DISTINCTCOUNT(fact_orders[order_id])
+		displayFolder: Quantitative
 		lineageTag: d3da4d24-c3ba-48ae-b8ea-6e2d68257132
 
 		formatStringDefinition = ```
@@ -141,9 +153,11 @@ table Medidas
 			    [Qtd Pedidos Finalizados], [Todos os Pedidos]
 			)
 		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Percent
 		lineageTag: dde12b39-1f7b-41dc-98b4-12fd09f4179b
 
 	measure Space = ""
+		displayFolder: Titles
 		lineageTag: d450d3ef-fa2b-4906-b9fb-0043914454ba
 
 	measure 'Qtd Pedidos em Rota de Entrega' =
@@ -153,16 +167,18 @@ table Medidas
 			    fact_orders[order_status] = "shipped"
 			)
 		formatString: 0
+		displayFolder: Quantitative
 		lineageTag: a8ad3162-5bfa-466a-ab41-86f7621c23b2
 
-	measure '$ Faturamento Todos os Pedidos' = ```
+	measure '$ Custo Todos os Pedidos' = ```
 			
 			    SUMX(fact_orders, fact_orders[price] + fact_orders[freight_value])
 			```
+		displayFolder: Currency
 		lineageTag: ff32b8ea-8825-45b3-b3ef-dd4273396990
 
 		formatStringDefinition = ```
-				var _Value = [$ Faturamento Todos os Pedidos]
+				var _Value = [$ Custo Todos os Pedidos]
 				var _Format = 
 				SWITCH(
 				    TRUE(),
@@ -175,25 +191,26 @@ table Medidas
 				"""" & _Format & """"
 				```
 
-	measure 'Bar Chart Parametrizado' = ```
+	measure '$ Fat | Pedidos Parametrizado' = ```
 			
 			var _SelectedParameter = SELECTEDVALUE(Parameter[Parameter Order])
 			var _Result = 
 			IF(
-			    _SelectedParameter = 0, [$ Faturamento Todos os Pedidos],
+			    _SelectedParameter = 0, [$ Custo Todos os Pedidos],
 			    [Todos os Pedidos]
 			)
 			
 			return
 			_Result
 			```
+		displayFolder: Currency
 		lineageTag: 2507c33c-6fc2-4c20-83cc-43916e9610bf
 
 		formatStringDefinition = ```
 				var _SelectedParameter = SELECTEDVALUE(Parameter[Parameter Order])
 				var _Value = 
 				IF(
-				    _SelectedParameter = 0, [$ Faturamento Todos os Pedidos],
+				    _SelectedParameter = 0, [$ Custo Todos os Pedidos],
 				    [Todos os Pedidos]
 				)
 				var _Format = 
@@ -222,6 +239,7 @@ table Medidas
 			return
 			_Result
 			```
+		displayFolder: Axis
 		lineageTag: 0a47676b-d0a1-4c8e-ad30-8fd0dd5f04dd
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -238,6 +256,7 @@ table Medidas
 			return
 			_Result
 			```
+		displayFolder: Percent
 		lineageTag: 5a0f338a-cc66-41e6-8e0a-125701017dee
 
 	measure 'Titulo Bar Chart' = ```
@@ -252,20 +271,31 @@ table Medidas
 			return
 			_Result
 			```
+		displayFolder: Titles
 		lineageTag: 199806b7-9e8f-48e7-aa95-0f745666d3a1
 
 	measure 'Titulo Column Chart' = ```
 			
 			var _SelectedParameter = SELECTEDVALUE(Parameter[Parameter Order])
+			var _SelectedStatus = 
+			CONCATENATEX(
+			    VALUES( fact_orders[order_status] ),
+			    fact_orders[order_status],
+			    ", "
+			)
+			var _Filtro = ISFILTERED( fact_orders[order_status] )
+			var _Status = 
+			"Status: " & IF( _Filtro, _SelectedStatus, "Todos")
 			var _Result = 
 			IF(
-			    _SelectedParameter = 0, "Faturamento por Mês | Status",
-			    "Total Pedidos por Mês | Status"
+			    _SelectedParameter = 0, "Faturamento por Mês | " & _Status,
+			    "Total Pedidos por Mês | " & _Status
 			)
 			
 			return
 			_Result
 			```
+		displayFolder: Titles
 		lineageTag: 820bf568-f367-4a46-83b6-b8174e27a96b
 
 	measure Periodo =
@@ -281,12 +311,12 @@ table Medidas
 			var _SelectedParameter = SELECTEDVALUE(Parameter[Parameter Order])
 			var _Value = 
 			IF(
-			    _SelectedParameter = 0, [$ Faturamento Todos os Pedidos], [Todos os Pedidos]
+			    _SelectedParameter = 0, [$ Custo Todos os Pedidos], [Todos os Pedidos]
 			    )
 			var _LastMonth = 
 			CALCULATE(
 			    IF(
-			    _SelectedParameter = 0, [$ Faturamento Todos os Pedidos], [Todos os Pedidos]
+			    _SelectedParameter = 0, [$ Custo Todos os Pedidos], [Todos os Pedidos]
 			    ),
 			    DATEADD(dim_calendar[Date], -1, MONTH)
 			)
@@ -297,6 +327,7 @@ table Medidas
 			    
 			```
 		formatString: 0%;-0%;0%
+		displayFolder: Currency
 		lineageTag: 5ee46643-b003-4be0-88ea-319767091bea
 
 	measure 'Color Column Chart' = ```
@@ -304,12 +335,12 @@ table Medidas
 			var _SelectedParameter = SELECTEDVALUE(Parameter[Parameter Order])
 			var _Value = 
 			IF(
-			    _SelectedParameter = 0, [$ Faturamento Todos os Pedidos], [Todos os Pedidos]
+			    _SelectedParameter = 0, [$ Custo Todos os Pedidos], [Todos os Pedidos]
 			    )
 			var _LastMonth = 
 			CALCULATE(
 			    IF(
-			    _SelectedParameter = 0, [$ Faturamento Todos os Pedidos], [Todos os Pedidos]
+			    _SelectedParameter = 0, [$ Custo Todos os Pedidos], [Todos os Pedidos]
 			    ),
 			    DATEADD(dim_calendar[Date], -1, MONTH)
 			)
@@ -325,12 +356,13 @@ table Medidas
 			    _Color    
 			)
 			```
+		displayFolder: Colors
 		lineageTag: fc47e8ab-4216-4315-8442-b43a0347eb7f
 
 	measure 'Axis Y Qtd Pedido' =
 			
 			var _MaxValueMonth = MAXX(ALL(dim_calendar[Mes Abrev]), [Qtd Pedidos Validos])
-			var _MaxValueStatus = MAXX(ALL(fact_orders[order_status]), [$ Faturamento Todos os Pedidos])
+			var _MaxValueStatus = MAXX(ALL(fact_orders[order_status]), [$ Custo Todos os Pedidos])
 			var _Multiplicador = 1.5
 			
 			return
@@ -339,14 +371,15 @@ table Medidas
 			    _MaxValueStatus * _Multiplicador,
 			    _MaxValueMonth * _Multiplicador
 			)
+		displayFolder: Axis
 		lineageTag: d74dd217-c6cd-4b53-ac52-12adf5f62525
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Axis Y Faturamento' = ```
 			
-			var _MaxValueMonth = MAXX(ALL(dim_calendar[Mes Abrev]), [$ Faturamento Todos os Pedidos])
-			var _MaxValueStatus = MAXX(ALL(fact_orders[order_status]), [$ Faturamento Todos os Pedidos])
+			var _MaxValueMonth = MAXX(ALL(dim_calendar[Mes Abrev]), [$ Receita Liq])
+			var _MaxValueStatus = MAXX(ALL(fact_orders[order_status]), [$ Receita Liq])
 			var _Multiplicador = 1.5
 			
 			return
@@ -357,6 +390,7 @@ table Medidas
 			)
 			```
 		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: Axis
 		lineageTag: e58462c2-22b9-4def-a9f7-398bf9fb4084
 
 		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
@@ -373,14 +407,15 @@ table Medidas
 			return
 			_Result
 			```
+		displayFolder: Axis
 		lineageTag: 58f5b7a8-7aa6-4181-9b5c-75d95aa118e7
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure Measure =
 			
-			var _MaxValueMonth = MAXX(ALL(dim_products[product_category_name]), [$ Faturamento Todos os Pedidos])
-			var _MaxValueStatus = MAXX(ALL(fact_orders[order_status]), [$ Faturamento Todos os Pedidos])
+			var _MaxValueMonth = MAXX(ALL(dim_products[product_category_name]), [$ Custo Todos os Pedidos])
+			var _MaxValueStatus = MAXX(ALL(fact_orders[order_status]), [$ Custo Todos os Pedidos])
 			var _Multiplicador = 2.5
 			
 			return
@@ -393,12 +428,12 @@ table Medidas
 			var _SelectedParameter = SELECTEDVALUE(Parameter[Parameter Order])
 			var _Value = 
 			IF(
-			    _SelectedParameter = 0, [$ Faturamento Todos os Pedidos], [Todos os Pedidos]
+			    _SelectedParameter = 0, [$ Custo Todos os Pedidos], [Todos os Pedidos]
 			    )
 			var _LastMonth = 
 			CALCULATE(
 			    IF(
-			    _SelectedParameter = 0, [$ Faturamento Todos os Pedidos], [Todos os Pedidos]
+			    _SelectedParameter = 0, [$ Custo Todos os Pedidos], [Todos os Pedidos]
 			    ),
 			    DATEADD(dim_calendar[Date], -1, MONTH)
 			)
@@ -414,7 +449,242 @@ table Medidas
 			    _Color
 			)
 			```
+		displayFolder: Colors
 		lineageTag: e187bea1-8da6-4ce7-a488-3be4e46865c7
+
+	measure '% Taxa de pedidos em rota' =
+			
+			DIVIDE(
+			    [Qtd Pedidos em Rota de Entrega], [Todos os Pedidos]
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Percent
+		lineageTag: 164da51d-f28c-45e0-9e2a-8b1f834fce08
+
+	measure '$ Faturamento Acumulado' = ```
+			
+			var _vFaturamentoContexto = [$ Faturamento]
+			var _vFaturamento = 
+			CALCULATE(
+			    [$ Faturamento],
+			    FILTER(
+			        ALLSELECTED( dim_products[product_category_name] ),
+			        [$ Faturamento] >= _vFaturamentoContexto
+			    )
+			)
+			
+			return
+			_vFaturamento
+			```
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		displayFolder: Pareto
+		lineageTag: 90585a08-9101-4ce5-807c-7d61c8d1d16d
+
+	measure '% Pareto categorias' = ```
+			
+			var _vFaturamento = 
+			CALCULATE(
+			    [$ Faturamento],
+			    ALLSELECTED( dim_products[product_category_name] )
+			)
+			
+			return
+			DIVIDE([$ Faturamento], _vFaturamento)
+			```
+		formatString: #,0.00%;-#,0.00%;#,0.00%
+		displayFolder: Pareto
+		lineageTag: ce906222-c2be-4129-a425-8a1ed27c7cb5
+
+	measure '$ Faturamento 80 % Produtos' = ```
+			
+			
+			var _vFaturamento = 
+			CALCULATE(
+			    [$ Faturamento],
+			    FILTER(
+			        ALLSELECTED( dim_products[product_id] ),
+			        [% Pareto produtos] <=Pareto[Pareto Valor]
+			    )
+			)
+			
+			return
+			_vFaturamento
+			```
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: Pareto
+		lineageTag: f576a3db-e506-4944-85e2-0163d909aa86
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Qtd Produtos Pareto Categoria' =
+			
+			CALCULATE(
+			    COUNTROWS(dim_products),
+			    FILTER(
+			        ALLSELECTED( dim_products[product_category_name] ),
+			        [% Pareto categorias] <= Pareto[Pareto Valor]
+			    )
+			)
+		formatString: 0
+		displayFolder: Pareto
+		lineageTag: 81b9477d-21cf-4f2a-9284-b66de13a644f
+
+	measure '% Qtd Produtos Pareto Categoria' =
+			
+			DIVIDE( [Qtd Produtos Pareto Categoria], COUNTROWS(dim_products))
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Pareto
+		lineageTag: c8d4fcf2-8509-4d7d-ab72-dd718eb62d73
+
+	measure '% Aux Qtd Produtos Pareto' =
+			
+			1 - [% Qtd Produtos Pareto Categoria]
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Pareto
+		lineageTag: a965e955-0d35-48ad-abff-f9a3340cef69
+
+	measure '$ Receita Liq LY' =
+			
+			CALCULATE(
+			    [$ Receita Liq],
+			    DATEADD(dim_calendar[Date], -1, YEAR)
+			)
+		displayFolder: Currency
+		lineageTag: 5036b30d-75ea-4328-8fcc-6104cf849531
+
+		formatStringDefinition = ```
+				var _Value = [$ Receita Liq LY]
+				var _Format = 
+				SWITCH(
+				    TRUE(),
+				    _Value > 1000000, FORMAT(_Value, "R$ #0,, M"),
+				    _Value > 1000, FORMAT(_Value, "R$ #0,.0 K"),
+				    FORMAT(_Value, "R$ #0")
+				)
+				
+				RETURN
+				"""" & _Format & """"
+				```
+
+	measure '% Receita Liq LY' = ```
+			
+			var _vValue = DIVIDE( [$ Receita Liq], [$ Receita Liq LY])
+			var _vFormat = 
+			IF(
+			    _vValue > 1, "⮝" & FORMAT(_vValue, "0%"), 
+			    "⮟" & FORMAT(_vValue, "0%") 
+			)
+			
+			return
+			IF(
+			    ISBLANK(_vValue), 
+			    "-",
+			    _vFormat
+			)
+			```
+		displayFolder: Percent
+		lineageTag: d5bd90af-7300-4f5a-848d-267a8d8c5fbc
+
+	measure 'Slicer Filter' =
+			
+			IF(
+			    ISBLANK([$ Fat | Pedidos Parametrizado]), 0, 1
+			)
+		formatString: 0
+		displayFolder: Filter
+		lineageTag: b883fd62-b650-44dd-981b-7b38df3c3ad6
+
+	measure '$ Faturamento 80 % Categorias' = ```
+			
+			
+			var _vFaturamento = 
+			CALCULATE(
+			    [$ Faturamento],
+			    FILTER(
+			        ALLSELECTED( dim_products[product_category_name] ),
+			        [% Pareto categorias] <=Pareto[Pareto Valor]
+			    )
+			)
+			
+			return
+			_vFaturamento
+			```
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 1ff95d3c-34d8-4631-9a35-99abb1a3ea03
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure '% Pareto produtos' = ```
+			
+			var _vFaturamento = 
+			CALCULATE(
+			    [$ Faturamento],    
+			    ALLSELECTED( dim_products[product_id] )
+			)
+			
+			return
+			DIVIDE([$ Faturamento], _vFaturamento, 0)
+			```
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		displayFolder: Pareto
+		lineageTag: 3c24ed2c-6325-4694-a7bc-316bff8f8263
+
+	measure 'Qtd Produtos Pareto Produtos' =
+			
+			CALCULATE(
+			    COUNTROWS(dim_products),
+			    FILTER(
+			        ALLSELECTED( dim_products[product_id] ),
+			        [% Pareto produtos] <= 0.5
+			    )
+			)
+		formatString: 0
+		lineageTag: a5c71115-4a7f-470c-a4c7-2f20eeffbcb2
+
+	measure '% Qtd Produtos Pareto Produtos' =
+			
+			DIVIDE( [Qtd Produtos Pareto Produtos], COUNTROWS(dim_products))
+		lineageTag: 42d7372e-1bbc-49c0-9a01-e58fe740c228
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% Aux Qtd Produtos Pareto Produtos' =
+			
+			1 - [% Qtd Produtos Pareto Produtos]
+		lineageTag: 398d8dad-5c1c-4c01-a99a-0cae784c546c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '$ Faturamento Bruto' =
+			
+			SUM(fact_orders[payment_value])
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: Currency
+		lineageTag: 46f19766-48a5-43a1-b03d-de235824dcd7
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure '$ Receita Liq' =
+			
+			[$ Faturamento Bruto] - [$ Custo Todos os Pedidos]
+		displayFolder: Currency
+		lineageTag: 9827cbaf-d7a0-4cea-8b38-e44f0486f881
+
+		formatStringDefinition = ```
+				var _Value = [$ Receita Liq]
+				var _Format = 
+				SWITCH(
+				    TRUE(),
+				    _Value > 1000000, FORMAT(_Value, "R$ #0,, M"),
+				    _Value > 1000, FORMAT(_Value, "R$ #0,.0 K"),
+				    FORMAT(_Value, "R$ #0")
+				)
+				
+				RETURN
+				"""" & _Format & """"
+				    
+				    
+				```
 
 	column 'Coluna 1'
 		dataType: string

@@ -215,6 +215,43 @@ table fact_orders
 
 		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
 
+	column payment_sequential
+		dataType: int64
+		formatString: 0
+		lineageTag: 42930b61-a0ed-4834-8420-bcccccfd8c56
+		summarizeBy: sum
+		sourceColumn: payment_sequential
+
+		annotation SummarizationSetBy = Automatic
+
+	column payment_type
+		dataType: string
+		lineageTag: ef21ebfb-5d07-4791-8a9a-fb35025eefb4
+		summarizeBy: none
+		sourceColumn: payment_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column payment_installments
+		dataType: int64
+		formatString: 0
+		lineageTag: 4013e295-75e8-4256-8348-0a0a1b3a5805
+		summarizeBy: sum
+		sourceColumn: payment_installments
+
+		annotation SummarizationSetBy = Automatic
+
+	column payment_value
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 2395f1e0-58b0-483b-a891-0b6305bff420
+		summarizeBy: sum
+		sourceColumn: payment_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
 	partition fact_orders = m
 		mode: import
 		queryGroup: Facts
@@ -230,11 +267,13 @@ table fact_orders
 				    #"Changed Type" = Table.TransformColumnTypes(#"Split Column by Delimiter4",{{"order_id", type text}, {"customer_id", type text}, {"order_status", type text}, {"order_purchase_timestamp.1", type date}, {"order_purchase_timestamp.2", type time}, {"order_approved_at.1", type date}, {"order_approved_at.2", type time}, {"order_delivered_carrier_date.1", type date}, {"order_delivered_carrier_date.2", type time}, {"order_delivered_customer_date.1", type date}, {"order_delivered_customer_date.2", type time}, {"order_estimated_delivery_date.1", type date}, {"order_estimated_delivery_date.2", type time}}),
 				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"order_purchase_timestamp.1", "order_purchase_date"}, {"order_purchase_timestamp.2", "order_purchase_time"}, {"order_approved_at.1", "order_approved_at_date"}, {"order_approved_at.2", "order_approved_at_time"}, {"order_delivered_carrier_date.1", "order_delivered_carrier_date"}, {"order_delivered_carrier_date.2", "order_delivered_carrier_time"}, {"order_delivered_customer_date.1", "order_delivered_customer_date"}, {"order_delivered_customer_date.2", "order_delivered_customer_time"}, {"order_estimated_delivery_date.1", "order_estimated_delivery_date"}, {"order_estimated_delivery_date.2", "order_estimated_delivery_time"}}),
 				    #"Merged Queries" = Table.NestedJoin(#"Renamed Columns", {"order_id"}, dim_order_items, {"order_id"}, "dim_order_items", JoinKind.LeftOuter),
-				    #"Expanded dim_order_items" = Table.ExpandTableColumn(#"Merged Queries", "dim_order_items", {"order_item_id", "product_id", "seller_id", "shipping_limit_date", "shipping_limit_time", "price", "freight_value"}, {"order_item_id", "product_id", "seller_id", "shipping_limit_date", "shipping_limit_time", "price", "freight_value"})
+				    #"Expanded dim_order_items" = Table.ExpandTableColumn(#"Merged Queries", "dim_order_items", {"order_item_id", "product_id", "seller_id", "shipping_limit_date", "shipping_limit_time", "price", "freight_value"}, {"order_item_id", "product_id", "seller_id", "shipping_limit_date", "shipping_limit_time", "price", "freight_value"}),
+				    #"Merged Queries1" = Table.NestedJoin(#"Expanded dim_order_items", {"order_id"}, dim_order_payments, {"order_id"}, "dim_order_payments", JoinKind.LeftOuter),
+				    #"Expanded dim_order_payments" = Table.ExpandTableColumn(#"Merged Queries1", "dim_order_payments", {"payment_sequential", "payment_type", "payment_installments", "payment_value"}, {"payment_sequential", "payment_type", "payment_installments", "payment_value"})
 				in
-				    #"Expanded dim_order_items"
+				    #"Expanded dim_order_payments"
 
-	annotation PBI_ResultType = Exception
+	annotation PBI_ResultType = Table
 
 	annotation PBI_NavigationStepName = Navigation
 

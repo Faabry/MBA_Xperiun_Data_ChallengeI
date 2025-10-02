@@ -4,10 +4,10 @@
   "position": {
     "x": 145.83804143126176,
     "y": 249.4915254237288,
-    "z": 6000,
+    "z": 5000,
     "height": 203.69114877589453,
     "width": 735.2165725047081,
-    "tabOrder": 6000
+    "tabOrder": 3000
   },
   "visual": {
     "visualType": "clusteredColumnChart",
@@ -27,8 +27,9 @@
                 }
               },
               "queryRef": "dim_calendar.Mes Abrev",
-              "nativeQueryRef": "Mes Abrev",
-              "active": true
+              "nativeQueryRef": "Mês",
+              "active": true,
+              "displayName": "Mês"
             },
             {
               "field": {
@@ -42,26 +43,9 @@
                 }
               },
               "queryRef": "fact_orders.order_status",
-              "nativeQueryRef": "order_status",
-              "active": false
-            }
-          ]
-        },
-        "Tooltips": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Medidas"
-                    }
-                  },
-                  "Property": "Measure"
-                }
-              },
-              "queryRef": "Medidas.Measure",
-              "nativeQueryRef": "Measure"
+              "nativeQueryRef": "Status",
+              "active": false,
+              "displayName": "Status"
             }
           ]
         },

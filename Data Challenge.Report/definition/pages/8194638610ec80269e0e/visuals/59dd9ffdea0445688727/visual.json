@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
   "name": "59dd9ffdea0445688727",
   "position": {
-    "x": 680.64308681672026,
-    "y": 150.48231511254019,
-    "z": 18000,
-    "height": 118.07073954983922,
-    "width": 130.80385852090032,
-    "tabOrder": 19000
+    "x": 680.205973223481,
+    "y": 150.2780638516993,
+    "z": 21000,
+    "height": 75.13903192584965,
+    "width": 160.82389289392381,
+    "tabOrder": 15000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,9 +19,8 @@
               {
                 "textRuns": [
                   {
-                    "value": "Entregas On Time in Full",
+                    "value": "Entregas, taxa de finalização de pedidos",
                     "textStyle": {
-                      "fontSize": "18pt",
                       "color": "#e6e6e6"
                     }
                   }

@@ -37,3 +37,31 @@ expression dim_order_items =
 
 	annotation PBI_ResultType = Table
 
+expression dim_geolocation =
+		let
+		    Fonte = Csv.Document(File.Contents(Source & "geolocation.csv"),[Delimiter=",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+		    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+		    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"geolocation_zip_code_prefix", Int64.Type}, {"geolocation_lat", Int64.Type}, {"geolocation_lng", Int64.Type}, {"geolocation_city", type text}, {"geolocation_state", type text}})
+		in
+		    #"Tipo Alterado"
+	lineageTag: 12045884-2e9a-40d1-9704-e96996b86bcf
+	queryGroup: Dimensions
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+
+expression dim_order_payments =
+		let
+		    Fonte = Csv.Document(File.Contents(Source & "order_payments.csv"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+		    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"order_id", type text}, {"payment_sequential", Int64.Type}, {"payment_type", type text}, {"payment_installments", Int64.Type}, {"payment_value", Currency.Type}})
+		in
+		    #"Tipo Alterado"
+	lineageTag: c157dcfd-8832-4386-aa3e-91ad3f9c9e4c
+	queryGroup: Dimensions
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

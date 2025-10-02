@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
   "name": "ef166f0b029a8de80967",
   "position": {
-    "x": 149.23076923076923,
-    "y": 447.69230769230768,
-    "z": 10000,
-    "height": 89.230769230769226,
-    "width": 236.92307692307691,
-    "tabOrder": 11000
+    "x": 251.7816683831102,
+    "y": 489.06282183316171,
+    "z": 14000,
+    "height": 60.63851699279094,
+    "width": 134.45932028836253,
+    "tabOrder": 8000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,9 +19,8 @@
               {
                 "textRuns": [
                   {
-                    "value": "Vendas por Região ",
+                    "value": "Análise de Pareto para produtos",
                     "textStyle": {
-                      "fontSize": "18pt",
                       "color": "#e6e6e6"
                     }
                   }

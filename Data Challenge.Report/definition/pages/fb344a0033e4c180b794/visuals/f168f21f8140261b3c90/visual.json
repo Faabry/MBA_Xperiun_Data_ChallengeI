@@ -6,7 +6,8 @@
     "y": 0.24716786817714365,
     "z": 3000,
     "height": 719.75283213182286,
-    "width": 1280
+    "width": 1280,
+    "tabOrder": 1000
   },
   "visualGroup": {
     "displayName": "Filtro Anos",

@@ -21,8 +21,44 @@ table dim_customers
 		dataType: int64
 		formatString: 0
 		lineageTag: 86853a96-8c21-4166-8c51-d8bbdfc68cb9
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: customer_zip_code_prefix
+
+		annotation SummarizationSetBy = Automatic
+
+	column geolocation_lat
+		dataType: double
+		lineageTag: 9dc19446-5c2b-437c-a52b-64345077500d
+		summarizeBy: sum
+		sourceColumn: geolocation_lat
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column geolocation_lng
+		dataType: double
+		lineageTag: a086a856-40b9-40ed-83a7-ed919de62c61
+		summarizeBy: sum
+		sourceColumn: geolocation_lng
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column geolocation_city
+		dataType: string
+		lineageTag: 6d5e9798-5543-4ebb-9be8-b9f0aac92dcd
+		summarizeBy: none
+		sourceColumn: geolocation_city
+
+		annotation SummarizationSetBy = Automatic
+
+	column geolocation_state
+		dataType: string
+		lineageTag: 591d272c-b78d-4383-bf28-270ab803ecd7
+		summarizeBy: none
+		sourceColumn: geolocation_state
 
 		annotation SummarizationSetBy = Automatic
 
@@ -34,9 +70,12 @@ table dim_customers
 				    Fonte = Csv.Document(File.Contents(Source & "customers.csv"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
 				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"customer_id", type text}, {"customer_unique_id", type text}, {"customer_zip_code_prefix", Int64.Type}, {"customer_city", type text}, {"customer_state", type text}}),
-				    #"Removed Columns" = Table.RemoveColumns(#"Tipo Alterado",{"customer_city", "customer_state"})
+				    #"Removed Columns" = Table.RemoveColumns(#"Tipo Alterado",{"customer_city", "customer_state"}),
+				    #"Merged Queries" = Table.NestedJoin(#"Removed Columns", {"customer_zip_code_prefix"}, dim_geolocation, {"geolocation_zip_code_prefix"}, "dim_geolocation", JoinKind.LeftOuter),
+				    #"Expanded dim_geolocation" = Table.ExpandTableColumn(#"Merged Queries", "dim_geolocation", {"geolocation_lat", "geolocation_lng", "geolocation_city", "geolocation_state"}, {"geolocation_lat", "geolocation_lng", "geolocation_city", "geolocation_state"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Expanded dim_geolocation",{{"geolocation_lat", type number}, {"geolocation_lng", type number}})
 				in
-				    #"Removed Columns"
+				    #"Changed Type"
 
 	annotation PBI_ResultType = Table
 

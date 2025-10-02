@@ -4,10 +4,10 @@
   "position": {
     "x": 0,
     "y": 0,
-    "z": 16000,
+    "z": 24000,
     "height": 720,
     "width": 1280.257234726688,
-    "tabOrder": 8000
+    "tabOrder": 5000
   },
   "visualGroup": {
     "displayName": "Glossario",

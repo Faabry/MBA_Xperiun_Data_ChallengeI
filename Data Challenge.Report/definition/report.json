@@ -40,7 +40,9 @@
     ]
   },
   "publicCustomVisuals": [
-    "PBI_CV_25997FEB_F466_44FA_B562_AC4063283C4C"
+    "PBI_CV_25997FEB_F466_44FA_B562_AC4063283C4C",
+    "enlightenWaffleChartC94C0BDE416B413A8071A92B5E75A718",
+    "WaffleChart1453776852267"
   ],
   "resourcePackages": [
     {
@@ -114,11 +116,6 @@
           "type": "Image"
         },
         {
-          "name": "Produtos_&_Financeiro29658794253587384.svg",
-          "path": "Produtos_&_Financeiro29658794253587384.svg",
-          "type": "Image"
-        },
-        {
           "name": "business-report_25652488998597213.png",
           "path": "business-report_25652488998597213.png",
           "type": "Image"
@@ -141,6 +138,16 @@
         {
           "name": "analysis_3014227534769433947.png",
           "path": "analysis_3014227534769433947.png",
+          "type": "Image"
+        },
+        {
+          "name": "close8570050784140776.png",
+          "path": "close8570050784140776.png",
+          "type": "Image"
+        },
+        {
+          "name": "Produtos_&_Financeiro06897011886732118.svg",
+          "path": "Produtos_&_Financeiro06897011886732118.svg",
           "type": "Image"
         }
       ]

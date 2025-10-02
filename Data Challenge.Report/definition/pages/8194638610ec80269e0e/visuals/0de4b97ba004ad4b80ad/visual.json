@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
   "name": "0de4b97ba004ad4b80ad",
   "position": {
-    "x": 809.13183279742759,
-    "y": 347.26688102893888,
-    "z": 12000,
-    "height": 217.62057877813504,
-    "width": 265.08038585209005,
-    "tabOrder": 13000
+    "x": 816.33771661131016,
+    "y": 449.71663780171542,
+    "z": 15000,
+    "height": 96.230690010298673,
+    "width": 264.96395468589083,
+    "tabOrder": 9000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,21 +19,8 @@
               {
                 "textRuns": [
                   {
-                    "value": "Faturamento | Qtd. Pedidos ",
+                    "value": "Faturamento | Pedidos ",
                     "textStyle": {
-                      "fontSize": "18pt",
-                      "color": "#e6e6e6"
-                    }
-                  }
-                ],
-                "horizontalTextAlignment": "center"
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "(desconsiderando cancelamentos e indisponibilidades)",
-                    "textStyle": {
-                      "fontSize": "14pt",
                       "color": "#e6e6e6"
                     }
                   }
@@ -50,15 +37,11 @@
               {
                 "textRuns": [
                   {
-                    "value": "(Des"
-                  }
-                ],
-                "horizontalTextAlignment": "center"
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "()"
+                    "value": "(desconsiderando cancelamentos e indisponibilidades)",
+                    "textStyle": {
+                      "fontStyle": "italic",
+                      "color": "#e6e6e6"
+                    }
                   }
                 ],
                 "horizontalTextAlignment": "center"

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
   "name": "cd6d37178ca3d519c4c5",
   "position": {
-    "x": 1063.0769230769231,
-    "y": 166.15384615384616,
-    "z": 13000,
-    "height": 120,
-    "width": 190.76923076923077,
-    "tabOrder": 14000
+    "x": 1102.0391349124613,
+    "y": 166.09680741503607,
+    "z": 16000,
+    "height": 83.048403707518034,
+    "width": 151.59629248197734,
+    "tabOrder": 10000
   },
   "visual": {
     "visualType": "textbox",
@@ -21,7 +21,6 @@
                   {
                     "value": "Segmentador de filtros &",
                     "textStyle": {
-                      "fontSize": "18pt",
                       "color": "#e6e6e6"
                     }
                   }
@@ -33,7 +32,6 @@
                   {
                     "value": "Limpar Filtros",
                     "textStyle": {
-                      "fontSize": "18pt",
                       "color": "#e6e6e6"
                     }
                   }

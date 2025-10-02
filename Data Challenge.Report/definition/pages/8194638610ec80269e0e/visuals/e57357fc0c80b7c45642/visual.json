@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
   "name": "e57357fc0c80b7c45642",
   "position": {
-    "x": 441.53846153846155,
-    "y": 149.23076923076923,
-    "z": 15000,
-    "height": 129.23076923076923,
-    "width": 198.46153846153845,
-    "tabOrder": 16000
+    "x": 441.60659114315143,
+    "y": 148.95983522142123,
+    "z": 18000,
+    "height": 77.775489186405778,
+    "width": 199.05252317198764,
+    "tabOrder": 12000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,9 +19,8 @@
               {
                 "textRuns": [
                   {
-                    "value": "Pedidos ",
+                    "value": "Pedidos &",
                     "textStyle": {
-                      "fontSize": "18pt",
                       "color": "#e6e6e6"
                     }
                   }
@@ -31,21 +30,8 @@
               {
                 "textRuns": [
                   {
-                    "value": "&",
+                    "value": " Cancelamentos, taxa de cancelamento",
                     "textStyle": {
-                      "fontSize": "18pt",
-                      "color": "#e6e6e6"
-                    }
-                  }
-                ],
-                "horizontalTextAlignment": "center"
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": " Cancelamentos",
-                    "textStyle": {
-                      "fontSize": "18pt",
                       "color": "#e6e6e6"
                     }
                   }

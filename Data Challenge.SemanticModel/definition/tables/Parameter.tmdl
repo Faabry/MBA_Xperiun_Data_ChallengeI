@@ -40,7 +40,7 @@ table Parameter
 		mode: import
 		source =
 				{
-				    ("Faturamento", NAMEOF('Medidas'[$ Faturamento Todos os Pedidos]), 0),
+				    ("Faturamento", NAMEOF('Medidas'[$ Receita Liq]), 0),
 				    ("Pedidos", NAMEOF('Medidas'[Todos os Pedidos]), 1)
 				}
 
