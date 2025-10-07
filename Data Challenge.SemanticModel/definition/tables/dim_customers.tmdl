@@ -32,6 +32,8 @@ table dim_customers
 		summarizeBy: sum
 		sourceColumn: geolocation_lat
 
+		changedProperty = DataType
+
 		annotation SummarizationSetBy = Automatic
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -73,9 +75,10 @@ table dim_customers
 				    #"Removed Columns" = Table.RemoveColumns(#"Tipo Alterado",{"customer_city", "customer_state"}),
 				    #"Merged Queries" = Table.NestedJoin(#"Removed Columns", {"customer_zip_code_prefix"}, dim_geolocation, {"geolocation_zip_code_prefix"}, "dim_geolocation", JoinKind.LeftOuter),
 				    #"Expanded dim_geolocation" = Table.ExpandTableColumn(#"Merged Queries", "dim_geolocation", {"geolocation_lat", "geolocation_lng", "geolocation_city", "geolocation_state"}, {"geolocation_lat", "geolocation_lng", "geolocation_city", "geolocation_state"}),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Expanded dim_geolocation",{{"geolocation_lat", type number}, {"geolocation_lng", type number}})
+				    #"Changed Type" = Table.TransformColumnTypes(#"Expanded dim_geolocation",{{"geolocation_lat", type number}, {"geolocation_lng", type number}}),
+				    #"Duplicatas Removidas" = Table.Distinct(#"Changed Type")
 				in
-				    #"Changed Type"
+				    #"Duplicatas Removidas"
 
 	annotation PBI_ResultType = Table
 
