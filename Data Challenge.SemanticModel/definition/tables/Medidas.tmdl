@@ -686,6 +686,49 @@ table Medidas
 				    
 				```
 
+	measure Clientes = DISTINCTCOUNT(dim_customers[customer_id])
+		formatString: #,0
+		lineageTag: e0bfc671-b913-416e-a4a7-5818de171f25
+
+	measure 'Clientes Acima do Ticket Médio' =
+			
+			
+			VAR vTicketMedioGeral =
+			    DIVIDE (
+			        CALCULATE ( SUM ( fact_orders[payment_value] ), ALL ( fact_orders ) ),
+			        CALCULATE ( DISTINCTCOUNT ( fact_orders[customer_id] ), ALL ( fact_orders ) )
+			    )
+			RETURN
+			
+			    COUNTROWS (
+			        FILTER (
+			            VALUES ( fact_orders[customer_id] ),
+			            CALCULATE ( SUM ( fact_orders[payment_value] ) ) > vTicketMedioGeral
+			        )
+			    )
+		formatString: #,0
+		lineageTag: f9713f9d-e082-49f2-ab21-3489a018e6d9
+
+	measure 'LTV (Valor Histórico por Cliente)' = ```
+			
+			DIVIDE (
+			    SUM ( fact_orders[payment_value] ),
+			    DISTINCTCOUNT ( fact_orders[customer_id] )
+			)
+			
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: d3e742c2-89af-4f97-9ad4-85b402377d87
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Pedidos realizados' = ```
+			
+			    DISTINCTCOUNT ( fact_orders[order_id] )
+			```
+		formatString: #,0
+		lineageTag: 7034ad9f-1d0b-41af-bf04-c1d7fa64c03c
+
 	column 'Coluna 1'
 		dataType: string
 		isHidden

@@ -1,4 +1,4 @@
-expression Source = "C:\Users\airton.fabre\OneDrive\Documents\MBA\Squad\MBA_Xperiun_Data_ChallengeI\Download\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+expression Source = "C:\Users\renan\OneDrive\Documentos\Power BI\MBA_Xperiun_Data_ChallengeI-main\Download\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
 	lineageTag: d6fd4592-1aa3-413b-a5ca-c8e797d9751c
 	queryGroup: Parameters
 
@@ -41,9 +41,13 @@ expression dim_geolocation =
 		let
 		    Fonte = Csv.Document(File.Contents(Source & "geolocation.csv"),[Delimiter=",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.None]),
 		    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
-		    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"geolocation_zip_code_prefix", Int64.Type}, {"geolocation_lat", Int64.Type}, {"geolocation_lng", Int64.Type}, {"geolocation_city", type text}, {"geolocation_state", type text}})
+		    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"geolocation_zip_code_prefix", Int64.Type}, {"geolocation_lat", Int64.Type}, {"geolocation_lng", Int64.Type}, {"geolocation_city", type text}, {"geolocation_state", type text}}),
+		    #"Adicionar Coluna de Acentos" = Table.AddColumn(#"Tipo Alterado", "TemAcento", each Text.Contains([geolocation_city], "á") or Text.Contains([geolocation_city], "Á") or Text.Contains([geolocation_city], "é") or Text.Contains([geolocation_city], "É") or Text.Contains([geolocation_city], "í") or Text.Contains([geolocation_city], "Í") or Text.Contains([geolocation_city], "ó") or Text.Contains([geolocation_city], "Ó") or Text.Contains([geolocation_city], "ú") or Text.Contains([geolocation_city], "Ú") or Text.Contains([geolocation_city], "ã") or Text.Contains([geolocation_city], "Ã") or Text.Contains([geolocation_city], "õ") or Text.Contains([geolocation_city], "Õ") or Text.Contains([geolocation_city], "ç") or Text.Contains([geolocation_city], "Ç")),
+		    #"Linhas Filtradas por Acento" = Table.SelectRows(#"Adicionar Coluna de Acentos", each [TemAcento] = true),
+		    #"Remover Coluna de Acentos" = Table.RemoveColumns(#"Linhas Filtradas por Acento", {"TemAcento"}),
+		    #"Duplicatas Removidas" = Table.Distinct(#"Remover Coluna de Acentos", {"geolocation_zip_code_prefix"})
 		in
-		    #"Tipo Alterado"
+		    #"Duplicatas Removidas"
 	lineageTag: 12045884-2e9a-40d1-9704-e96996b86bcf
 	queryGroup: Dimensions
 
