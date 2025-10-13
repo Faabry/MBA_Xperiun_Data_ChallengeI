@@ -273,7 +273,7 @@ table fact_orders
 				in
 				    #"Expanded dim_order_payments"
 
-	annotation PBI_ResultType = Table
+	annotation PBI_ResultType = Exception
 
 	annotation PBI_NavigationStepName = Navigation
 

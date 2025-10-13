@@ -729,6 +729,44 @@ table Medidas
 		formatString: #,0
 		lineageTag: 7034ad9f-1d0b-41af-bf04-c1d7fa64c03c
 
+	measure 'Clientes LY' =
+			
+			CALCULATE(
+			    [Clientes],
+			    DATEADD( dim_calendar[Date], -1, YEAR )
+			)
+		formatString: 0
+		lineageTag: a8c01118-7377-4333-a2d4-4b65660e2e79
+
+	measure 'Clientes Acima Ticket LY' =
+			
+			CALCULATE(
+			    [Clientes Acima do Ticket Médio],
+			    DATEADD( dim_calendar[Date], -1, YEAR )
+			)
+		formatString: 0
+		lineageTag: e5df7712-35d0-4a51-9889-2d3da997115b
+
+	measure 'Clientes %' =
+			
+			DIVIDE([Clientes], [Clientes LY], 0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 17749e34-f89c-4fb2-9126-dedd71fcec37
+
+	measure 'Clientes Ticket %' = ```
+			
+			DIVIDE(
+			    [Clientes Acima do Ticket Médio], 
+			    [Clientes Acima Ticket LY], 
+			    0 
+			    )
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 35e024ea-fdf3-4546-a480-a9fbf16fb55a
+
+	measure Space2 = ""
+		lineageTag: 36ded314-a9f4-49ea-b131-4d1b836bf84e
+
 	column 'Coluna 1'
 		dataType: string
 		isHidden

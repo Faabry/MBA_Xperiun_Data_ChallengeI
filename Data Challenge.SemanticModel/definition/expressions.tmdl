@@ -37,17 +37,23 @@ expression dim_order_items =
 
 	annotation PBI_ResultType = Table
 
-expression dim_geolocation =
+expression dim_geolocation = ```
 		let
 		    Fonte = Csv.Document(File.Contents(Source & "geolocation.csv"),[Delimiter=",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.None]),
 		    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
-		    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"geolocation_zip_code_prefix", Int64.Type}, {"geolocation_lat", Int64.Type}, {"geolocation_lng", Int64.Type}, {"geolocation_city", type text}, {"geolocation_state", type text}}),
-		    #"Adicionar Coluna de Acentos" = Table.AddColumn(#"Tipo Alterado", "TemAcento", each Text.Contains([geolocation_city], "á") or Text.Contains([geolocation_city], "Á") or Text.Contains([geolocation_city], "é") or Text.Contains([geolocation_city], "É") or Text.Contains([geolocation_city], "í") or Text.Contains([geolocation_city], "Í") or Text.Contains([geolocation_city], "ó") or Text.Contains([geolocation_city], "Ó") or Text.Contains([geolocation_city], "ú") or Text.Contains([geolocation_city], "Ú") or Text.Contains([geolocation_city], "ã") or Text.Contains([geolocation_city], "Ã") or Text.Contains([geolocation_city], "õ") or Text.Contains([geolocation_city], "Õ") or Text.Contains([geolocation_city], "ç") or Text.Contains([geolocation_city], "Ç")),
-		    #"Linhas Filtradas por Acento" = Table.SelectRows(#"Adicionar Coluna de Acentos", each [TemAcento] = true),
-		    #"Remover Coluna de Acentos" = Table.RemoveColumns(#"Linhas Filtradas por Acento", {"TemAcento"}),
-		    #"Duplicatas Removidas" = Table.Distinct(#"Remover Coluna de Acentos", {"geolocation_zip_code_prefix"})
+		    #"Valor Substituído" = Table.ReplaceValue(#"Cabeçalhos Promovidos",".",",",Replacer.ReplaceText,{"geolocation_lat"}),
+		    #"Valor Substituído1" = Table.ReplaceValue(#"Valor Substituído",".",",",Replacer.ReplaceText,{"geolocation_lng"}),
+		    #"TipoAlteradoParaTexto" = Table.TransformColumnTypes(#"Valor Substituído1",{{"geolocation_zip_code_prefix", type text}}),
+		    #"Duplicatas Removidas" = Table.Distinct(TipoAlteradoParaTexto, {"geolocation_zip_code_prefix"}),
+		    #"CEP Formatado" =  Table.AddColumn(
+		            #"Duplicatas Removidas", 
+		            "CEP", 
+		            each Text.PadStart(Text.From([geolocation_zip_code_prefix]), 5, "0") & "000", 
+		            type text
+		        )
 		in
-		    #"Duplicatas Removidas"
+		    #"CEP Formatado"
+		```
 	lineageTag: 12045884-2e9a-40d1-9704-e96996b86bcf
 	queryGroup: Dimensions
 
@@ -68,4 +74,23 @@ expression dim_order_payments =
 	annotation PBI_NavigationStepName = Navigation
 
 	annotation PBI_ResultType = Table
+
+expression fnBuscaCEP =
+		(cep as text) =>
+		let
+		
+		    Resultado = try Json.Document(
+		                    Web.Contents(
+		                        "https://brasilapi.com.br/api/cep/v2/" & cep
+		                    )
+		                )
+		                otherwise [error="CEP não encontrado ou inválido"]
+		in
+		    Resultado
+	lineageTag: c2f16c21-32e3-4c0e-b5b5-78fc095b82d2
+	queryGroup: Facts
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Function
 

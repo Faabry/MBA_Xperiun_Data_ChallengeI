@@ -148,6 +148,12 @@ cultureInfo pt-BR
 			          }
 			        },
 			        {
+			          "id": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
 			          "customer_id": {
 			            "Type": "Noun",
 			            "State": "Generated",
@@ -260,7 +266,8 @@ cultureInfo pt-BR
 			            "Weight": 0.736
 			          }
 			        }
-			      ]
+			      ],
+			      "NameType": "Identifier"
 			    },
 			    "dim_customer.customer_unique_id": {
 			      "Definition": {
@@ -804,9 +811,6 @@ cultureInfo pt-BR
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
 			          "order id": {
@@ -1751,13 +1755,16 @@ cultureInfo pt-BR
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
 			          "order id": {
 			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "id": {
+			            "State": "Generated",
+			            "Weight": 0.97
 			          }
 			        },
 			        {
@@ -1873,7 +1880,8 @@ cultureInfo pt-BR
 			            "Weight": 0.476
 			          }
 			        }
-			      ]
+			      ],
+			      "NameType": "Identifier"
 			    },
 			    "fact_order.customer_id": {
 			      "Definition": {
@@ -4627,9 +4635,6 @@ cultureInfo pt-BR
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
 			          "dim lead closed": {
@@ -4753,9 +4758,6 @@ cultureInfo pt-BR
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
 			          "mql id": {
@@ -4819,9 +4821,6 @@ cultureInfo pt-BR
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
 			          "seller id": {
@@ -4951,9 +4950,6 @@ cultureInfo pt-BR
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
 			          "sdr id": {
@@ -5017,9 +5013,6 @@ cultureInfo pt-BR
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
 			          "sr id": {
@@ -5089,9 +5082,6 @@ cultureInfo pt-BR
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
 			          "business segment": {
@@ -5221,9 +5211,6 @@ cultureInfo pt-BR
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
 			          "lead type": {
@@ -5353,9 +5340,6 @@ cultureInfo pt-BR
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
 			          "lead behaviour profile": {
@@ -5491,9 +5475,6 @@ cultureInfo pt-BR
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
 			          "has company": {
@@ -5617,9 +5598,6 @@ cultureInfo pt-BR
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
 			          "has gtin": {
@@ -5643,9 +5621,6 @@ cultureInfo pt-BR
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
 			          "average stock": {
@@ -5695,9 +5670,6 @@ cultureInfo pt-BR
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
 			          "business type": {
@@ -5827,9 +5799,6 @@ cultureInfo pt-BR
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
 			          "declared product catalog size": {
@@ -5971,9 +5940,6 @@ cultureInfo pt-BR
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
 			          "declared monthly revenue": {
@@ -6109,9 +6075,6 @@ cultureInfo pt-BR
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
 			          "won date": {
@@ -6123,6 +6086,12 @@ cultureInfo pt-BR
 			            "Type": "Noun",
 			            "State": "Generated",
 			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "date": {
+			            "State": "Generated",
+			            "Weight": 0.7
 			          }
 			        },
 			        {
@@ -6156,9 +6125,6 @@ cultureInfo pt-BR
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
 			          "won time": {
@@ -6170,6 +6136,12 @@ cultureInfo pt-BR
 			            "Type": "Noun",
 			            "State": "Generated",
 			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "time": {
+			            "State": "Generated",
+			            "Weight": 0.7
 			          }
 			        },
 			        {
@@ -8686,7 +8658,7 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
-			    "medida.faturamento_todos_os_pedidos": {
+			    "medida.custo_todos_os_pedidos": {
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Medidas",
@@ -8696,220 +8668,18 @@ cultureInfo pt-BR
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "$ faturamento todos os pedidos": {
+			          "$ custo todos os pedidos": {
 			            "State": "Generated"
 			          }
 			        },
 			        {
-			          "dollar faturamento todo os pedido": {
+			          "dollar custo todo os pedido": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.624
-			          }
-			        }
-			      ]
-			    },
-			    "dim_customer.geolocation_lat": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "dim_customers",
-			          "ConceptualProperty": "geolocation_lat"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "geolocation lat": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "geolocation_lat": {
-			            "Type": "Noun",
-			            "State": "Generated",
-			            "Weight": 0.99
-			          }
-			        }
-			      ]
-			    },
-			    "dim_customer.geolocation_lng": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "dim_customers",
-			          "ConceptualProperty": "geolocation_lng"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "geolocation lng": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "geolocation_lng": {
-			            "Type": "Noun",
-			            "State": "Generated",
-			            "Weight": 0.99
-			          }
-			        }
-			      ]
-			    },
-			    "dim_customer.geolocation_city": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "dim_customers",
-			          "ConceptualProperty": "geolocation_city"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "geolocation city": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "geolocation_city": {
-			            "Type": "Noun",
-			            "State": "Generated",
-			            "Weight": 0.99
-			          }
-			        },
-			        {
-			          "geolocation location": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.75
-			          }
-			        },
-			        {
-			          "geolocation metropolis": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.75
-			          }
-			        },
-			        {
-			          "geolocation municipality": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.75
-			          }
-			        },
-			        {
-			          "geolocation town": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.727
-			          }
-			        },
-			        {
-			          "geolocation metropolitan": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.727
-			          }
-			        }
-			      ]
-			    },
-			    "dim_customer.geolocation_state": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "dim_customers",
-			          "ConceptualProperty": "geolocation_state"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "geolocation state": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "geolocation_state": {
-			            "Type": "Noun",
-			            "State": "Generated",
-			            "Weight": 0.99
-			          }
-			        },
-			        {
-			          "geolocation location": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.75
-			          }
-			        },
-			        {
-			          "geolocation province": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.75
-			          }
-			        },
-			        {
-			          "geolocation territory": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.75
-			          }
-			        },
-			        {
-			          "geolocation nation": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.75
-			          }
-			        },
-			        {
-			          "geolocation condition": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.727
-			          }
-			        },
-			        {
-			          "geolocation country": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.727
 			          }
 			        }
 			      ]
@@ -9908,7 +9678,7 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
-			    "medida.faturamento_LY": {
+			    "medida.receita_liq_LY": {
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Medidas",
@@ -9918,23 +9688,23 @@ cultureInfo pt-BR
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "$ faturamento LY": {
+			          "$ receita liq LY": {
 			            "State": "Generated"
 			          }
 			        },
 			        {
-			          "dollar faturamento ly": {
+			          "dollar receita liq ly": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
 			              "Agent": "Thesaurus"
 			            },
-			            "Weight": 0.609
+			            "Weight": 0.617
 			          }
 			        }
 			      ]
 			    },
-			    "medida.faturamento_LY1": {
+			    "medida.receita_liq_LY1": {
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Medidas",
@@ -9944,28 +9714,28 @@ cultureInfo pt-BR
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "% faturamento LY": {
+			          "% receita liq LY": {
 			            "State": "Generated"
 			          }
 			        },
 			        {
-			          "percentage faturamento ly": {
+			          "percentage receita liq ly": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
 			              "Agent": "Thesaurus"
 			            },
-			            "Weight": 0.609
+			            "Weight": 0.617
 			          }
 			        },
 			        {
-			          "pct faturamento ly": {
+			          "pct receita liq ly": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
 			              "Agent": "Thesaurus"
 			            },
-			            "Weight": 0.591
+			            "Weight": 0.599
 			          }
 			        }
 			      ]
@@ -10290,21 +10060,95 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
-			    "medida.entity___faturamento_todos_os_pedidos_FormatString": {
+			    "fact_order.payment_sequential": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Medidas",
-			          "ConceptualProperty": "_$ Faturamento Todos os Pedidos FormatString"
+			          "ConceptualEntity": "fact_orders",
+			          "ConceptualProperty": "payment_sequential"
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
-			          "_$ faturamento todos os pedidos FormatString": {
+			          "payment sequential": {
 			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "payment_sequential": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "imbursement sequential": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "compensation sequential": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "disbursement sequential": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "sum sequential": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "expense sequential": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "recompense sequential": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "fee sequential": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
 			          }
 			        }
 			      ]
@@ -10328,31 +10172,18 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
-			    "medida.entity___faturamento_LY_FormatString": {
+			    "dim_customer.cliente": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Medidas",
-			          "ConceptualProperty": "_$ Faturamento LY FormatString"
+			          "ConceptualEntity": "dim_customers",
+			          "ConceptualProperty": "Cliente"
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
-			          "_$ faturamento LY FormatString": {
+			          "cliente": {
 			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "_ dollar faturamento ly formatstring": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.624
 			          }
 			        }
 			      ]
@@ -10635,9 +10466,6 @@ cultureInfo pt-BR
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
 			          "parameter field": {
@@ -10760,9 +10588,6 @@ cultureInfo pt-BR
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
 			          "parameter order": {
@@ -11129,10 +10954,874 @@ cultureInfo pt-BR
 			          }
 			        }
 			      ]
+			    },
+			    "fact_order.payment_type": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_orders",
+			          "ConceptualProperty": "payment_type"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "payment type": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "payment_type": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "type": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "payment category": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "payment genre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "payment manner": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "payment variety": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "genre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "manner": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "variety": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "payment brand": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "payment class": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "payment kind": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        }
+			      ]
+			    },
+			    "fact_order.payment_installment": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_orders",
+			          "ConceptualProperty": "payment_installments"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "payment installment": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "payment_installments": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "installment": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "payment payment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "payment repayment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "payment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "repayment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "payment portion": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "payment part": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "payment section": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "payment segment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "portion": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "part": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        }
+			      ]
+			    },
+			    "fact_order.payment_value": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_orders",
+			          "ConceptualProperty": "payment_value"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "payment value": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "payment_value": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "value": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "payment assessment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "assessment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "payment worth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "payment price": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "payment cost": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "payment charge": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "payment rate": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "worth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "cost": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "charge": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        }
+			      ]
+			    },
+			    "medida.faturamento_bruto": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "$ Faturamento Bruto"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "$ faturamento bruto": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dollar faturamento bruto": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        }
+			      ]
+			    },
+			    "medida.receita_liq": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "$ Receita Liq"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "$ receita liq": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dollar receita liq": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        }
+			      ]
+			    },
+			    "medida.clientes": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "Clientes"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "clientes": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.clientes_acima_do_ticket_médio": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "Clientes Acima do Ticket Médio"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "clientes acima do ticket médio": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.LTV_valor_histórico_por_cliente": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "LTV (Valor Histórico por Cliente)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "LTV (valor histórico por cliente)": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "LTV": {
+			            "State": "Generated",
+			            "Weight": 0.75
+			          }
+			        }
+			      ]
+			    },
+			    "medida.pedidos_realizados": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "Pedidos realizados"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "pedidos realizados": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.entity___custo_todos_os_pedidos_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "_$ Custo Todos os Pedidos FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_$ custo todos os pedidos FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.entity___receita_liq_LY_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "_$ Receita Liq LY FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_$ receita liq LY FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.entity___receita_liq_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "_$ Receita Liq FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_$ receita liq FormatString": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "_ dollar receita liq formatstring": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.624
+			          }
+			        }
+			      ]
+			    },
+			    "dim_customer.geolocation_zip_code_prefix": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_customers",
+			          "ConceptualProperty": "geolocation_zip_code_prefix"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "geolocation zip code prefix": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "geolocation_zip_code_prefix": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "geolocation zip id prefix": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "geolocation zip key prefix": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "geolocation location prefix": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.555
+			          }
+			        },
+			        {
+			          "geolocation postcode prefix": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.555
+			          }
+			        },
+			        {
+			          "geolocation post code prefix": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.549
+			          }
+			        }
+			      ]
+			    },
+			    "dim_customer.geolocation_city": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_customers",
+			          "ConceptualProperty": "geolocation_city"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "geolocation city": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "geolocation_city": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "geolocation location": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "geolocation metropolis": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "geolocation municipality": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "geolocation town": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "geolocation metropolitan": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        }
+			      ]
+			    },
+			    "dim_customer.geolocation_state": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_customers",
+			          "ConceptualProperty": "geolocation_state"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "geolocation state": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "geolocation_state": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "geolocation location": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "geolocation province": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "geolocation territory": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "geolocation nation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "geolocation condition": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "geolocation country": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "Estado": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dim_customer.cep": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_customers",
+			          "ConceptualProperty": "CEP"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "cep": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
 			    }
 			  },
 			  "Relationships": {
-			    "fact_order_has_dim_calendar": {
+			    "dim_customer_has_geolocation_zip_code_prefix": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_customers"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_customer": {
+			          "Target": {
+			            "Entity": "dim_customer"
+			          }
+			        },
+			        "dim_customer.geolocation_zip_code_prefix": {
+			          "Target": {
+			            "Entity": "dim_customer.geolocation_zip_code_prefix"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_customer"
+			            },
+			            "Object": {
+			              "Role": "dim_customer.geolocation_zip_code_prefix"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_customers_have_geolocation_zip_code_prefixes"
+			        }
+			      ]
+			    },
+			    "fact_order_has_medida_pedidos_realizados": {
 			      "Binding": {
 			        "ConceptualEntity": "fact_orders"
 			      },
@@ -11143,9 +11832,9 @@ cultureInfo pt-BR
 			            "Entity": "fact_order"
 			          }
 			        },
-			        "dim_calendar": {
+			        "medida.pedidos_realizados": {
 			          "Target": {
-			            "Entity": "dim_calendar"
+			            "Entity": "medida.pedidos_realizados"
 			          }
 			        }
 			      },
@@ -11156,42 +11845,29 @@ cultureInfo pt-BR
 			              "Role": "fact_order"
 			            },
 			            "Object": {
-			              "Role": "dim_calendar"
+			              "Role": "medida.pedidos_realizados"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "fact_orders_have_dim_calendars"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_calendar"
-			            },
-			            "Object": {
-			              "Role": "fact_order"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "dim_calendars_have_fact_orders"
+			          "ID": "fact_orders_have_pedidos_realizados"
 			        }
 			      ]
 			    },
-			    "fact_order_review_has_dim_order_payment": {
+			    "fact_order_has_medida_LTV_valor_histórico_por_cliente": {
 			      "Binding": {
-			        "ConceptualEntity": "fact_order_reviews"
+			        "ConceptualEntity": "fact_orders"
 			      },
 			      "State": "Generated",
 			      "Roles": {
-			        "fact_order_review": {
+			        "fact_order": {
 			          "Target": {
-			            "Entity": "fact_order_review"
+			            "Entity": "fact_order"
 			          }
 			        },
-			        "dim_order_payment": {
+			        "medida.LTV_valor_histórico_por_cliente": {
 			          "Target": {
-			            "Entity": "dim_order_payment"
+			            "Entity": "medida.LTV_valor_histórico_por_cliente"
 			          }
 			        }
 			      },
@@ -11199,15 +11875,273 @@ cultureInfo pt-BR
 			        {
 			          "Attribute": {
 			            "Subject": {
-			              "Role": "fact_order_review"
+			              "Role": "fact_order"
 			            },
 			            "Object": {
-			              "Role": "dim_order_payment"
+			              "Role": "medida.LTV_valor_histórico_por_cliente"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "fact_order_reviews_have_dim_order_payments"
+			          "ID": "fact_orders_have_LTV_valor_histórico_por_cliente"
+			        }
+			      ]
+			    },
+			    "fact_order_has_medida_clientes_acima_do_ticket_médio": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_order": {
+			          "Target": {
+			            "Entity": "fact_order"
+			          }
+			        },
+			        "medida.clientes_acima_do_ticket_médio": {
+			          "Target": {
+			            "Entity": "medida.clientes_acima_do_ticket_médio"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_order"
+			            },
+			            "Object": {
+			              "Role": "medida.clientes_acima_do_ticket_médio"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_orders_have_clientes_acima_do_ticket_médio"
+			        }
+			      ]
+			    },
+			    "dim_customer_has_medida_clientes": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_customers"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_customer": {
+			          "Target": {
+			            "Entity": "dim_customer"
+			          }
+			        },
+			        "medida.clientes": {
+			          "Target": {
+			            "Entity": "medida.clientes"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_customer"
+			            },
+			            "Object": {
+			              "Role": "medida.clientes"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_customers_have_clientes"
+			        }
+			      ]
+			    },
+			    "fact_order_has_medida_receita_liq": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_order": {
+			          "Target": {
+			            "Entity": "fact_order"
+			          }
+			        },
+			        "medida.receita_liq": {
+			          "Target": {
+			            "Entity": "medida.receita_liq"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_order"
+			            },
+			            "Object": {
+			              "Role": "medida.receita_liq"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_orders_have__receita_liq"
+			        }
+			      ]
+			    },
+			    "fact_order_has_medida_faturamento_bruto": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_order": {
+			          "Target": {
+			            "Entity": "fact_order"
+			          }
+			        },
+			        "medida.faturamento_bruto": {
+			          "Target": {
+			            "Entity": "medida.faturamento_bruto"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_order"
+			            },
+			            "Object": {
+			              "Role": "medida.faturamento_bruto"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_orders_have__faturamento_bruto"
+			        }
+			      ]
+			    },
+			    "fact_order_has_payment_value": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_order": {
+			          "Target": {
+			            "Entity": "fact_order"
+			          }
+			        },
+			        "fact_order.payment_value": {
+			          "Target": {
+			            "Entity": "fact_order.payment_value"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_order"
+			            },
+			            "Object": {
+			              "Role": "fact_order.payment_value"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_orders_have_payment_values"
+			        },
+			        {
+			          "Adjective": {
+			            "Subject": {
+			              "Role": "fact_order"
+			            },
+			            "Adjectives": [
+			              {
+			                "expensive": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Antonyms": [
+			              {
+			                "cheap": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Measurement": {
+			              "Role": "fact_order.payment_value"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "payment_value_indicates_how_expensive_fact_orders_are"
+			        }
+			      ]
+			    },
+			    "fact_order_has_payment_installment": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_order": {
+			          "Target": {
+			            "Entity": "fact_order"
+			          }
+			        },
+			        "fact_order.payment_installment": {
+			          "Target": {
+			            "Entity": "fact_order.payment_installment"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_order"
+			            },
+			            "Object": {
+			              "Role": "fact_order.payment_installment"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_orders_have_payment_installments"
+			        }
+			      ]
+			    },
+			    "fact_order_has_payment_type": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_order": {
+			          "Target": {
+			            "Entity": "fact_order"
+			          }
+			        },
+			        "fact_order.payment_type": {
+			          "Target": {
+			            "Entity": "fact_order.payment_type"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_order"
+			            },
+			            "Object": {
+			              "Role": "fact_order.payment_type"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_orders_have_payment_types"
 			        }
 			      ]
 			    },
@@ -11274,6 +12208,72 @@ cultureInfo pt-BR
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "pareto_have_parameters"
+			        }
+			      ]
+			    },
+			    "parameter_has_parameter_order": {
+			      "Binding": {
+			        "ConceptualEntity": "Parameter"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "parameter": {
+			          "Target": {
+			            "Entity": "parameter"
+			          }
+			        },
+			        "parameter.parameter_order": {
+			          "Target": {
+			            "Entity": "parameter.parameter_order"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "parameter"
+			            },
+			            "Object": {
+			              "Role": "parameter.parameter_order"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "parameters_have_parameter_orders"
+			        }
+			      ]
+			    },
+			    "parameter_has_parameter_field": {
+			      "Binding": {
+			        "ConceptualEntity": "Parameter"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "parameter": {
+			          "Target": {
+			            "Entity": "parameter"
+			          }
+			        },
+			        "parameter.parameter_field": {
+			          "Target": {
+			            "Entity": "parameter.parameter_field"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "parameter"
+			            },
+			            "Object": {
+			              "Role": "parameter.parameter_field"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "parameters_have_parameter_fields"
 			        }
 			      ]
 			    },
@@ -11353,6 +12353,72 @@ cultureInfo pt-BR
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "dim_calendars_have_mes_abrevs"
+			        }
+			      ]
+			    },
+			    "dim_customer_has_cliente": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_customers"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_customer": {
+			          "Target": {
+			            "Entity": "dim_customer"
+			          }
+			        },
+			        "dim_customer.cliente": {
+			          "Target": {
+			            "Entity": "dim_customer.cliente"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_customer"
+			            },
+			            "Object": {
+			              "Role": "dim_customer.cliente"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_customers_have_clientes1"
+			        }
+			      ]
+			    },
+			    "fact_order_has_payment_sequential": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_order": {
+			          "Target": {
+			            "Entity": "fact_order"
+			          }
+			        },
+			        "fact_order.payment_sequential": {
+			          "Target": {
+			            "Entity": "fact_order.payment_sequential"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_order"
+			            },
+			            "Object": {
+			              "Role": "fact_order.payment_sequential"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_orders_have_payment_sequential"
 			        }
 			      ]
 			    },
@@ -11587,7 +12653,7 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
-			    "fact_order_has_medida_faturamento_LY1": {
+			    "fact_order_has_medida_receita_liq_LY1": {
 			      "Binding": {
 			        "ConceptualEntity": "fact_orders"
 			      },
@@ -11598,9 +12664,9 @@ cultureInfo pt-BR
 			            "Entity": "fact_order"
 			          }
 			        },
-			        "medida.faturamento_LY1": {
+			        "medida.receita_liq_LY1": {
 			          "Target": {
-			            "Entity": "medida.faturamento_LY1"
+			            "Entity": "medida.receita_liq_LY1"
 			          }
 			        }
 			      },
@@ -11611,16 +12677,16 @@ cultureInfo pt-BR
 			              "Role": "fact_order"
 			            },
 			            "Object": {
-			              "Role": "medida.faturamento_LY1"
+			              "Role": "medida.receita_liq_LY1"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "fact_orders_have__faturamento_LY"
+			          "ID": "fact_orders_have__receita_liq_LY"
 			        }
 			      ]
 			    },
-			    "fact_order_has_medida_faturamento_LY": {
+			    "fact_order_has_medida_receita_liq_LY": {
 			      "Binding": {
 			        "ConceptualEntity": "fact_orders"
 			      },
@@ -11631,9 +12697,9 @@ cultureInfo pt-BR
 			            "Entity": "fact_order"
 			          }
 			        },
-			        "medida.faturamento_LY": {
+			        "medida.receita_liq_LY": {
 			          "Target": {
-			            "Entity": "medida.faturamento_LY"
+			            "Entity": "medida.receita_liq_LY"
 			          }
 			        }
 			      },
@@ -11644,12 +12710,12 @@ cultureInfo pt-BR
 			              "Role": "fact_order"
 			            },
 			            "Object": {
-			              "Role": "medida.faturamento_LY"
+			              "Role": "medida.receita_liq_LY"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "fact_orders_have__faturamento_LY1"
+			          "ID": "fact_orders_have__receita_liq_LY1"
 			        }
 			      ]
 			    },
@@ -12709,139 +13775,7 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
-			    "dim_customer_has_geolocation_state": {
-			      "Binding": {
-			        "ConceptualEntity": "dim_customers"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "dim_customer": {
-			          "Target": {
-			            "Entity": "dim_customer"
-			          }
-			        },
-			        "dim_customer.geolocation_state": {
-			          "Target": {
-			            "Entity": "dim_customer.geolocation_state"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_customer"
-			            },
-			            "Object": {
-			              "Role": "dim_customer.geolocation_state"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "dim_customers_have_geolocation_states"
-			        }
-			      ]
-			    },
-			    "dim_customer_has_geolocation_city": {
-			      "Binding": {
-			        "ConceptualEntity": "dim_customers"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "dim_customer": {
-			          "Target": {
-			            "Entity": "dim_customer"
-			          }
-			        },
-			        "dim_customer.geolocation_city": {
-			          "Target": {
-			            "Entity": "dim_customer.geolocation_city"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_customer"
-			            },
-			            "Object": {
-			              "Role": "dim_customer.geolocation_city"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "dim_customers_have_geolocation_cities"
-			        }
-			      ]
-			    },
-			    "dim_customer_has_geolocation_lng": {
-			      "Binding": {
-			        "ConceptualEntity": "dim_customers"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "dim_customer": {
-			          "Target": {
-			            "Entity": "dim_customer"
-			          }
-			        },
-			        "dim_customer.geolocation_lng": {
-			          "Target": {
-			            "Entity": "dim_customer.geolocation_lng"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_customer"
-			            },
-			            "Object": {
-			              "Role": "dim_customer.geolocation_lng"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "dim_customers_have_geolocation_lng"
-			        }
-			      ]
-			    },
-			    "dim_customer_has_geolocation_lat": {
-			      "Binding": {
-			        "ConceptualEntity": "dim_customers"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "dim_customer": {
-			          "Target": {
-			            "Entity": "dim_customer"
-			          }
-			        },
-			        "dim_customer.geolocation_lat": {
-			          "Target": {
-			            "Entity": "dim_customer.geolocation_lat"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_customer"
-			            },
-			            "Object": {
-			              "Role": "dim_customer.geolocation_lat"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "dim_customers_have_geolocation_lats"
-			        }
-			      ]
-			    },
-			    "fact_order_has_medida_faturamento_todos_os_pedidos": {
+			    "fact_order_has_medida_custo_todos_os_pedidos": {
 			      "Binding": {
 			        "ConceptualEntity": "fact_orders"
 			      },
@@ -12852,9 +13786,9 @@ cultureInfo pt-BR
 			            "Entity": "fact_order"
 			          }
 			        },
-			        "medida.faturamento_todos_os_pedidos": {
+			        "medida.custo_todos_os_pedidos": {
 			          "Target": {
-			            "Entity": "medida.faturamento_todos_os_pedidos"
+			            "Entity": "medida.custo_todos_os_pedidos"
 			          }
 			        }
 			      },
@@ -12865,12 +13799,12 @@ cultureInfo pt-BR
 			              "Role": "fact_order"
 			            },
 			            "Object": {
-			              "Role": "medida.faturamento_todos_os_pedidos"
+			              "Role": "medida.custo_todos_os_pedidos"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "fact_orders_have__faturamento_todos_os_pedidos"
+			          "ID": "fact_orders_have__custo_todos_os_pedidos"
 			        }
 			      ]
 			    },
@@ -14339,6 +15273,534 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
+			    "dim_lead_closed_has_won_time": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_leads_closed"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_lead_closed": {
+			          "Target": {
+			            "Entity": "dim_lead_closed"
+			          }
+			        },
+			        "dim_lead_closed.won_time": {
+			          "Target": {
+			            "Entity": "dim_lead_closed.won_time"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_lead_closed"
+			            },
+			            "Object": {
+			              "Role": "dim_lead_closed.won_time"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_lead_closed_have_won_times"
+			        }
+			      ]
+			    },
+			    "dim_lead_closed_has_won_date": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_leads_closed"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_lead_closed": {
+			          "Target": {
+			            "Entity": "dim_lead_closed"
+			          }
+			        },
+			        "dim_lead_closed.won_date": {
+			          "Target": {
+			            "Entity": "dim_lead_closed.won_date"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_lead_closed"
+			            },
+			            "Object": {
+			              "Role": "dim_lead_closed.won_date"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_lead_closed_have_won_dates"
+			        }
+			      ]
+			    },
+			    "dim_lead_closed_has_declared_monthly_revenue": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_leads_closed"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_lead_closed": {
+			          "Target": {
+			            "Entity": "dim_lead_closed"
+			          }
+			        },
+			        "dim_lead_closed.declared_monthly_revenue": {
+			          "Target": {
+			            "Entity": "dim_lead_closed.declared_monthly_revenue"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_lead_closed"
+			            },
+			            "Object": {
+			              "Role": "dim_lead_closed.declared_monthly_revenue"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_lead_closed_have_declared_monthly_revenues"
+			        }
+			      ]
+			    },
+			    "dim_lead_closed_has_declared_product_catalog_size": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_leads_closed"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_lead_closed": {
+			          "Target": {
+			            "Entity": "dim_lead_closed"
+			          }
+			        },
+			        "dim_lead_closed.declared_product_catalog_size": {
+			          "Target": {
+			            "Entity": "dim_lead_closed.declared_product_catalog_size"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_lead_closed"
+			            },
+			            "Object": {
+			              "Role": "dim_lead_closed.declared_product_catalog_size"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_lead_closed_have_declared_product_catalog_sizes"
+			        }
+			      ]
+			    },
+			    "dim_lead_closed_has_business_type": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_leads_closed"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_lead_closed": {
+			          "Target": {
+			            "Entity": "dim_lead_closed"
+			          }
+			        },
+			        "dim_lead_closed.business_type": {
+			          "Target": {
+			            "Entity": "dim_lead_closed.business_type"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_lead_closed"
+			            },
+			            "Object": {
+			              "Role": "dim_lead_closed.business_type"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_lead_closed_have_business_types"
+			        }
+			      ]
+			    },
+			    "dim_lead_closed_has_average_stock": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_leads_closed"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_lead_closed": {
+			          "Target": {
+			            "Entity": "dim_lead_closed"
+			          }
+			        },
+			        "dim_lead_closed.average_stock": {
+			          "Target": {
+			            "Entity": "dim_lead_closed.average_stock"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_lead_closed"
+			            },
+			            "Object": {
+			              "Role": "dim_lead_closed.average_stock"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_lead_closed_have_average_stocks"
+			        }
+			      ]
+			    },
+			    "dim_lead_closed_has_has_gtin": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_leads_closed"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_lead_closed": {
+			          "Target": {
+			            "Entity": "dim_lead_closed"
+			          }
+			        },
+			        "dim_lead_closed.has_gtin": {
+			          "Target": {
+			            "Entity": "dim_lead_closed.has_gtin"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_lead_closed"
+			            },
+			            "Object": {
+			              "Role": "dim_lead_closed.has_gtin"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_lead_closed_have_has_gtin"
+			        }
+			      ]
+			    },
+			    "dim_lead_closed_has_has_company": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_leads_closed"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_lead_closed": {
+			          "Target": {
+			            "Entity": "dim_lead_closed"
+			          }
+			        },
+			        "dim_lead_closed.has_company": {
+			          "Target": {
+			            "Entity": "dim_lead_closed.has_company"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_lead_closed"
+			            },
+			            "Object": {
+			              "Role": "dim_lead_closed.has_company"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_lead_closed_have_has_company"
+			        }
+			      ]
+			    },
+			    "dim_lead_closed_has_lead_behaviour_profile": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_leads_closed"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_lead_closed": {
+			          "Target": {
+			            "Entity": "dim_lead_closed"
+			          }
+			        },
+			        "dim_lead_closed.lead_behaviour_profile": {
+			          "Target": {
+			            "Entity": "dim_lead_closed.lead_behaviour_profile"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_lead_closed"
+			            },
+			            "Object": {
+			              "Role": "dim_lead_closed.lead_behaviour_profile"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_lead_closed_have_lead_behaviour_profiles"
+			        }
+			      ]
+			    },
+			    "dim_lead_closed_has_lead_type": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_leads_closed"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_lead_closed": {
+			          "Target": {
+			            "Entity": "dim_lead_closed"
+			          }
+			        },
+			        "dim_lead_closed.lead_type": {
+			          "Target": {
+			            "Entity": "dim_lead_closed.lead_type"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_lead_closed"
+			            },
+			            "Object": {
+			              "Role": "dim_lead_closed.lead_type"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_lead_closed_have_lead_types"
+			        }
+			      ]
+			    },
+			    "dim_lead_closed_has_business_segment": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_leads_closed"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_lead_closed": {
+			          "Target": {
+			            "Entity": "dim_lead_closed"
+			          }
+			        },
+			        "dim_lead_closed.business_segment": {
+			          "Target": {
+			            "Entity": "dim_lead_closed.business_segment"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_lead_closed"
+			            },
+			            "Object": {
+			              "Role": "dim_lead_closed.business_segment"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_lead_closed_have_business_segments"
+			        }
+			      ]
+			    },
+			    "dim_lead_closed_has_sr_id": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_leads_closed"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_lead_closed": {
+			          "Target": {
+			            "Entity": "dim_lead_closed"
+			          }
+			        },
+			        "dim_lead_closed.sr_id": {
+			          "Target": {
+			            "Entity": "dim_lead_closed.sr_id"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_lead_closed"
+			            },
+			            "Object": {
+			              "Role": "dim_lead_closed.sr_id"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_lead_closed_have_sr_ids"
+			        }
+			      ]
+			    },
+			    "dim_lead_closed_has_sdr_id": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_leads_closed"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_lead_closed": {
+			          "Target": {
+			            "Entity": "dim_lead_closed"
+			          }
+			        },
+			        "dim_lead_closed.sdr_id": {
+			          "Target": {
+			            "Entity": "dim_lead_closed.sdr_id"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_lead_closed"
+			            },
+			            "Object": {
+			              "Role": "dim_lead_closed.sdr_id"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_lead_closed_have_sdr_ids"
+			        }
+			      ]
+			    },
+			    "dim_lead_closed_has_seller_id": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_leads_closed"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_lead_closed": {
+			          "Target": {
+			            "Entity": "dim_lead_closed"
+			          }
+			        },
+			        "dim_lead_closed.seller_id": {
+			          "Target": {
+			            "Entity": "dim_lead_closed.seller_id"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_lead_closed"
+			            },
+			            "Object": {
+			              "Role": "dim_lead_closed.seller_id"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_lead_closed_have_seller_ids"
+			        },
+			        {
+			          "Verb": {
+			            "Subject": {
+			              "Role": "dim_lead_closed.seller_id"
+			            },
+			            "Verbs": [
+			              {
+			                "sell": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "dim_lead_closed"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.75,
+			          "ID": "seller_ids_sell_dim_lead_closed"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_lead_closed.seller_id"
+			            },
+			            "Object": {
+			              "Role": "dim_lead_closed"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "seller_ids_have_dim_lead_closed"
+			        }
+			      ]
+			    },
+			    "dim_lead_closed_has_mql_id": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_leads_closed"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_lead_closed": {
+			          "Target": {
+			            "Entity": "dim_lead_closed"
+			          }
+			        },
+			        "dim_lead_closed.mql_id": {
+			          "Target": {
+			            "Entity": "dim_lead_closed.mql_id"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_lead_closed"
+			            },
+			            "Object": {
+			              "Role": "dim_lead_closed.mql_id"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_lead_closed_have_mql_ids"
+			        }
+			      ]
+			    },
 			    "fact_order_has_freight_value": {
 			      "Binding": {
 			        "ConceptualEntity": "fact_orders"
@@ -14954,6 +16416,52 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
+			    "fact_order_has_order_id": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_order": {
+			          "Target": {
+			            "Entity": "fact_order"
+			          }
+			        },
+			        "fact_order.order_id": {
+			          "Target": {
+			            "Entity": "fact_order.order_id"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_order"
+			            },
+			            "Object": {
+			              "Role": "fact_order.order_id"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_orders_have_order_ids"
+			        },
+			        {
+			          "Name": {
+			            "Subject": {
+			              "Role": "fact_order"
+			            },
+			            "Name": {
+			              "Role": "fact_order.order_id"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "order_ids_are_names_IDs_of_fact_orders"
+			        }
+			      ]
+			    },
 			    "fact_order_review_has_review_answer_time": {
 			      "Binding": {
 			        "ConceptualEntity": "fact_order_reviews"
@@ -15152,6 +16660,39 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
+			    "fact_order_review_has_order_id": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_order_reviews"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_order_review": {
+			          "Target": {
+			            "Entity": "fact_order_review"
+			          }
+			        },
+			        "fact_order_review.order_id": {
+			          "Target": {
+			            "Entity": "fact_order_review.order_id"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_order_review"
+			            },
+			            "Object": {
+			              "Role": "fact_order_review.order_id"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_order_reviews_have_order_ids"
+			        }
+			      ]
+			    },
 			    "fact_order_review_has_review_id": {
 			      "Binding": {
 			        "ConceptualEntity": "fact_order_reviews"
@@ -15294,6 +16835,19 @@ cultureInfo pt-BR
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "dim_customers_have_customer_ids"
+			        },
+			        {
+			          "Name": {
+			            "Subject": {
+			              "Role": "dim_customer"
+			            },
+			            "Name": {
+			              "Role": "dim_customer.customer_id"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "customer_ids_are_names_IDs_of_dim_customers"
 			        }
 			      ]
 			    },
@@ -15384,6 +16938,180 @@ cultureInfo pt-BR
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "dim_customers_are_in_geolocation_cities"
+			        }
+			      ]
+			    },
+			    "dim_customer_in_geolocation_zip_code_prefix": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_customers"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_customer": {
+			          "Target": {
+			            "Entity": "dim_customer"
+			          }
+			        },
+			        "dim_customer.geolocation_zip_code_prefix": {
+			          "Target": {
+			            "Entity": "dim_customer.geolocation_zip_code_prefix"
+			          }
+			        }
+			      },
+			      "SemanticSlots": {
+			        "Where": {
+			          "Role": "dim_customer.geolocation_zip_code_prefix"
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "dim_customer"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "dim_customer.geolocation_zip_code_prefix"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_customers_are_in_geolocation_zip_code_prefixes"
+			        }
+			      ]
+			    },
+			    "dim_customer_in_customer_zip_code_prefix": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_customers"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_customer": {
+			          "Target": {
+			            "Entity": "dim_customer"
+			          }
+			        },
+			        "dim_customer.customer_zip_code_prefix": {
+			          "Target": {
+			            "Entity": "dim_customer.customer_zip_code_prefix"
+			          }
+			        }
+			      },
+			      "SemanticSlots": {
+			        "Where": {
+			          "Role": "dim_customer.customer_zip_code_prefix"
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "dim_customer"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "dim_customer.customer_zip_code_prefix"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_customers_are_in_customer_zip_code_prefixes"
+			        }
+			      ]
+			    },
+			    "dim_lead_closed_is_won_on_won_time": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_leads_closed"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_lead_closed": {
+			          "Target": {
+			            "Entity": "dim_lead_closed"
+			          }
+			        },
+			        "dim_lead_closed.won_time": {
+			          "Target": {
+			            "Entity": "dim_lead_closed.won_time"
+			          }
+			        }
+			      },
+			      "SemanticSlots": {
+			        "When": {
+			          "Role": "dim_lead_closed.won_time"
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Verb": {
+			            "Verbs": [
+			              {
+			                "win": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "dim_lead_closed"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.9,
+			          "ID": "dim_lead_closed_are_won_on_won_times"
+			        }
+			      ]
+			    },
+			    "dim_lead_closed_is_won_on_won_date": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_leads_closed"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_lead_closed": {
+			          "Target": {
+			            "Entity": "dim_lead_closed"
+			          }
+			        },
+			        "dim_lead_closed.won_date": {
+			          "Target": {
+			            "Entity": "dim_lead_closed.won_date"
+			          }
+			        }
+			      },
+			      "SemanticSlots": {
+			        "When": {
+			          "Role": "dim_lead_closed.won_date"
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Verb": {
+			            "Verbs": [
+			              {
+			                "win": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "dim_lead_closed"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.9,
+			          "ID": "dim_lead_closed_are_won_on_won_dates"
 			        }
 			      ]
 			    },
@@ -16048,6 +17776,151 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
+			    "dim_customer_has_geolocation_city": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_customers"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_customer": {
+			          "Target": {
+			            "Entity": "dim_customer"
+			          }
+			        },
+			        "dim_customer.geolocation_city": {
+			          "Target": {
+			            "Entity": "dim_customer.geolocation_city"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_customer"
+			            },
+			            "Object": {
+			              "Role": "dim_customer.geolocation_city"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_customers_have_geolocation_cities"
+			        }
+			      ]
+			    },
+			    "dim_customer_has_geolocation_state": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_customers"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_customer": {
+			          "Target": {
+			            "Entity": "dim_customer"
+			          }
+			        },
+			        "dim_customer.geolocation_state": {
+			          "Target": {
+			            "Entity": "dim_customer.geolocation_state"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_customer"
+			            },
+			            "Object": {
+			              "Role": "dim_customer.geolocation_state"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_customers_have_geolocation_states"
+			        }
+			      ]
+			    },
+			    "dim_customer_has_cep": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_customers"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_customer": {
+			          "Target": {
+			            "Entity": "dim_customer"
+			          }
+			        },
+			        "dim_customer.cep": {
+			          "Target": {
+			            "Entity": "dim_customer.cep"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_customer"
+			            },
+			            "Object": {
+			              "Role": "dim_customer.cep"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_customers_have_ceps"
+			        }
+			      ]
+			    },
+			    "fact_order_has_dim_calendar": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_order": {
+			          "Target": {
+			            "Entity": "fact_order"
+			          }
+			        },
+			        "dim_calendar": {
+			          "Target": {
+			            "Entity": "dim_calendar"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_order"
+			            },
+			            "Object": {
+			              "Role": "dim_calendar"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_orders_have_dim_calendars"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_calendar"
+			            },
+			            "Object": {
+			              "Role": "fact_order"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_calendars_have_fact_orders"
+			        }
+			      ]
+			    },
 			    "fact_order_has_dim_time": {
 			      "Binding": {
 			        "ConceptualEntity": "fact_orders"
@@ -16140,6 +18013,59 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
+			    "fact_order_has_dim_lead_closed": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_order": {
+			          "Target": {
+			            "Entity": "fact_order"
+			          }
+			        },
+			        "dim_lead_closed": {
+			          "Target": {
+			            "Entity": "dim_lead_closed"
+			          },
+			          "Nouns": [
+			            {
+			              "seller": {
+			                "State": "Generated"
+			              }
+			            }
+			          ]
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_order"
+			            },
+			            "Object": {
+			              "Role": "dim_lead_closed"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_orders_have_dim_lead_closed"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_lead_closed"
+			            },
+			            "Object": {
+			              "Role": "fact_order"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_lead_closed_have_fact_orders"
+			        }
+			      ]
+			    },
 			    "fact_order_has_dim_customer": {
 			      "Binding": {
 			        "ConceptualEntity": "fact_orders"
@@ -16170,39 +18096,19 @@ cultureInfo pt-BR
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "fact_orders_have_dim_customers"
-			        }
-			      ]
-			    },
-			    "fact_order_has_dim_order_payment": {
-			      "Binding": {
-			        "ConceptualEntity": "fact_orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "fact_order": {
-			          "Target": {
-			            "Entity": "fact_order"
-			          }
 			        },
-			        "dim_order_payment": {
-			          "Target": {
-			            "Entity": "dim_order_payment"
-			          }
-			        }
-			      },
-			      "Phrasings": [
 			        {
 			          "Attribute": {
 			            "Subject": {
-			              "Role": "fact_order"
+			              "Role": "dim_customer"
 			            },
 			            "Object": {
-			              "Role": "dim_order_payment"
+			              "Role": "fact_order"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "fact_orders_have_dim_order_payments"
+			          "ID": "dim_customers_have_fact_orders"
 			        }
 			      ]
 			    },
