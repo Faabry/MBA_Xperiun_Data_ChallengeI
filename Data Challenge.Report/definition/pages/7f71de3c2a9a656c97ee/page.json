@@ -14,7 +14,7 @@
               "name": {
                 "expr": {
                   "Literal": {
-                    "Value": "'Clientes & Sellers.svg'"
+                    "Value": "'Clientes & Sellers (3).svg'"
                   }
                 }
               },
@@ -23,7 +23,7 @@
                   "ResourcePackageItem": {
                     "PackageName": "RegisteredResources",
                     "PackageType": 1,
-                    "ItemName": "Clientes_&_Sellers30353486491205894.svg"
+                    "ItemName": "Clientes_&_Sellers_(3)3805054469415857.svg"
                   }
                 }
               },

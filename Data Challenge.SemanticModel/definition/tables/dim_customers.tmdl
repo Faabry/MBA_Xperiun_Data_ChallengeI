@@ -18,39 +18,30 @@ table dim_customers
 		annotation SummarizationSetBy = Automatic
 
 	column customer_zip_code_prefix
-		dataType: int64
-		formatString: 0
+		dataType: string
 		lineageTag: 86853a96-8c21-4166-8c51-d8bbdfc68cb9
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: customer_zip_code_prefix
 
 		annotation SummarizationSetBy = Automatic
 
-	column geolocation_lat
-		dataType: double
-		lineageTag: 9dc19446-5c2b-437c-a52b-64345077500d
-		summarizeBy: sum
-		sourceColumn: geolocation_lat
-
-		changedProperty = DataType
+	column Cliente = "Cliente" &" - "& RIGHT([customer_id], 8)
+		lineageTag: 9da3ce3b-bdb2-42b2-9880-03a7dba668ae
+		summarizeBy: none
 
 		annotation SummarizationSetBy = Automatic
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	column geolocation_lng
-		dataType: double
-		lineageTag: a086a856-40b9-40ed-83a7-ed919de62c61
-		summarizeBy: sum
-		sourceColumn: geolocation_lng
+	column geolocation_zip_code_prefix
+		dataType: string
+		lineageTag: 4047635b-d65b-4923-9f45-6c5893c7ce43
+		summarizeBy: none
+		sourceColumn: geolocation_zip_code_prefix
 
 		annotation SummarizationSetBy = Automatic
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column geolocation_city
 		dataType: string
-		lineageTag: 6d5e9798-5543-4ebb-9be8-b9f0aac92dcd
+		lineageTag: 20a4c982-d50d-46a5-b66f-d501c77d9138
 		summarizeBy: none
 		sourceColumn: geolocation_city
 
@@ -58,9 +49,17 @@ table dim_customers
 
 	column geolocation_state
 		dataType: string
-		lineageTag: 591d272c-b78d-4383-bf28-270ab803ecd7
+		lineageTag: d349c87d-a477-40dd-b145-011fafa84d8d
 		summarizeBy: none
 		sourceColumn: geolocation_state
+
+		annotation SummarizationSetBy = Automatic
+
+	column CEP
+		dataType: string
+		lineageTag: e0954247-0a0e-4c97-b8a7-a1ed259d77f9
+		summarizeBy: none
+		sourceColumn: CEP
 
 		annotation SummarizationSetBy = Automatic
 
@@ -71,14 +70,12 @@ table dim_customers
 				let
 				    Fonte = Csv.Document(File.Contents(Source & "customers.csv"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
-				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"customer_id", type text}, {"customer_unique_id", type text}, {"customer_zip_code_prefix", Int64.Type}, {"customer_city", type text}, {"customer_state", type text}}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"customer_id", type text}, {"customer_unique_id", type text}, {"customer_zip_code_prefix", type text}, {"customer_city", type text}, {"customer_state", type text}}),
 				    #"Removed Columns" = Table.RemoveColumns(#"Tipo Alterado",{"customer_city", "customer_state"}),
 				    #"Merged Queries" = Table.NestedJoin(#"Removed Columns", {"customer_zip_code_prefix"}, dim_geolocation, {"geolocation_zip_code_prefix"}, "dim_geolocation", JoinKind.LeftOuter),
-				    #"Expanded dim_geolocation" = Table.ExpandTableColumn(#"Merged Queries", "dim_geolocation", {"geolocation_lat", "geolocation_lng", "geolocation_city", "geolocation_state"}, {"geolocation_lat", "geolocation_lng", "geolocation_city", "geolocation_state"}),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Expanded dim_geolocation",{{"geolocation_lat", type number}, {"geolocation_lng", type number}}),
-				    #"Duplicatas Removidas" = Table.Distinct(#"Changed Type")
+				    #"Expanded dim_geolocation" = Table.ExpandTableColumn(#"Merged Queries", "dim_geolocation", {"geolocation_zip_code_prefix", "geolocation_city", "geolocation_state", "CEP"}, {"geolocation_zip_code_prefix", "geolocation_city", "geolocation_state", "CEP"})
 				in
-				    #"Duplicatas Removidas"
+				    #"Expanded dim_geolocation"
 
 	annotation PBI_ResultType = Table
 

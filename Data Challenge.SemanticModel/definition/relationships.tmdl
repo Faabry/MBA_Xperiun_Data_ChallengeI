@@ -60,13 +60,13 @@ relationship AutoDetected_b997c375-1741-4545-9c72-38cd9f9167c5
 	fromColumn: fact_orders.seller_id
 	toColumn: dim_sellers.seller_id
 
-relationship 15f950a2-3579-455f-a231-8b0b9aa1703e
-	toCardinality: many
-	fromColumn: fact_orders.customer_id
-	toColumn: dim_customers.customer_unique_id
-
 relationship 0085814a-2725-a3cf-cb59-24f33c49b5de
 	crossFilteringBehavior: bothDirections
 	fromColumn: fact_orders.seller_id
 	toColumn: dim_leads_closed.seller_id
+
+relationship 4e64502a-df8e-29c5-7b33-236da7bb7374
+	crossFilteringBehavior: bothDirections
+	fromColumn: fact_orders.customer_id
+	toColumn: dim_customers.customer_id
 
