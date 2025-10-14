@@ -61,16 +61,6 @@
       "type": "RegisteredResources",
       "items": [
         {
-          "name": "Vis_o_Executiva_(1)300115228830214.svg",
-          "path": "Vis_o_Executiva_(1)300115228830214.svg",
-          "type": "Image"
-        },
-        {
-          "name": "Opera__es_e_Vendas2630618228960241.svg",
-          "path": "Opera__es_e_Vendas2630618228960241.svg",
-          "type": "Image"
-        },
-        {
           "name": "typcn_arrow-back-outline-16370839010902075.png",
           "path": "typcn_arrow-back-outline-16370839010902075.png",
           "type": "Image"
@@ -121,11 +111,6 @@
           "type": "Image"
         },
         {
-          "name": "analysis_3014227534769433947.png",
-          "path": "analysis_3014227534769433947.png",
-          "type": "Image"
-        },
-        {
           "name": "close8570050784140776.png",
           "path": "close8570050784140776.png",
           "type": "Image"
@@ -153,6 +138,31 @@
         {
           "name": "Capa47658496878753.svg",
           "path": "Capa47658496878753.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Vis_o_Executiva_(1)21848219578112282.svg",
+          "path": "Vis_o_Executiva_(1)21848219578112282.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Opera__es_e_Vendas_(1)029387470098914403.svg",
+          "path": "Opera__es_e_Vendas_(1)029387470098914403.svg",
+          "type": "Image"
+        },
+        {
+          "name": "business-report_36574731292662842.png",
+          "path": "business-report_36574731292662842.png",
+          "type": "Image"
+        },
+        {
+          "name": "analysis_32037678740588701.png",
+          "path": "analysis_32037678740588701.png",
+          "type": "Image"
+        },
+        {
+          "name": "sales_37289422214175317.png",
+          "path": "sales_37289422214175317.png",
           "type": "Image"
         }
       ]

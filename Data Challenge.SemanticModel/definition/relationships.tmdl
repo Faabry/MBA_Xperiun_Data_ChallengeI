@@ -70,3 +70,13 @@ relationship 4e64502a-df8e-29c5-7b33-236da7bb7374
 	fromColumn: fact_orders.customer_id
 	toColumn: dim_customers.customer_id
 
+relationship 89a6bbe7-d884-2047-ac3d-21511bc15394
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: fact_orders.order_id
+	toColumn: fact_order_reviews.order_id
+
+relationship AutoDetected_90b29b30-d727-49e6-b6e9-e85565867941
+	fromColumn: dim_customers.geolocation_zip_code_prefix
+	toColumn: dim_geolocation.geolocation_zip_code_prefix
+

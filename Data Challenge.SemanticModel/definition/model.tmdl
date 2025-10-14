@@ -37,6 +37,7 @@ ref table dim_time
 ref table dim_calendar
 ref table Parameter
 ref table Pareto
+ref table dim_geolocation
 
 ref cultureInfo pt-BR
 

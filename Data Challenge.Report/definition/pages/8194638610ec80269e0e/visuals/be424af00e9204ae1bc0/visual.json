@@ -7,7 +7,7 @@
     "z": 6000,
     "height": 41.672025723472665,
     "width": 196.78456591639869,
-    "tabOrder": 3000
+    "tabOrder": 18000
   },
   "visual": {
     "visualType": "advancedSlicerVisual",
@@ -67,7 +67,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'''Medidas''[Todos os Pedidos]'"
+                                "Value": "'''Medidas''[$ Receita Liq]'"
                               }
                             }
                           ]
@@ -95,7 +95,7 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'''Medidas''[Todos os Pedidos]'"
+                                      "Value": "'''Medidas''[$ Receita Liq]'"
                                     }
                                   }
                                 ]
@@ -119,7 +119,7 @@
                         },
                         "valueMap": [
                           {
-                            "0": "Pedidos"
+                            "0": "Faturamento"
                           }
                         ]
                       }

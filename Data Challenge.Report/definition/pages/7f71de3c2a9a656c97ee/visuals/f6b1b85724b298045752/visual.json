@@ -4,10 +4,10 @@
   "position": {
     "x": 145.85209003215434,
     "y": 248.87459807073955,
-    "z": 8000,
+    "z": 7000,
     "height": 428.29581993569133,
     "width": 733.89067524115751,
-    "tabOrder": 19002
+    "tabOrder": 9000
   },
   "visual": {
     "visualType": "map",
@@ -195,20 +195,6 @@
   },
   "filterConfig": {
     "filters": [
-      {
-        "name": "00e5da01770dc5a4177c",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Medidas"
-              }
-            },
-            "Property": "Clientes"
-          }
-        },
-        "type": "Advanced"
-      },
       {
         "name": "6463f441d61e83550a07",
         "field": {

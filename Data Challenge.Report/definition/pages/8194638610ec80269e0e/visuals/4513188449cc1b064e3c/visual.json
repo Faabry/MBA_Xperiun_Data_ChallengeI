@@ -6,7 +6,8 @@
     "y": 54.40514469453376,
     "z": 3000,
     "height": 54.40514469453376,
-    "width": 75.2411575562701
+    "width": 75.2411575562701,
+    "tabOrder": 15000
   },
   "visual": {
     "visualType": "pageNavigator",
@@ -65,20 +66,6 @@
             }
           },
           "selector": {
-            "id": "b8bc3b6bd0009ec001e7"
-          }
-        },
-        {
-          "properties": {
-            "showPage": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          },
-          "selector": {
             "id": "7f71de3c2a9a656c97ee"
           }
         },
@@ -94,6 +81,20 @@
           },
           "selector": {
             "id": "8194638610ec80269e0e"
+          }
+        },
+        {
+          "properties": {
+            "showPage": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "b8bc3b6bd0009ec001e7"
           }
         }
       ],

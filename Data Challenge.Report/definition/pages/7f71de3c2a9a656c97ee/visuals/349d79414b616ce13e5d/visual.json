@@ -4,10 +4,10 @@
   "position": {
     "x": 913.31189710610931,
     "y": 248.87459807073955,
-    "z": 7000,
+    "z": 6000,
     "height": 427.13826366559482,
     "width": 298.64951768488743,
-    "tabOrder": 19001
+    "tabOrder": 8000
   },
   "visual": {
     "visualType": "tableEx",
@@ -187,37 +187,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "9ea36cf484b7ec14a1aa",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_customers"
-              }
-            },
-            "Property": "Cliente"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "de288f8c0e73a72dae8e",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Medidas"
-              }
-            },
-            "Property": "LTV (Valor Histórico por Cliente)"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

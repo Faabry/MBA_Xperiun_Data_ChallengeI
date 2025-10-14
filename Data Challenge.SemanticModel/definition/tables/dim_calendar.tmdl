@@ -66,6 +66,9 @@ table dim_calendar
 		lineageTag: 16a4bf1a-77b6-4c28-8d56-8491bae191ea
 		summarizeBy: none
 		sourceColumn: Dia da semana por extenso
+		sortByColumn: 'Dia da semana'
+
+		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
 

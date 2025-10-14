@@ -12,12 +12,6 @@
     "sections": {
       "fb344a0033e4c180b794": {
         "visualContainers": {
-          "92eb86f68722cd3e108d": {
-            "singleVisual": {
-              "visualType": "pageNavigator",
-              "objects": {}
-            }
-          },
           "caa136bca03c820366c7": {
             "singleVisual": {
               "visualType": "actionButton",

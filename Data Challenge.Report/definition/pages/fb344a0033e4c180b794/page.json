@@ -23,7 +23,7 @@
                   "ResourcePackageItem": {
                     "PackageName": "RegisteredResources",
                     "PackageType": 1,
-                    "ItemName": "Vis_o_Executiva_(1)300115228830214.svg"
+                    "ItemName": "Vis_o_Executiva_(1)21848219578112282.svg"
                   }
                 }
               },
@@ -159,47 +159,6 @@
         },
         "selector": {
           "id": "Available"
-        }
-      },
-      {
-        "properties": {
-          "backgroundColor": {
-            "solid": {
-              "color": {
-                "expr": {
-                  "Literal": {
-                    "Value": "'#000000'"
-                  }
-                }
-              }
-            }
-          },
-          "inputBoxColor": {
-            "solid": {
-              "color": {
-                "expr": {
-                  "Literal": {
-                    "Value": "'#666666'"
-                  }
-                }
-              }
-            }
-          },
-          "foregroundColor": {
-            "solid": {
-              "color": {
-                "expr": {
-                  "ThemeDataColor": {
-                    "ColorId": 0,
-                    "Percent": 0
-                  }
-                }
-              }
-            }
-          }
-        },
-        "selector": {
-          "id": "Applied"
         }
       }
     ]
