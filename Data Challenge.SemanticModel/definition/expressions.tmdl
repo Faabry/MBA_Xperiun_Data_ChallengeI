@@ -8,7 +8,7 @@ expression Source = "C:\Users\renan\OneDrive\Documentos\Power BI\MBA_Xperiun_Dat
 
 expression dim_product_category_name_translation =
 		let
-		    Fonte = Csv.Document(File.Contents(Source & "product_category_name_translation.csv"),[Delimiter=",", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    Fonte = Csv.Document(File.Contents("C:\Users\amanda.santos_corebi\Desktop\MBA_Xperiun_Data_ChallengeI\database\product_category_name_translation.csv"),[Delimiter=",", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 		    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Column1", type text}, {"Column2", type text}}),
 		    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(#"Tipo Alterado", [PromoteAllScalars=true]),
 		    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"product_category_name", type text}, {"product_category_name_english", type text}})
@@ -23,7 +23,7 @@ expression dim_product_category_name_translation =
 
 expression dim_order_items =
 		let
-		    Fonte = Csv.Document(File.Contents(Source & "order_items.csv"),[Delimiter=",", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    Fonte = Csv.Document(File.Contents("C:\Users\amanda.santos_corebi\Desktop\MBA_Xperiun_Data_ChallengeI\database\order_items.csv"),[Delimiter=",", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 		    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
 		    #"Split Column by Delimiter" = Table.SplitColumn(Table.TransformColumnTypes(#"Cabeçalhos Promovidos", {{"shipping_limit_date", type text}}, "pt-BR"), "shipping_limit_date", Splitter.SplitTextByDelimiter(" ", QuoteStyle.Csv), {"shipping_limit_date.1", "shipping_limit_date.2"}),
 		    #"Renamed Columns" = Table.RenameColumns(#"Split Column by Delimiter",{{"shipping_limit_date.1", "shipping_limit_date"}, {"shipping_limit_date.2", "shipping_limit_time"}}),
@@ -37,33 +37,9 @@ expression dim_order_items =
 
 	annotation PBI_ResultType = Table
 
-expression dim_geolocation = ```
-		let
-		    Fonte = Csv.Document(File.Contents(Source & "geolocation.csv"),[Delimiter=",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.None]),
-		    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
-		    #"Valor Substituído" = Table.ReplaceValue(#"Cabeçalhos Promovidos",".",",",Replacer.ReplaceText,{"geolocation_lat"}),
-		    #"Valor Substituído1" = Table.ReplaceValue(#"Valor Substituído",".",",",Replacer.ReplaceText,{"geolocation_lng"}),
-		    #"TipoAlteradoParaTexto" = Table.TransformColumnTypes(#"Valor Substituído1",{{"geolocation_zip_code_prefix", type text}}),
-		    #"Duplicatas Removidas" = Table.Distinct(TipoAlteradoParaTexto, {"geolocation_zip_code_prefix"}),
-		    #"CEP Formatado" =  Table.AddColumn(
-		            #"Duplicatas Removidas", 
-		            "CEP", 
-		            each Text.PadStart(Text.From([geolocation_zip_code_prefix]), 5, "0") & "000", 
-		            type text
-		        )
-		in
-		    #"CEP Formatado"
-		```
-	lineageTag: 12045884-2e9a-40d1-9704-e96996b86bcf
-	queryGroup: Dimensions
-
-	annotation PBI_NavigationStepName = Navegação
-
-	annotation PBI_ResultType = Table
-
 expression dim_order_payments =
 		let
-		    Fonte = Csv.Document(File.Contents(Source & "order_payments.csv"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    Fonte = Csv.Document(File.Contents("C:\Users\amanda.santos_corebi\Desktop\MBA_Xperiun_Data_ChallengeI\database\order_payments.csv"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 		    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
 		    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"order_id", type text}, {"payment_sequential", Int64.Type}, {"payment_type", type text}, {"payment_installments", Int64.Type}, {"payment_value", Currency.Type}})
 		in
@@ -75,22 +51,47 @@ expression dim_order_payments =
 
 	annotation PBI_ResultType = Table
 
-expression fnBuscaCEP =
-		(cep as text) =>
+expression 'Erros em fact_orders' =
 		let
-		
-		    Resultado = try Json.Document(
-		                    Web.Contents(
-		                        "https://brasilapi.com.br/api/cep/v2/" & cep
-		                    )
-		                )
-		                otherwise [error="CEP não encontrado ou inválido"]
+		Fonte = fact_orders,
+		  #"Incompatibilidades de Tipo Detectadas" = let
+		    tableWithOnlyPrimitiveTypes = Table.SelectColumns(Fonte, Table.ColumnsOfType(Fonte, {type nullable number, type nullable text, type nullable logical, type nullable date, type nullable datetime, type nullable datetimezone, type nullable time, type nullable duration})),
+		    recordTypeFields = Type.RecordFields(Type.TableRow(Value.Type(tableWithOnlyPrimitiveTypes))),
+		    fieldNames = Record.FieldNames(recordTypeFields),
+		    fieldTypes = List.Transform(Record.ToList(recordTypeFields), each [Type]),
+		    pairs = List.Transform(List.Positions(fieldNames), (i) => {fieldNames{i}, (v) => if v = null or Value.Is(v, fieldTypes{i}) then v else error [Message = "O tipo do valor não corresponde ao tipo da coluna.", Detail = v], fieldTypes{i}})
 		in
-		    Resultado
-	lineageTag: c2f16c21-32e3-4c0e-b5b5-78fc095b82d2
-	queryGroup: Facts
+		    Table.TransformColumns(Fonte, pairs),
+		  #"Índice Adicionado" = Table.AddIndexColumn(#"Incompatibilidades de Tipo Detectadas", "Número da Linha" ,1),
+		  #"Erros Mantidos" = Table.SelectRowsWithErrors(#"Índice Adicionado", {"order_id", "customer_id", "order_status", "order_purchase_date", "order_purchase_time", "order_approved_at_date", "order_approved_at_time", "order_delivered_carrier_date", "order_delivered_carrier_time", "order_delivered_customer_date", "order_delivered_customer_time", "order_estimated_delivery_date", "order_estimated_delivery_time", "order_item_id", "product_id", "seller_id", "shipping_limit_date", "shipping_limit_time", "price", "freight_value", "payment_sequential", "payment_type", "payment_installments", "payment_value", "Personalizar"}),
+		  #"Colunas Reordenadas" = Table.ReorderColumns(#"Erros Mantidos", {"Número da Linha", "order_id", "customer_id", "order_status", "order_purchase_date", "order_purchase_time", "order_approved_at_date", "order_approved_at_time", "order_delivered_carrier_date", "order_delivered_carrier_time", "order_delivered_customer_date", "order_delivered_customer_time", "order_estimated_delivery_date", "order_estimated_delivery_time", "order_item_id", "product_id", "seller_id", "shipping_limit_date", "shipping_limit_time", "price", "freight_value", "payment_sequential", "payment_type", "payment_installments", "payment_value", "Personalizar"})
+		in
+		  #"Colunas Reordenadas"
+	lineageTag: 23d860f6-b2b4-42ff-8cd7-66bda0796267
+	queryGroup: 'Erros na Consulta - 13/10/2025 17:44:05'
 
 	annotation PBI_NavigationStepName = Navegação
 
-	annotation PBI_ResultType = Function
+expression 'Erros em fact_orders (2)' =
+		let
+		Fonte = fact_orders,
+		  #"Incompatibilidades de Tipo Detectadas" = let
+		    tableWithOnlyPrimitiveTypes = Table.SelectColumns(Fonte, Table.ColumnsOfType(Fonte, {type nullable number, type nullable text, type nullable logical, type nullable date, type nullable datetime, type nullable datetimezone, type nullable time, type nullable duration})),
+		    recordTypeFields = Type.RecordFields(Type.TableRow(Value.Type(tableWithOnlyPrimitiveTypes))),
+		    fieldNames = Record.FieldNames(recordTypeFields),
+		    fieldTypes = List.Transform(Record.ToList(recordTypeFields), each [Type]),
+		    pairs = List.Transform(List.Positions(fieldNames), (i) => {fieldNames{i}, (v) => if v = null or Value.Is(v, fieldTypes{i}) then v else error [Message = "O tipo do valor não corresponde ao tipo da coluna.", Detail = v], fieldTypes{i}})
+		in
+		    Table.TransformColumns(Fonte, pairs),
+		  #"Índice Adicionado" = Table.AddIndexColumn(#"Incompatibilidades de Tipo Detectadas", "Número da Linha" ,1),
+		  #"Erros Mantidos" = Table.SelectRowsWithErrors(#"Índice Adicionado", {"order_id", "customer_id", "order_status", "order_purchase_date", "order_purchase_time", "order_approved_at_date", "order_approved_at_time", "order_delivered_carrier_date", "order_delivered_carrier_time", "order_delivered_customer_date", "order_delivered_customer_time", "order_estimated_delivery_date", "order_estimated_delivery_time", "order_item_id", "product_id", "seller_id", "shipping_limit_date", "shipping_limit_time", "price", "freight_value", "payment_sequential", "payment_type", "payment_installments", "payment_value", "status_order"}),
+		  #"Colunas Reordenadas" = Table.ReorderColumns(#"Erros Mantidos", {"Número da Linha", "order_id", "customer_id", "order_status", "order_purchase_date", "order_purchase_time", "order_approved_at_date", "order_approved_at_time", "order_delivered_carrier_date", "order_delivered_carrier_time", "order_delivered_customer_date", "order_delivered_customer_time", "order_estimated_delivery_date", "order_estimated_delivery_time", "order_item_id", "product_id", "seller_id", "shipping_limit_date", "shipping_limit_time", "price", "freight_value", "payment_sequential", "payment_type", "payment_installments", "payment_value", "status_order"})
+		in
+		  #"Colunas Reordenadas"
+	lineageTag: a185b88b-44ca-4540-82c7-9e4950ee25c2
+	queryGroup: 'Erros na Consulta - 13/10/2025 17:52:46'
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
 

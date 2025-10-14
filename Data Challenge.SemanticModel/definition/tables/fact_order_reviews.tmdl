@@ -80,7 +80,7 @@ table fact_order_reviews
 		queryGroup: Facts
 		source =
 				let
-				    Fonte = Csv.Document(File.Contents(Source & "order_reviews.csv"),[Delimiter=",", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Fonte = Csv.Document(File.Contents("C:\Users\amanda.santos_corebi\Desktop\MBA_Xperiun_Data_ChallengeI\database\order_reviews.csv"),[Delimiter=",", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
 				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
 				    #"Extracted Text Before Delimiter" = Table.TransformColumns(#"Cabeçalhos Promovidos", {{"review_creation_date", each Text.BeforeDelimiter(_, " "), type text}}),
 				    #"Changed Type with Locale" = Table.TransformColumnTypes(#"Extracted Text Before Delimiter", {{"review_creation_date", type date}}, "ja-JP"),

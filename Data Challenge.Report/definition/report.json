@@ -42,7 +42,8 @@
   "publicCustomVisuals": [
     "PBI_CV_25997FEB_F466_44FA_B562_AC4063283C4C",
     "enlightenWaffleChartC94C0BDE416B413A8071A92B5E75A718",
-    "WaffleChart1453776852267"
+    "WaffleChart1453776852267",
+    "MapBySquillion"
   ],
   "resourcePackages": [
     {
@@ -60,11 +61,6 @@
       "name": "RegisteredResources",
       "type": "RegisteredResources",
       "items": [
-        {
-          "name": "Vis_o_Executiva_(1)300115228830214.svg",
-          "path": "Vis_o_Executiva_(1)300115228830214.svg",
-          "type": "Image"
-        },
         {
           "name": "Opera__es_e_Vendas2630618228960241.svg",
           "path": "Opera__es_e_Vendas2630618228960241.svg",
@@ -121,11 +117,6 @@
           "type": "Image"
         },
         {
-          "name": "analysis_3014227534769433947.png",
-          "path": "analysis_3014227534769433947.png",
-          "type": "Image"
-        },
-        {
           "name": "close8570050784140776.png",
           "path": "close8570050784140776.png",
           "type": "Image"
@@ -136,23 +127,8 @@
           "type": "Image"
         },
         {
-          "name": "analystics_3646261974280521.png",
-          "path": "analystics_3646261974280521.png",
-          "type": "Image"
-        },
-        {
-          "name": "analysis_242306706593078003.png",
-          "path": "analysis_242306706593078003.png",
-          "type": "Image"
-        },
-        {
-          "name": "Clientes_&_Sellers_(3)3805054469415857.svg",
-          "path": "Clientes_&_Sellers_(3)3805054469415857.svg",
-          "type": "Image"
-        },
-        {
-          "name": "Capa47658496878753.svg",
-          "path": "Capa47658496878753.svg",
+          "name": "Vis_o_Executiva4319307214472514.svg",
+          "path": "Vis_o_Executiva4319307214472514.svg",
           "type": "Image"
         }
       ]

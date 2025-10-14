@@ -3,7 +3,6 @@ model Model
 	defaultPowerBIDataSourceVersion: powerBI_V3
 	sourceQueryCulture: pt-BR
 	dataAccessOptions
-		fastCombine
 		legacyRedirects
 		returnErrorValuesAsNull
 
@@ -19,7 +18,17 @@ queryGroup Parameters
 
 	annotation PBI_QueryGroupOrder = 0
 
-annotation PBI_QueryOrder = ["fact_orders","fact_order_reviews","Medidas","Source","dim_time","dim_calendar","dim_geolocation","dim_customers","dim_sellers","dim_products","dim_lead_qualified","dim_leads_closed","dim_order_payments","dim_order_items","dim_product_category_name_translation","fnBuscaCEP"]
+/// Erros nas consultas que foram carregadas em 13/10/2025 17:44:05.
+queryGroup 'Erros na Consulta - 13/10/2025 17:44:05'
+
+	annotation PBI_QueryGroupOrder = 3
+
+/// Erros nas consultas que foram carregadas em 13/10/2025 17:52:46.
+queryGroup 'Erros na Consulta - 13/10/2025 17:52:46'
+
+	annotation PBI_QueryGroupOrder = 4
+
+annotation PBI_QueryOrder = ["fact_orders","fact_order_reviews","Medidas","Source","dim_time","dim_calendar","dim_geolocation","dim_customers","dim_sellers","dim_products","dim_lead_qualified","dim_leads_closed","dim_order_payments","dim_order_items","dim_product_category_name_translation","Erros em fact_orders","Erros em fact_orders (2)"]
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
@@ -37,6 +46,7 @@ ref table dim_time
 ref table dim_calendar
 ref table Parameter
 ref table Pareto
+ref table dim_geolocation
 
 ref cultureInfo pt-BR
 

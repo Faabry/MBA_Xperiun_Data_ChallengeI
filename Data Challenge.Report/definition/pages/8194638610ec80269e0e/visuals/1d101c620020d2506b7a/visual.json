@@ -7,7 +7,7 @@
     "z": 7000,
     "height": 427.13826366559482,
     "width": 329.90353697749197,
-    "tabOrder": 5000
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -43,12 +43,12 @@
                       "Entity": "Medidas"
                     }
                   },
-                  "Property": "Todos os Pedidos"
+                  "Property": "$ Receita Liq"
                 }
               },
-              "queryRef": "Medidas.Todos os Pedidos",
-              "nativeQueryRef": "Pedidos",
-              "displayName": "Pedidos"
+              "queryRef": "Medidas.$ Receita Liq",
+              "nativeQueryRef": "Faturamento",
+              "displayName": "Faturamento"
             }
           ],
           "fieldParameters": [
@@ -79,7 +79,7 @@
                     "Entity": "Medidas"
                   }
                 },
-                "Property": "Todos os Pedidos"
+                "Property": "$ Receita Liq"
               }
             },
             "direction": "Descending"

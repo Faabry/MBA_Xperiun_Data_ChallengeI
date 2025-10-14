@@ -23,7 +23,7 @@ table dim_sellers
 		queryGroup: Dimensions
 		source =
 				let
-				    Fonte = Csv.Document(File.Contents(Source & "sellers.csv"),[Delimiter=",", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    Fonte = Csv.Document(File.Contents("C:\Users\amanda.santos_corebi\Desktop\MBA_Xperiun_Data_ChallengeI\database\sellers.csv"),[Delimiter=",", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.None]),
 				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
 				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"seller_id", type text}, {"seller_zip_code_prefix", Int64.Type}, {"seller_city", type text}, {"seller_state", type text}}),
 				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado",{"seller_city", "seller_state"})

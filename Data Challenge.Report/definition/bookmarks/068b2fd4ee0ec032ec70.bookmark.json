@@ -190,7 +190,7 @@
                           "Entity": "Medidas"
                         }
                       },
-                      "Property": "$ Faturamento"
+                      "Property": "R$ Receita Aprovada"
                     }
                   },
                   "howCreated": 0
@@ -210,7 +210,7 @@
                           "Entity": "Medidas"
                         }
                       },
-                      "Property": "$ Faturamento"
+                      "Property": "R$ Receita Aprovada"
                     }
                   }
                 }

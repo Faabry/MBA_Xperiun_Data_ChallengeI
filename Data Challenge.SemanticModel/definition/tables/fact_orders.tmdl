@@ -252,12 +252,20 @@ table fact_orders
 
 		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
 
+	column status_order
+		dataType: string
+		lineageTag: d6c6985c-fe67-4000-bd28-02f39a792f3e
+		summarizeBy: none
+		sourceColumn: status_order
+
+		annotation SummarizationSetBy = Automatic
+
 	partition fact_orders = m
 		mode: import
 		queryGroup: Facts
 		source =
 				let
-				    Fonte = Csv.Document(File.Contents(Source & "orders.csv"),[Delimiter=",", Columns=8, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    Fonte = Csv.Document(File.Contents("C:\Users\amanda.santos_corebi\Desktop\MBA_Xperiun_Data_ChallengeI\database\orders.csv"),[Delimiter=",", Columns=8, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
 				    #"Split Column by Delimiter" = Table.SplitColumn(Table.TransformColumnTypes(#"Cabeçalhos Promovidos", {{"order_purchase_timestamp", type text}}, "pt-BR"), "order_purchase_timestamp", Splitter.SplitTextByDelimiter(" ", QuoteStyle.Csv), {"order_purchase_timestamp.1", "order_purchase_timestamp.2"}),
 				    #"Split Column by Delimiter1" = Table.SplitColumn(Table.TransformColumnTypes(#"Split Column by Delimiter", {{"order_approved_at", type text}}, "pt-BR"), "order_approved_at", Splitter.SplitTextByDelimiter(" ", QuoteStyle.Csv), {"order_approved_at.1", "order_approved_at.2"}),
@@ -269,11 +277,13 @@ table fact_orders
 				    #"Merged Queries" = Table.NestedJoin(#"Renamed Columns", {"order_id"}, dim_order_items, {"order_id"}, "dim_order_items", JoinKind.LeftOuter),
 				    #"Expanded dim_order_items" = Table.ExpandTableColumn(#"Merged Queries", "dim_order_items", {"order_item_id", "product_id", "seller_id", "shipping_limit_date", "shipping_limit_time", "price", "freight_value"}, {"order_item_id", "product_id", "seller_id", "shipping_limit_date", "shipping_limit_time", "price", "freight_value"}),
 				    #"Merged Queries1" = Table.NestedJoin(#"Expanded dim_order_items", {"order_id"}, dim_order_payments, {"order_id"}, "dim_order_payments", JoinKind.LeftOuter),
-				    #"Expanded dim_order_payments" = Table.ExpandTableColumn(#"Merged Queries1", "dim_order_payments", {"payment_sequential", "payment_type", "payment_installments", "payment_value"}, {"payment_sequential", "payment_type", "payment_installments", "payment_value"})
+				    #"Expanded dim_order_payments" = Table.ExpandTableColumn(#"Merged Queries1", "dim_order_payments", {"payment_sequential", "payment_type", "payment_installments", "payment_value"}, {"payment_sequential", "payment_type", "payment_installments", "payment_value"}),
+				    #"Coluna Condicional Adicionada" = Table.AddColumn(#"Expanded dim_order_payments", "Personalizar", each if [order_estimated_delivery_date] < [order_delivered_customer_date] then "Atrasado" else "Dentro do prazo"),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Coluna Condicional Adicionada",{{"Personalizar", "status_order"}})
 				in
-				    #"Expanded dim_order_payments"
+				    #"Colunas Renomeadas"
 
-	annotation PBI_ResultType = Exception
+	annotation PBI_ResultType = Table
 
 	annotation PBI_NavigationStepName = Navigation
 

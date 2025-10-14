@@ -8,35 +8,24 @@ table Medidas
 			    fact_orders[order_status] <> "canceled",
 			    fact_orders[order_status] <> "unavailable"
 			)
-		formatString: 0.00
+		formatString: 0
 		displayFolder: Quantitative
 		lineageTag: bcf0cb02-2975-4ee4-a158-d0c6988118ab
 
-	measure '$ Faturamento' =
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'R$ Receita Aprovada' =
 			
 			CALCULATE(
 			    SUMX(fact_orders, fact_orders[price] + fact_orders[freight_value]),
 			    fact_orders[order_status] <> "canceled",
 			    fact_orders[order_status] <> "unavailable"
 			)
+		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
 		displayFolder: Currency
 		lineageTag: fa3f14c7-9695-4223-9418-b3713b877c4a
 
-		formatStringDefinition = ```
-				var _Value = [$ Faturamento]
-				var _Format = 
-				SWITCH(
-				    TRUE(),
-				    _Value > 1000000, FORMAT(_Value, "R$ #0,, M"),
-				    _Value > 1000, FORMAT(_Value, "R$ #0,.0 K"),
-				    FORMAT(_Value, "R$ #0")
-				)
-				
-				RETURN
-				"""" & _Format & """"
-				    
-				    
-				```
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
 
 	measure 'Qtd Pedidos ALL' =
 			
@@ -68,7 +57,7 @@ table Medidas
 	measure '$ Faturamento Pedidos ALL' =
 			
 			CALCULATE(
-			    [$ Faturamento],
+			    [R$ Receita Aprovada],
 			    ALL(dim_products[product_category_name])
 			)
 		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
@@ -79,7 +68,7 @@ table Medidas
 
 	measure '% Faturamento por Categoria' =
 			
-			" | (" & FORMAT(DIVIDE([$ Faturamento], [$ Faturamento Pedidos ALL], 0), "0.0%") & ")"
+			" | (" & FORMAT(DIVIDE([R$ Receita Aprovada], [$ Faturamento Pedidos ALL], 0), "0.0%") & ")"
 		displayFolder: Percent
 		lineageTag: 86e33d4b-7f01-40e7-b6ab-4dce4df6d332
 
@@ -123,29 +112,18 @@ table Medidas
 			    DISTINCTCOUNT(fact_orders[order_id]),
 			    fact_orders[order_status] = "delivered"
 			)
-		formatString: 0.00
+		formatString: 0
 		displayFolder: Quantitative
 		lineageTag: 5266c30f-2b27-4659-9b02-f7a7ac297784
+
+		annotation PBI_FormatHint = {"isDecimal":true}
 
 	measure 'Todos os Pedidos' =
 			
 			DISTINCTCOUNT(fact_orders[order_id])
+		formatString: #,0
 		displayFolder: Quantitative
 		lineageTag: d3da4d24-c3ba-48ae-b8ea-6e2d68257132
-
-		formatStringDefinition = ```
-				var _Pedidos = [Todos os Pedidos]
-				var _Format = 
-				SWITCH(
-				    TRUE(),
-				    _Pedidos > 1000000, FORMAT(_Pedidos, "#0,,.0 M"),
-				    _Pedidos > 1000, FORMAT(_Pedidos, "#0,.00 K"),
-				    FORMAT(_Pedidos, "#0")
-				)
-				
-				return
-				"""" & _Format & """"
-				```
 
 	measure '% Taxa de Finalizações' =
 			
@@ -463,13 +441,13 @@ table Medidas
 
 	measure '$ Faturamento Acumulado' = ```
 			
-			var _vFaturamentoContexto = [$ Faturamento]
+			var _vFaturamentoContexto = [R$ Receita Aprovada]
 			var _vFaturamento = 
 			CALCULATE(
-			    [$ Faturamento],
+			    [R$ Receita Aprovada],
 			    FILTER(
 			        ALLSELECTED( dim_products[product_category_name] ),
-			        [$ Faturamento] >= _vFaturamentoContexto
+			        [R$ Receita Aprovada] >= _vFaturamentoContexto
 			    )
 			)
 			
@@ -484,12 +462,12 @@ table Medidas
 			
 			var _vFaturamento = 
 			CALCULATE(
-			    [$ Faturamento],
+			    [R$ Receita Aprovada],
 			    ALLSELECTED( dim_products[product_category_name] )
 			)
 			
 			return
-			DIVIDE([$ Faturamento], _vFaturamento)
+			DIVIDE([R$ Receita Aprovada], _vFaturamento)
 			```
 		formatString: #,0.00%;-#,0.00%;#,0.00%
 		displayFolder: Pareto
@@ -500,7 +478,7 @@ table Medidas
 			
 			var _vFaturamento = 
 			CALCULATE(
-			    [$ Faturamento],
+			    [R$ Receita Aprovada],
 			    FILTER(
 			        ALLSELECTED( dim_products[product_id] ),
 			        [% Pareto produtos] <=Pareto[Pareto Valor]
@@ -599,7 +577,7 @@ table Medidas
 			
 			var _vFaturamento = 
 			CALCULATE(
-			    [$ Faturamento],
+			    [R$ Receita Aprovada],
 			    FILTER(
 			        ALLSELECTED( dim_products[product_category_name] ),
 			        [% Pareto categorias] <=Pareto[Pareto Valor]
@@ -618,12 +596,12 @@ table Medidas
 			
 			var _vFaturamento = 
 			CALCULATE(
-			    [$ Faturamento],    
+			    [R$ Receita Aprovada],    
 			    ALLSELECTED( dim_products[product_id] )
 			)
 			
 			return
-			DIVIDE([$ Faturamento], _vFaturamento, 0)
+			DIVIDE([R$ Receita Aprovada], _vFaturamento, 0)
 			```
 		formatString: #,0.0%;-#,0.0%;#,0.0%
 		displayFolder: Pareto
@@ -686,7 +664,12 @@ table Medidas
 				    
 				```
 
-	measure Clientes = DISTINCTCOUNT(dim_customers[customer_id])
+	measure Clientes =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(dim_customers[customer_unique_id]),
+			    fact_orders
+			)
 		formatString: #,0
 		lineageTag: e0bfc671-b913-416e-a4a7-5818de171f25
 
@@ -729,43 +712,213 @@ table Medidas
 		formatString: #,0
 		lineageTag: 7034ad9f-1d0b-41af-bf04-c1d7fa64c03c
 
+	measure 'Clientes Recorrentes' =
+			
+			VAR ClientesMaisDeUmPedido =
+			    CALCULATETABLE(
+			        VALUES(dim_customers[customer_unique_id]),
+			        FILTER(
+			            ADDCOLUMNS(
+			                VALUES(dim_customers[customer_unique_id]),
+			                "QtdPedidos", CALCULATE(DISTINCTCOUNT(fact_orders[order_id]))
+			            ),
+			            [QtdPedidos] > 1
+			        )
+			    )
+			RETURN
+			CALCULATE(
+			    DISTINCTCOUNT(dim_customers[customer_unique_id]),
+			    dim_customers[customer_unique_id] IN ClientesMaisDeUmPedido
+			)
+		formatString: 0
+		lineageTag: 436f49a9-e508-493a-bc12-3802efe9c2c2
+
+	measure ClientesRecompra = ```
+			
+			    Var ClientesRecompra = CALCULATE(
+			    DISTINCTCOUNT(fact_orders[customer_id]),
+			    FILTER(
+			        VALUES(fact_orders[customer_id]),
+			        CALCULATE(DISTINCTCOUNT(fact_orders[order_id])) > 1
+			    )
+			)
+			
+			RETURN  DIVIDE(ClientesRecompra, DISTINCTCOUNT( fact_orders[customer_id]), 0)
+			```
+		lineageTag: ee25c4f4-fb73-4c44-87ee-19fb21e51289
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Pedidos aprovados LY' =
+			
+			CALCULATE(
+			    [Qtd Pedidos Validos],
+			    DATEADD(dim_calendar[Date], -1, YEAR)
+			)
+		formatString: 0
+		displayFolder: Currency
+		lineageTag: 39686197-669a-4d07-98de-04c87263a3d5
+
+	measure 'R$ Receita Aprovada LY' =
+			
+			CALCULATE(
+			    [R$ Receita Aprovada],
+			    DATEADD(dim_calendar[Date], -1, YEAR)
+			)
+		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
+		displayFolder: Currency
+		lineageTag: edc9a77d-8d2a-41f4-8e2b-aa0338ba888d
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure OTD = DIVIDE(CALCULATE(COUNTROWS(fact_orders), fact_orders[order_delivered_customer_date] <= fact_orders[order_estimated_delivery_date]), COUNTROWS(fact_orders))
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: c08f9b99-e0c5-4f0a-9041-798ccbcf98fc
+
+	measure 'OTD LY' =
+			
+			CALCULATE(
+			    [OTD],
+			    DATEADD(dim_calendar[Date], -1, YEAR)
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 738f2704-c20a-457e-b0bc-2ba6a42335ef
+
 	measure 'Clientes LY' =
 			
 			CALCULATE(
 			    [Clientes],
-			    DATEADD( dim_calendar[Date], -1, YEAR )
+			    DATEADD(dim_calendar[Date], -1, YEAR)
 			)
 		formatString: 0
-		lineageTag: a8c01118-7377-4333-a2d4-4b65660e2e79
+		lineageTag: 4519b732-75a7-4e28-9e86-c05f4122ec18
 
-	measure 'Clientes Acima Ticket LY' =
-			
-			CALCULATE(
-			    [Clientes Acima do Ticket Médio],
-			    DATEADD( dim_calendar[Date], -1, YEAR )
-			)
-		formatString: 0
-		lineageTag: e5df7712-35d0-4a51-9889-2d3da997115b
-
-	measure 'Clientes %' =
-			
-			DIVIDE([Clientes], [Clientes LY], 0)
-		formatString: 0.00%;-0.00%;0.00%
-		lineageTag: 17749e34-f89c-4fb2-9126-dedd71fcec37
-
-	measure 'Clientes Ticket %' = ```
+	measure '% Receita Aprovada LY' =
 			
 			DIVIDE(
-			    [Clientes Acima do Ticket Médio], 
-			    [Clientes Acima Ticket LY], 
-			    0 
-			    )
+			    [R$ Receita Aprovada] - [R$ Receita Aprovada LY],
+			    [R$ Receita Aprovada LY],
+			    0
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 2a0d3f63-22e6-47ed-a31f-2dc39d7c25fe
+
+	measure '% Pedidos aprovados LY' =
+			
+			DIVIDE(
+			    [Qtd Pedidos Validos] - [Pedidos aprovados LY],
+			    [Pedidos aprovados LY],
+			    0
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: a581855a-13f1-471b-b5a0-571a9b7b8422
+
+	measure '% OTD LY' =
+			
+			DIVIDE(
+			    [OTD] - [OTD LY],
+			    [OTD LY],
+			    0
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 6297a852-3e4e-465e-99af-a06a162e0b46
+
+	measure '% Clientes LY' =
+			
+			DIVIDE(
+			    [Clientes] - [Clientes LY],
+			    [Clientes LY],
+			    0
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 0b3331df-c3fe-4629-935b-5addc26439cd
+
+	measure 'R$ Receita Aprovada Total' = ```
+			
+			CALCULATE(
+			    SUMX(fact_orders, fact_orders[price] + fact_orders[freight_value]),
+			    fact_orders[order_status] <> "canceled",
+			    fact_orders[order_status] <> "unavailable",
+			    ALL(dim_customers[geolocation_state]) 
+			)
+			```
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		displayFolder: Currency
+		lineageTag: 7ecde7ab-235b-46b3-bd6c-1edd473ceff6
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure '% Receita por Estado' = ```
+			
+			DIVIDE(
+			    [R$ Receita Aprovada], 
+			    [R$ Receita Aprovada Total], 
+			    0
+			)
 			```
 		formatString: 0.00%;-0.00%;0.00%
-		lineageTag: 35e024ea-fdf3-4546-a480-a9fbf16fb55a
+		lineageTag: 22e16655-fae2-49de-9867-5db43e993037
 
-	measure Space2 = ""
-		lineageTag: 36ded314-a9f4-49ea-b131-4d1b836bf84e
+	measure 'LY Pedidos totais' =
+			
+			CALCULATE(
+			    [Todos os Pedidos],
+			    DATEADD(dim_calendar[Date], -1, YEAR)
+			)
+		formatString: 0
+		displayFolder: Quantitative
+		lineageTag: 9d99dfef-09b3-4dcd-abf5-f16962b9756b
+
+	measure LY =
+			
+			CALCULATE(
+			    [Qtd Pedidos Cancelados],
+			    DATEADD(dim_calendar[Date], -1, YEAR)
+			)
+		formatString: 0
+		displayFolder: Quantitative
+		lineageTag: a39c6cdd-c33a-4b74-a472-7e3fec0edc0f
+
+	measure 'LY Pedidos finalizados' =
+			
+			CALCULATE(
+			    [Qtd Pedidos Finalizados],
+			    DATEADD(dim_calendar[Date], -1, YEAR)
+			)
+		formatString: 0
+		displayFolder: Quantitative
+		lineageTag: 8856f665-2a8e-4de9-98f8-13c7a7952c3f
+
+	measure 'Pedidos Atrasados' =
+			
+			CALCULATE(
+			    COUNTROWS(fact_orders),
+			    fact_orders[status_order] = "Atrasado"
+			)
+		formatString: 0
+		displayFolder: Quantitative
+		lineageTag: e2df8713-a906-4c64-a5ee-dec5ecf6445d
+
+	measure 'Pedidos atrasados total' = ```
+			
+			CALCULATE([Pedidos Atrasados],
+			    ALL(dim_geolocation[geolocation_city]) 
+			)
+			```
+		formatString: 0
+		displayFolder: Currency
+		lineageTag: 62c33a86-526f-414f-8d44-45595586a414
+
+	measure '%Pedidos atrasados por cidade' = ```
+			
+			DIVIDE(
+			    [Pedidos Atrasados], 
+			    [Pedidos atrasados total], 
+			    0
+			)
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: f4134ad7-4c36-45c9-8ccb-0f5a54a8cb08
 
 	column 'Coluna 1'
 		dataType: string
@@ -788,4 +941,6 @@ table Medidas
 				    #"Tipo Alterado"
 
 	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
 
