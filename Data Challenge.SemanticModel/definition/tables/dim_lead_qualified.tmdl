@@ -54,7 +54,7 @@ table dim_lead_qualified
 		queryGroup: Dimensions
 		source =
 				let
-				    Fonte = Csv.Document(File.Contents(Source & "lead_qualified.csv"),[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    Fonte = Csv.Document(File.Contents("C:\Users\amanda.santos_corebi\Desktop\MBA_Xperiun_Data_ChallengeI\database\lead_qualified.csv"),[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
 				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"mql_id", type text}, {"first_contact_date", type date}, {"landing_page_id", type text}, {"origin", type text}})
 				in

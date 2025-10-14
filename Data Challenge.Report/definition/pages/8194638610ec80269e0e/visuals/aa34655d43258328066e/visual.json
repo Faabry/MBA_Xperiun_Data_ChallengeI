@@ -7,7 +7,7 @@
     "z": 20000,
     "height": 51.410916580844493,
     "width": 141.05046343975283,
-    "tabOrder": 20000
+    "tabOrder": 17000
   },
   "visual": {
     "visualType": "PBI_CV_25997FEB_F466_44FA_B562_AC4063283C4C",
@@ -23,7 +23,7 @@
                       "Entity": "Medidas"
                     }
                   },
-                  "Property": "$ Faturamento"
+                  "Property": "R$ Receita Aprovada"
                 }
               },
               "queryRef": "Medidas.$ Faturamento",

@@ -392,147 +392,6 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
-			    "dim_customer.customer_zip_code_prefix": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "dim_customers",
-			          "ConceptualProperty": "customer_zip_code_prefix"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "customer zip code prefix": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "customer_zip_code_prefix": {
-			            "Type": "Noun",
-			            "State": "Generated",
-			            "Weight": 0.99
-			          }
-			        },
-			        {
-			          "prefix": {
-			            "State": "Generated",
-			            "Weight": 0.97
-			          }
-			        },
-			        {
-			          "code prefix": {
-			            "State": "Generated",
-			            "Weight": 0.97
-			          }
-			        },
-			        {
-			          "zip code prefix": {
-			            "State": "Generated",
-			            "Weight": 0.97
-			          }
-			        },
-			        {
-			          "client zip code prefix": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.617
-			          }
-			        },
-			        {
-			          "consumer zip code prefix": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.617
-			          }
-			        },
-			        {
-			          "user zip code prefix": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.617
-			          }
-			        },
-			        {
-			          "buyer zip code prefix": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.617
-			          }
-			        },
-			        {
-			          "patron zip code prefix": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.617
-			          }
-			        },
-			        {
-			          "purchaser zip code prefix": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.617
-			          }
-			        },
-			        {
-			          "shopper zip code prefix": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.617
-			          }
-			        },
-			        {
-			          "customer zip id prefix": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.617
-			          }
-			        },
-			        {
-			          "zip id prefix": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.609
-			          }
-			        },
-			        {
-			          "id prefix": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.6
-			          }
-			        }
-			      ]
-			    },
 			    "fact_order_review": {
 			      "Definition": {
 			        "Binding": {
@@ -811,6 +670,9 @@ cultureInfo pt-BR
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "order id": {
@@ -7764,31 +7626,41 @@ cultureInfo pt-BR
 			          "qtd pedidos validos": {
 			            "State": "Generated"
 			          }
+			        },
+			        {
+			          "Pedidos Aprovados": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
-			    "medida.faturamento": {
+			    "medida.r_receita_aprovada": {
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Medidas",
-			          "ConceptualProperty": "$ Faturamento"
+			          "ConceptualProperty": "R$ Receita Aprovada"
 			        }
 			      },
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "$ faturamento": {
+			          "r$ receita aprovada": {
 			            "State": "Generated"
 			          }
 			        },
 			        {
-			          "dollar faturamento": {
+			          "r dollar receita aprovada": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
 			              "Agent": "Thesaurus"
 			            },
-			            "Weight": 0.6
+			            "Weight": 0.617
 			          }
 			        }
 			      ]
@@ -8445,6 +8317,16 @@ cultureInfo pt-BR
 			          "dia da semana por extenso": {
 			            "State": "Generated"
 			          }
+			        },
+			        {
+			          "Dia da semana": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -8645,16 +8527,6 @@ cultureInfo pt-BR
 			          "todos os pedidos": {
 			            "State": "Generated"
 			          }
-			        },
-			        {
-			          "Pedidos": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
 			        }
 			      ]
 			    },
@@ -8680,6 +8552,208 @@ cultureInfo pt-BR
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.624
+			          }
+			        }
+			      ]
+			    },
+			    "dim_customer.geolocation_lat": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_customers",
+			          "ConceptualProperty": "geolocation_lat"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "geolocation lat": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "geolocation_lat": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "dim_customer.geolocation_lng": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_customers",
+			          "ConceptualProperty": "geolocation_lng"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "geolocation lng": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "geolocation_lng": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "dim_customer.geolocation_city": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_customers",
+			          "ConceptualProperty": "geolocation_city"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "geolocation city": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "geolocation_city": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "geolocation location": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "geolocation metropolis": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "geolocation municipality": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "geolocation town": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "geolocation metropolitan": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        }
+			      ]
+			    },
+			    "dim_customer.geolocation_state": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_customers",
+			          "ConceptualProperty": "geolocation_state"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "geolocation state": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "geolocation_state": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "geolocation location": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "geolocation province": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "geolocation territory": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "geolocation nation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "geolocation condition": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "geolocation country": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
 			          }
 			        }
 			      ]
@@ -10012,49 +10086,146 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
-			    "medida.entity___faturamento_FormatString": {
+			    "fact_order.payment_type": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Medidas",
-			          "ConceptualProperty": "_$ Faturamento FormatString"
+			          "ConceptualEntity": "fact_orders",
+			          "ConceptualProperty": "payment_type"
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
-			          "_$ faturamento FormatString": {
+			          "payment type": {
 			            "State": "Generated"
 			          }
 			        },
 			        {
-			          "_ dollar faturamento formatstring": {
+			          "payment_type": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "type": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "payment category": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
 			              "Agent": "Thesaurus"
 			            },
-			            "Weight": 0.617
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "payment genre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "payment manner": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "payment variety": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "genre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "manner": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "variety": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "payment brand": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "payment class": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "payment kind": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
 			          }
 			        }
 			      ]
 			    },
-			    "medida.entity__todos_os_pedidos_FormatString": {
+			    "medida.otd": {
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Medidas",
-			          "ConceptualProperty": "_Todos os Pedidos FormatString"
+			          "ConceptualProperty": "OTD"
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
-			          "_todos os pedidos FormatString": {
+			          "otd": {
 			            "State": "Generated"
 			          }
 			        }
@@ -10172,18 +10343,146 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
-			    "dim_customer.cliente": {
+			    "dim_customer.customer_zip_code_prefix": {
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "dim_customers",
-			          "ConceptualProperty": "Cliente"
+			          "ConceptualProperty": "customer_zip_code_prefix"
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
-			          "cliente": {
+			          "customer zip code prefix": {
 			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "customer_zip_code_prefix": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "prefix": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "code prefix": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "zip code prefix": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "client zip code prefix": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "consumer zip code prefix": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "user zip code prefix": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "buyer zip code prefix": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "patron zip code prefix": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "purchaser zip code prefix": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "shopper zip code prefix": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "customer zip id prefix": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "zip id prefix": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "id prefix": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
 			          }
 			        }
 			      ]
@@ -10955,131 +11254,38 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
-			    "fact_order.payment_type": {
+			    "medida.receita_liq": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "fact_orders",
-			          "ConceptualProperty": "payment_type"
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "$ Receita Liq"
 			        }
 			      },
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "payment type": {
+			          "$ receita liq": {
 			            "State": "Generated"
 			          }
 			        },
 			        {
-			          "payment_type": {
-			            "Type": "Noun",
-			            "State": "Generated",
-			            "Weight": 0.99
-			          }
-			        },
-			        {
-			          "type": {
-			            "State": "Generated",
-			            "Weight": 0.97
-			          }
-			        },
-			        {
-			          "payment category": {
+			          "dollar receita liq": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
 			              "Agent": "Thesaurus"
 			            },
-			            "Weight": 0.75
+			            "Weight": 0.609
 			          }
 			        },
 			        {
-			          "payment genre": {
-			            "Type": "Noun",
+			          "Faturamento": {
 			            "State": "Suggested",
 			            "Source": {
-			              "Agent": "Thesaurus"
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
 			            },
-			            "Weight": 0.75
-			          }
-			        },
-			        {
-			          "payment manner": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.75
-			          }
-			        },
-			        {
-			          "payment variety": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.75
-			          }
-			        },
-			        {
-			          "genre": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.736
-			          }
-			        },
-			        {
-			          "manner": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.736
-			          }
-			        },
-			        {
-			          "variety": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.736
-			          }
-			        },
-			        {
-			          "payment brand": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.727
-			          }
-			        },
-			        {
-			          "payment class": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.727
-			          }
-			        },
-			        {
-			          "payment kind": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.727
+			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -11368,32 +11574,6 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
-			    "medida.receita_liq": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "Medidas",
-			          "ConceptualProperty": "$ Receita Liq"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "$ receita liq": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "dollar receita liq": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.609
-			          }
-			        }
-			      ]
-			    },
 			    "medida.clientes": {
 			      "Definition": {
 			        "Binding": {
@@ -11460,6 +11640,216 @@ cultureInfo pt-BR
 			        {
 			          "pedidos realizados": {
 			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.clientes_recorrentes": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "Clientes Recorrentes"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "clientes recorrentes": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.clientes_recompra": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "ClientesRecompra"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "clientes recompra": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "ClientesRecompra": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "medida.pedidos_aprovados_LY": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "Pedidos aprovados LY"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "pedidos aprovados LY": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.r_receita_aprovada_LY": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "R$ Receita Aprovada LY"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "r$ receita aprovada LY": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "r dollar receita aprovada ly": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.624
+			          }
+			        }
+			      ]
+			    },
+			    "fact_order.status_order": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_orders",
+			          "ConceptualProperty": "status_order"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "status order": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "status_order": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "order": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "category order": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "importance order": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "prestige order": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "prominence order": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "condition order": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "class order": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "grade order": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "level order": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "position order": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "rank order": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
 			          }
 			        }
 			      ]
@@ -11531,10 +11921,32 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
-			    "dim_customer.geolocation_zip_code_prefix": {
+			    "dim_geolocation": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "dim_customers",
+			          "ConceptualEntity": "dim_geolocation"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dim geolocation": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dim_geolocation": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "dim_geolocation.geolocation_zip_code_prefix": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_geolocation",
 			          "ConceptualProperty": "geolocation_zip_code_prefix"
 			        }
 			      },
@@ -11604,10 +12016,56 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
-			    "dim_customer.geolocation_city": {
+			    "dim_geolocation.geolocation_lat": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "dim_customers",
+			          "ConceptualEntity": "dim_geolocation",
+			          "ConceptualProperty": "geolocation_lat"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "geolocation lat": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "geolocation_lat": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "dim_geolocation.geolocation_lng": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_geolocation",
+			          "ConceptualProperty": "geolocation_lng"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "geolocation lng": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "geolocation_lng": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "dim_geolocation.geolocation_city": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_geolocation",
 			          "ConceptualProperty": "geolocation_city"
 			        }
 			      },
@@ -11677,10 +12135,10 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
-			    "dim_customer.geolocation_state": {
+			    "dim_geolocation.geolocation_state": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "dim_customers",
+			          "ConceptualEntity": "dim_geolocation",
 			          "ConceptualProperty": "geolocation_state"
 			        }
 			      },
@@ -11757,30 +12215,326 @@ cultureInfo pt-BR
 			            },
 			            "Weight": 0.727
 			          }
-			        },
-			        {
-			          "Estado": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
 			        }
 			      ]
 			    },
-			    "dim_customer.cep": {
+			    "medida.otd_ly": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "dim_customers",
-			          "ConceptualProperty": "CEP"
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "OTD LY"
 			        }
 			      },
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "cep": {
+			          "otd ly": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.clientes_LY": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "Clientes LY"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "clientes LY": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.receita_aprovada_LY": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "% Receita Aprovada LY"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "% receita aprovada LY": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "percentage receita aprovada ly": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "pct receita aprovada ly": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        }
+			      ]
+			    },
+			    "medida.pedidos_aprovados_LY1": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "% Pedidos aprovados LY"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "% pedidos aprovados LY": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "percentage pedido aprovado ly": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "pct pedido aprovado ly": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        }
+			      ]
+			    },
+			    "medida.otd_ly1": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "% OTD LY"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "% otd ly": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "percentage otd ly": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "pct otd ly": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ]
+			    },
+			    "medida.clientes_LY1": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "% Clientes LY"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "% clientes LY": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "percentage cliente ly": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "pct cliente ly": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ]
+			    },
+			    "medida.r_receita_aprovada_total": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "R$ Receita Aprovada Total"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "r$ receita aprovada total": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "r$ receita aprovada aggregate": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.757
+			          }
+			        },
+			        {
+			          "r$ receita aprovada overall": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.757
+			          }
+			        },
+			        {
+			          "r dollar receita aprovada total": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.624
+			          }
+			        }
+			      ]
+			    },
+			    "medida.receita_por_estado": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "% Receita por Estado"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "% receita por estado": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "percentage receita por estado": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "pct receita por estado": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        }
+			      ]
+			    },
+			    "medida.LY_pedidos_totais": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "LY Pedidos totais"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "LY pedidos totais": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.ly": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "LY"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ly": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.LY_pedidos_finalizados": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "LY Pedidos finalizados"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "LY pedidos finalizados": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.pedidos_atrasados": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "Pedidos Atrasados"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "pedidos atrasados": {
 			            "State": "Generated"
 			          }
 			        }
@@ -11788,7 +12542,205 @@ cultureInfo pt-BR
 			    }
 			  },
 			  "Relationships": {
-			    "dim_customer_has_geolocation_zip_code_prefix": {
+			    "dim_geolocation_has_geolocation_lat": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_geolocation"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_geolocation": {
+			          "Target": {
+			            "Entity": "dim_geolocation"
+			          }
+			        },
+			        "dim_geolocation.geolocation_lat": {
+			          "Target": {
+			            "Entity": "dim_geolocation.geolocation_lat"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_geolocation"
+			            },
+			            "Object": {
+			              "Role": "dim_geolocation.geolocation_lat"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_geolocations_have_geolocation_lats"
+			        }
+			      ]
+			    },
+			    "dim_geolocation_has_geolocation_zip_code_prefix": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_geolocation"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_geolocation": {
+			          "Target": {
+			            "Entity": "dim_geolocation"
+			          }
+			        },
+			        "dim_geolocation.geolocation_zip_code_prefix": {
+			          "Target": {
+			            "Entity": "dim_geolocation.geolocation_zip_code_prefix"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_geolocation"
+			            },
+			            "Object": {
+			              "Role": "dim_geolocation.geolocation_zip_code_prefix"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_geolocations_have_geolocation_zip_code_prefixes"
+			        }
+			      ]
+			    },
+			    "fact_order_has_status_order": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_order": {
+			          "Target": {
+			            "Entity": "fact_order"
+			          }
+			        },
+			        "fact_order.status_order": {
+			          "Target": {
+			            "Entity": "fact_order.status_order"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_order"
+			            },
+			            "Object": {
+			              "Role": "fact_order.status_order"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_orders_have_status_orders"
+			        }
+			      ]
+			    },
+			    "fact_order_has_medida_r_receita_aprovada_LY": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_order": {
+			          "Target": {
+			            "Entity": "fact_order"
+			          }
+			        },
+			        "medida.r_receita_aprovada_LY": {
+			          "Target": {
+			            "Entity": "medida.r_receita_aprovada_LY"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_order"
+			            },
+			            "Object": {
+			              "Role": "medida.r_receita_aprovada_LY"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_orders_have_r_receita_aprovada_LY"
+			        }
+			      ]
+			    },
+			    "fact_order_has_medida_pedidos_aprovados_LY": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_order": {
+			          "Target": {
+			            "Entity": "fact_order"
+			          }
+			        },
+			        "medida.pedidos_aprovados_LY": {
+			          "Target": {
+			            "Entity": "medida.pedidos_aprovados_LY"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_order"
+			            },
+			            "Object": {
+			              "Role": "medida.pedidos_aprovados_LY"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_orders_have_pedidos_aprovados_LY"
+			        }
+			      ]
+			    },
+			    "fact_order_has_medida_clientes_recompra": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_order": {
+			          "Target": {
+			            "Entity": "fact_order"
+			          }
+			        },
+			        "medida.clientes_recompra": {
+			          "Target": {
+			            "Entity": "medida.clientes_recompra"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_order"
+			            },
+			            "Object": {
+			              "Role": "medida.clientes_recompra"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_orders_have_clientes_recompra"
+			        }
+			      ]
+			    },
+			    "dim_customer_has_medida_clientes_recorrentes": {
 			      "Binding": {
 			        "ConceptualEntity": "dim_customers"
 			      },
@@ -11799,9 +12751,9 @@ cultureInfo pt-BR
 			            "Entity": "dim_customer"
 			          }
 			        },
-			        "dim_customer.geolocation_zip_code_prefix": {
+			        "medida.clientes_recorrentes": {
 			          "Target": {
-			            "Entity": "dim_customer.geolocation_zip_code_prefix"
+			            "Entity": "medida.clientes_recorrentes"
 			          }
 			        }
 			      },
@@ -11812,12 +12764,12 @@ cultureInfo pt-BR
 			              "Role": "dim_customer"
 			            },
 			            "Object": {
-			              "Role": "dim_customer.geolocation_zip_code_prefix"
+			              "Role": "medida.clientes_recorrentes"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "dim_customers_have_geolocation_zip_code_prefixes"
+			          "ID": "dim_customers_have_clientes_recorrentes"
 			        }
 			      ]
 			    },
@@ -11953,39 +12905,6 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
-			    "fact_order_has_medida_receita_liq": {
-			      "Binding": {
-			        "ConceptualEntity": "fact_orders"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "fact_order": {
-			          "Target": {
-			            "Entity": "fact_order"
-			          }
-			        },
-			        "medida.receita_liq": {
-			          "Target": {
-			            "Entity": "medida.receita_liq"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "fact_order"
-			            },
-			            "Object": {
-			              "Role": "medida.receita_liq"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "fact_orders_have__receita_liq"
-			        }
-			      ]
-			    },
 			    "fact_order_has_medida_faturamento_bruto": {
 			      "Binding": {
 			        "ConceptualEntity": "fact_orders"
@@ -12112,7 +13031,7 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
-			    "fact_order_has_payment_type": {
+			    "fact_order_has_medida_receita_liq": {
 			      "Binding": {
 			        "ConceptualEntity": "fact_orders"
 			      },
@@ -12123,9 +13042,9 @@ cultureInfo pt-BR
 			            "Entity": "fact_order"
 			          }
 			        },
-			        "fact_order.payment_type": {
+			        "medida.receita_liq": {
 			          "Target": {
-			            "Entity": "fact_order.payment_type"
+			            "Entity": "medida.receita_liq"
 			          }
 			        }
 			      },
@@ -12136,12 +13055,12 @@ cultureInfo pt-BR
 			              "Role": "fact_order"
 			            },
 			            "Object": {
-			              "Role": "fact_order.payment_type"
+			              "Role": "medida.receita_liq"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "fact_orders_have_payment_types"
+			          "ID": "fact_orders_have__receita_liq"
 			        }
 			      ]
 			    },
@@ -12356,39 +13275,6 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
-			    "dim_customer_has_cliente": {
-			      "Binding": {
-			        "ConceptualEntity": "dim_customers"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "dim_customer": {
-			          "Target": {
-			            "Entity": "dim_customer"
-			          }
-			        },
-			        "dim_customer.cliente": {
-			          "Target": {
-			            "Entity": "dim_customer.cliente"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_customer"
-			            },
-			            "Object": {
-			              "Role": "dim_customer.cliente"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "dim_customers_have_clientes1"
-			        }
-			      ]
-			    },
 			    "fact_order_has_payment_sequential": {
 			      "Binding": {
 			        "ConceptualEntity": "fact_orders"
@@ -12419,6 +13305,72 @@ cultureInfo pt-BR
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "fact_orders_have_payment_sequential"
+			        }
+			      ]
+			    },
+			    "fact_order_has_medida_otd": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_order": {
+			          "Target": {
+			            "Entity": "fact_order"
+			          }
+			        },
+			        "medida.otd": {
+			          "Target": {
+			            "Entity": "medida.otd"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_order"
+			            },
+			            "Object": {
+			              "Role": "medida.otd"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_orders_have_otd"
+			        }
+			      ]
+			    },
+			    "fact_order_has_payment_type": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_order": {
+			          "Target": {
+			            "Entity": "fact_order"
+			          }
+			        },
+			        "fact_order.payment_type": {
+			          "Target": {
+			            "Entity": "fact_order.payment_type"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_order"
+			            },
+			            "Object": {
+			              "Role": "fact_order.payment_type"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_orders_have_payment_types"
 			        }
 			      ]
 			    },
@@ -13775,6 +14727,138 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
+			    "dim_customer_has_geolocation_state": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_customers"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_customer": {
+			          "Target": {
+			            "Entity": "dim_customer"
+			          }
+			        },
+			        "dim_customer.geolocation_state": {
+			          "Target": {
+			            "Entity": "dim_customer.geolocation_state"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_customer"
+			            },
+			            "Object": {
+			              "Role": "dim_customer.geolocation_state"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_customers_have_geolocation_states"
+			        }
+			      ]
+			    },
+			    "dim_customer_has_geolocation_city": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_customers"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_customer": {
+			          "Target": {
+			            "Entity": "dim_customer"
+			          }
+			        },
+			        "dim_customer.geolocation_city": {
+			          "Target": {
+			            "Entity": "dim_customer.geolocation_city"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_customer"
+			            },
+			            "Object": {
+			              "Role": "dim_customer.geolocation_city"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_customers_have_geolocation_cities"
+			        }
+			      ]
+			    },
+			    "dim_customer_has_geolocation_lng": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_customers"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_customer": {
+			          "Target": {
+			            "Entity": "dim_customer"
+			          }
+			        },
+			        "dim_customer.geolocation_lng": {
+			          "Target": {
+			            "Entity": "dim_customer.geolocation_lng"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_customer"
+			            },
+			            "Object": {
+			              "Role": "dim_customer.geolocation_lng"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_customers_have_geolocation_lng"
+			        }
+			      ]
+			    },
+			    "dim_customer_has_geolocation_lat": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_customers"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_customer": {
+			          "Target": {
+			            "Entity": "dim_customer"
+			          }
+			        },
+			        "dim_customer.geolocation_lat": {
+			          "Target": {
+			            "Entity": "dim_customer.geolocation_lat"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_customer"
+			            },
+			            "Object": {
+			              "Role": "dim_customer.geolocation_lat"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_customers_have_geolocation_lats"
+			        }
+			      ]
+			    },
 			    "fact_order_has_medida_custo_todos_os_pedidos": {
 			      "Binding": {
 			        "ConceptualEntity": "fact_orders"
@@ -14765,7 +15849,7 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
-			    "fact_order_has_medida_faturamento": {
+			    "fact_order_has_medida_r_receita_aprovada": {
 			      "Binding": {
 			        "ConceptualEntity": "fact_orders"
 			      },
@@ -14776,9 +15860,9 @@ cultureInfo pt-BR
 			            "Entity": "fact_order"
 			          }
 			        },
-			        "medida.faturamento": {
+			        "medida.r_receita_aprovada": {
 			          "Target": {
-			            "Entity": "medida.faturamento"
+			            "Entity": "medida.r_receita_aprovada"
 			          }
 			        }
 			      },
@@ -14789,12 +15873,12 @@ cultureInfo pt-BR
 			              "Role": "fact_order"
 			            },
 			            "Object": {
-			              "Role": "medida.faturamento"
+			              "Role": "medida.r_receita_aprovada"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "fact_orders_have__faturamento"
+			          "ID": "fact_orders_have_r_receita_aprovada"
 			        }
 			      ]
 			    },
@@ -16660,39 +17744,6 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
-			    "fact_order_review_has_order_id": {
-			      "Binding": {
-			        "ConceptualEntity": "fact_order_reviews"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "fact_order_review": {
-			          "Target": {
-			            "Entity": "fact_order_review"
-			          }
-			        },
-			        "fact_order_review.order_id": {
-			          "Target": {
-			            "Entity": "fact_order_review.order_id"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "fact_order_review"
-			            },
-			            "Object": {
-			              "Role": "fact_order_review.order_id"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "fact_order_reviews_have_order_ids"
-			        }
-			      ]
-			    },
 			    "fact_order_review_has_review_id": {
 			      "Binding": {
 			        "ConceptualEntity": "fact_order_reviews"
@@ -16736,39 +17787,6 @@ cultureInfo pt-BR
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "review_ids_are_names_IDs_of_fact_order_reviews"
-			        }
-			      ]
-			    },
-			    "dim_customer_has_customer_zip_code_prefix": {
-			      "Binding": {
-			        "ConceptualEntity": "dim_customers"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "dim_customer": {
-			          "Target": {
-			            "Entity": "dim_customer"
-			          }
-			        },
-			        "dim_customer.customer_zip_code_prefix": {
-			          "Target": {
-			            "Entity": "dim_customer.customer_zip_code_prefix"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_customer"
-			            },
-			            "Object": {
-			              "Role": "dim_customer.customer_zip_code_prefix"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "dim_customers_have_customer_zip_code_prefixes"
 			        }
 			      ]
 			    },
@@ -16848,6 +17866,141 @@ cultureInfo pt-BR
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "customer_ids_are_names_IDs_of_dim_customers"
+			        }
+			      ]
+			    },
+			    "dim_geolocation_in_geolocation_state": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_geolocation"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_geolocation": {
+			          "Target": {
+			            "Entity": "dim_geolocation"
+			          }
+			        },
+			        "dim_geolocation.geolocation_state": {
+			          "Target": {
+			            "Entity": "dim_geolocation.geolocation_state"
+			          }
+			        }
+			      },
+			      "SemanticSlots": {
+			        "Where": {
+			          "Role": "dim_geolocation.geolocation_state"
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "dim_geolocation"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "dim_geolocation.geolocation_state"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_geolocations_are_in_geolocation_states"
+			        }
+			      ]
+			    },
+			    "dim_geolocation_in_geolocation_city": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_geolocation"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_geolocation": {
+			          "Target": {
+			            "Entity": "dim_geolocation"
+			          }
+			        },
+			        "dim_geolocation.geolocation_city": {
+			          "Target": {
+			            "Entity": "dim_geolocation.geolocation_city"
+			          }
+			        }
+			      },
+			      "SemanticSlots": {
+			        "Where": {
+			          "Role": "dim_geolocation.geolocation_city"
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "dim_geolocation"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "dim_geolocation.geolocation_city"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_geolocations_are_in_geolocation_cities"
+			        }
+			      ]
+			    },
+			    "dim_geolocation_in_geolocation_zip_code_prefix": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_geolocation"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_geolocation": {
+			          "Target": {
+			            "Entity": "dim_geolocation"
+			          }
+			        },
+			        "dim_geolocation.geolocation_zip_code_prefix": {
+			          "Target": {
+			            "Entity": "dim_geolocation.geolocation_zip_code_prefix"
+			          }
+			        }
+			      },
+			      "SemanticSlots": {
+			        "Where": {
+			          "Role": "dim_geolocation.geolocation_zip_code_prefix"
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "dim_geolocation"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "dim_geolocation.geolocation_zip_code_prefix"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_geolocations_are_in_geolocation_zip_code_prefixes"
 			        }
 			      ]
 			    },
@@ -16938,96 +18091,6 @@ cultureInfo pt-BR
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "dim_customers_are_in_geolocation_cities"
-			        }
-			      ]
-			    },
-			    "dim_customer_in_geolocation_zip_code_prefix": {
-			      "Binding": {
-			        "ConceptualEntity": "dim_customers"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "dim_customer": {
-			          "Target": {
-			            "Entity": "dim_customer"
-			          }
-			        },
-			        "dim_customer.geolocation_zip_code_prefix": {
-			          "Target": {
-			            "Entity": "dim_customer.geolocation_zip_code_prefix"
-			          }
-			        }
-			      },
-			      "SemanticSlots": {
-			        "Where": {
-			          "Role": "dim_customer.geolocation_zip_code_prefix"
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Preposition": {
-			            "Subject": {
-			              "Role": "dim_customer"
-			            },
-			            "Prepositions": [
-			              {
-			                "in": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ],
-			            "Object": {
-			              "Role": "dim_customer.geolocation_zip_code_prefix"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "dim_customers_are_in_geolocation_zip_code_prefixes"
-			        }
-			      ]
-			    },
-			    "dim_customer_in_customer_zip_code_prefix": {
-			      "Binding": {
-			        "ConceptualEntity": "dim_customers"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "dim_customer": {
-			          "Target": {
-			            "Entity": "dim_customer"
-			          }
-			        },
-			        "dim_customer.customer_zip_code_prefix": {
-			          "Target": {
-			            "Entity": "dim_customer.customer_zip_code_prefix"
-			          }
-			        }
-			      },
-			      "SemanticSlots": {
-			        "Where": {
-			          "Role": "dim_customer.customer_zip_code_prefix"
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Preposition": {
-			            "Subject": {
-			              "Role": "dim_customer"
-			            },
-			            "Prepositions": [
-			              {
-			                "in": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ],
-			            "Object": {
-			              "Role": "dim_customer.customer_zip_code_prefix"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "dim_customers_are_in_customer_zip_code_prefixes"
 			        }
 			      ]
 			    },
@@ -17776,20 +18839,20 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
-			    "dim_customer_has_geolocation_city": {
+			    "dim_geolocation_has_geolocation_lng": {
 			      "Binding": {
-			        "ConceptualEntity": "dim_customers"
+			        "ConceptualEntity": "dim_geolocation"
 			      },
 			      "State": "Generated",
 			      "Roles": {
-			        "dim_customer": {
+			        "dim_geolocation": {
 			          "Target": {
-			            "Entity": "dim_customer"
+			            "Entity": "dim_geolocation"
 			          }
 			        },
-			        "dim_customer.geolocation_city": {
+			        "dim_geolocation.geolocation_lng": {
 			          "Target": {
-			            "Entity": "dim_customer.geolocation_city"
+			            "Entity": "dim_geolocation.geolocation_lng"
 			          }
 			        }
 			      },
@@ -17797,32 +18860,32 @@ cultureInfo pt-BR
 			        {
 			          "Attribute": {
 			            "Subject": {
-			              "Role": "dim_customer"
+			              "Role": "dim_geolocation"
 			            },
 			            "Object": {
-			              "Role": "dim_customer.geolocation_city"
+			              "Role": "dim_geolocation.geolocation_lng"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "dim_customers_have_geolocation_cities"
+			          "ID": "dim_geolocations_have_geolocation_lng"
 			        }
 			      ]
 			    },
-			    "dim_customer_has_geolocation_state": {
+			    "dim_geolocation_has_geolocation_city": {
 			      "Binding": {
-			        "ConceptualEntity": "dim_customers"
+			        "ConceptualEntity": "dim_geolocation"
 			      },
 			      "State": "Generated",
 			      "Roles": {
-			        "dim_customer": {
+			        "dim_geolocation": {
 			          "Target": {
-			            "Entity": "dim_customer"
+			            "Entity": "dim_geolocation"
 			          }
 			        },
-			        "dim_customer.geolocation_state": {
+			        "dim_geolocation.geolocation_city": {
 			          "Target": {
-			            "Entity": "dim_customer.geolocation_state"
+			            "Entity": "dim_geolocation.geolocation_city"
 			          }
 			        }
 			      },
@@ -17830,32 +18893,32 @@ cultureInfo pt-BR
 			        {
 			          "Attribute": {
 			            "Subject": {
-			              "Role": "dim_customer"
+			              "Role": "dim_geolocation"
 			            },
 			            "Object": {
-			              "Role": "dim_customer.geolocation_state"
+			              "Role": "dim_geolocation.geolocation_city"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "dim_customers_have_geolocation_states"
+			          "ID": "dim_geolocations_have_geolocation_cities"
 			        }
 			      ]
 			    },
-			    "dim_customer_has_cep": {
+			    "dim_geolocation_has_geolocation_state": {
 			      "Binding": {
-			        "ConceptualEntity": "dim_customers"
+			        "ConceptualEntity": "dim_geolocation"
 			      },
 			      "State": "Generated",
 			      "Roles": {
-			        "dim_customer": {
+			        "dim_geolocation": {
 			          "Target": {
-			            "Entity": "dim_customer"
+			            "Entity": "dim_geolocation"
 			          }
 			        },
-			        "dim_customer.cep": {
+			        "dim_geolocation.geolocation_state": {
 			          "Target": {
-			            "Entity": "dim_customer.cep"
+			            "Entity": "dim_geolocation.geolocation_state"
 			          }
 			        }
 			      },
@@ -17863,19 +18926,19 @@ cultureInfo pt-BR
 			        {
 			          "Attribute": {
 			            "Subject": {
-			              "Role": "dim_customer"
+			              "Role": "dim_geolocation"
 			            },
 			            "Object": {
-			              "Role": "dim_customer.cep"
+			              "Role": "dim_geolocation.geolocation_state"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "dim_customers_have_ceps"
+			          "ID": "dim_geolocations_have_geolocation_states"
 			        }
 			      ]
 			    },
-			    "fact_order_has_dim_calendar": {
+			    "fact_order_has_medida_otd_ly": {
 			      "Binding": {
 			        "ConceptualEntity": "fact_orders"
 			      },
@@ -17886,9 +18949,9 @@ cultureInfo pt-BR
 			            "Entity": "fact_order"
 			          }
 			        },
-			        "dim_calendar": {
+			        "medida.otd_ly": {
 			          "Target": {
-			            "Entity": "dim_calendar"
+			            "Entity": "medida.otd_ly"
 			          }
 			        }
 			      },
@@ -17899,17 +18962,446 @@ cultureInfo pt-BR
 			              "Role": "fact_order"
 			            },
 			            "Object": {
-			              "Role": "dim_calendar"
+			              "Role": "medida.otd_ly"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "fact_orders_have_dim_calendars"
+			          "ID": "fact_orders_have_otd_ly"
+			        }
+			      ]
+			    },
+			    "dim_customer_has_medida_clientes_LY": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_customers"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_customer": {
+			          "Target": {
+			            "Entity": "dim_customer"
+			          }
+			        },
+			        "medida.clientes_LY": {
+			          "Target": {
+			            "Entity": "medida.clientes_LY"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_customer"
+			            },
+			            "Object": {
+			              "Role": "medida.clientes_LY"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_customers_have_clientes_LY"
+			        }
+			      ]
+			    },
+			    "fact_order_has_medida_receita_aprovada_LY": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_order": {
+			          "Target": {
+			            "Entity": "fact_order"
+			          }
+			        },
+			        "medida.receita_aprovada_LY": {
+			          "Target": {
+			            "Entity": "medida.receita_aprovada_LY"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_order"
+			            },
+			            "Object": {
+			              "Role": "medida.receita_aprovada_LY"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_orders_have__receita_aprovada_LY"
+			        }
+			      ]
+			    },
+			    "fact_order_has_medida_pedidos_aprovados_LY1": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_order": {
+			          "Target": {
+			            "Entity": "fact_order"
+			          }
+			        },
+			        "medida.pedidos_aprovados_LY1": {
+			          "Target": {
+			            "Entity": "medida.pedidos_aprovados_LY1"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_order"
+			            },
+			            "Object": {
+			              "Role": "medida.pedidos_aprovados_LY1"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_orders_have__pedidos_aprovados_LY"
+			        }
+			      ]
+			    },
+			    "fact_order_has_medida_otd_ly1": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_order": {
+			          "Target": {
+			            "Entity": "fact_order"
+			          }
+			        },
+			        "medida.otd_ly1": {
+			          "Target": {
+			            "Entity": "medida.otd_ly1"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_order"
+			            },
+			            "Object": {
+			              "Role": "medida.otd_ly1"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_orders_have__otd_ly"
+			        }
+			      ]
+			    },
+			    "dim_customer_has_medida_clientes_LY1": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_customers"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_customer": {
+			          "Target": {
+			            "Entity": "dim_customer"
+			          }
+			        },
+			        "medida.clientes_LY1": {
+			          "Target": {
+			            "Entity": "medida.clientes_LY1"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_customer"
+			            },
+			            "Object": {
+			              "Role": "medida.clientes_LY1"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_customers_have__clientes_LY"
+			        }
+			      ]
+			    },
+			    "fact_order_has_medida_r_receita_aprovada_total": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_order": {
+			          "Target": {
+			            "Entity": "fact_order"
+			          }
+			        },
+			        "medida.r_receita_aprovada_total": {
+			          "Target": {
+			            "Entity": "medida.r_receita_aprovada_total"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_order"
+			            },
+			            "Object": {
+			              "Role": "medida.r_receita_aprovada_total"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_orders_have_r_receita_aprovada_total"
+			        }
+			      ]
+			    },
+			    "fact_order_has_medida_receita_por_estado": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_order": {
+			          "Target": {
+			            "Entity": "fact_order"
+			          }
+			        },
+			        "medida.receita_por_estado": {
+			          "Target": {
+			            "Entity": "medida.receita_por_estado"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_order"
+			            },
+			            "Object": {
+			              "Role": "medida.receita_por_estado"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_orders_have__receita_por_estado"
+			        }
+			      ]
+			    },
+			    "fact_order_has_medida_LY_pedidos_totais": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_order": {
+			          "Target": {
+			            "Entity": "fact_order"
+			          }
+			        },
+			        "medida.LY_pedidos_totais": {
+			          "Target": {
+			            "Entity": "medida.LY_pedidos_totais"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_order"
+			            },
+			            "Object": {
+			              "Role": "medida.LY_pedidos_totais"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_orders_have_LY_pedidos_totais"
+			        }
+			      ]
+			    },
+			    "fact_order_has_medida_ly": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_order": {
+			          "Target": {
+			            "Entity": "fact_order"
+			          }
+			        },
+			        "medida.ly": {
+			          "Target": {
+			            "Entity": "medida.ly"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_order"
+			            },
+			            "Object": {
+			              "Role": "medida.ly"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_orders_have_ly"
+			        }
+			      ]
+			    },
+			    "fact_order_has_medida_LY_pedidos_finalizados": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_order": {
+			          "Target": {
+			            "Entity": "fact_order"
+			          }
+			        },
+			        "medida.LY_pedidos_finalizados": {
+			          "Target": {
+			            "Entity": "medida.LY_pedidos_finalizados"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_order"
+			            },
+			            "Object": {
+			              "Role": "medida.LY_pedidos_finalizados"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_orders_have_LY_pedidos_finalizados"
+			        }
+			      ]
+			    },
+			    "fact_order_has_medida_pedidos_atrasados": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_order": {
+			          "Target": {
+			            "Entity": "fact_order"
+			          }
+			        },
+			        "medida.pedidos_atrasados": {
+			          "Target": {
+			            "Entity": "medida.pedidos_atrasados"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_order"
+			            },
+			            "Object": {
+			              "Role": "medida.pedidos_atrasados"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_orders_have_pedidos_atrasados"
+			        }
+			      ]
+			    },
+			    "dim_customer_has_dim_geolocation": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_customers"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_customer": {
+			          "Target": {
+			            "Entity": "dim_customer"
+			          }
+			        },
+			        "dim_geolocation": {
+			          "Target": {
+			            "Entity": "dim_geolocation"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_customer"
+			            },
+			            "Object": {
+			              "Role": "dim_geolocation"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_customers_have_dim_geolocations"
 			        },
 			        {
 			          "Attribute": {
 			            "Subject": {
-			              "Role": "dim_calendar"
+			              "Role": "dim_geolocation"
+			            },
+			            "Object": {
+			              "Role": "dim_customer"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_geolocations_have_dim_customers"
+			        }
+			      ]
+			    },
+			    "fact_order_review_has_fact_order": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_order_reviews"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_order_review": {
+			          "Target": {
+			            "Entity": "fact_order_review"
+			          }
+			        },
+			        "fact_order": {
+			          "Target": {
+			            "Entity": "fact_order"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_order_review"
 			            },
 			            "Object": {
 			              "Role": "fact_order"
@@ -17917,7 +19409,7 @@ cultureInfo pt-BR
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "dim_calendars_have_fact_orders"
+			          "ID": "fact_order_reviews_have_fact_orders"
 			        }
 			      ]
 			    },
@@ -18063,6 +19555,59 @@ cultureInfo pt-BR
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "dim_lead_closed_have_fact_orders"
+			        }
+			      ]
+			    },
+			    "fact_order_has_dim_calendar": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_orders"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_order": {
+			          "Target": {
+			            "Entity": "fact_order"
+			          }
+			        },
+			        "dim_calendar": {
+			          "Target": {
+			            "Entity": "dim_calendar"
+			          },
+			          "Nouns": [
+			            {
+			              "data": {
+			                "State": "Generated"
+			              }
+			            }
+			          ]
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_order"
+			            },
+			            "Object": {
+			              "Role": "dim_calendar"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_orders_have_dim_calendars"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_calendar"
+			            },
+			            "Object": {
+			              "Role": "fact_order"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_calendars_have_fact_orders"
 			        }
 			      ]
 			    },

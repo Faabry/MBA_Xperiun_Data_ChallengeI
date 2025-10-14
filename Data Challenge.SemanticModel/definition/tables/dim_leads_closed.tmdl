@@ -166,7 +166,7 @@ table dim_leads_closed
 		queryGroup: Dimensions
 		source =
 				let
-				    Fonte = Csv.Document(File.Contents(Source & "leads_closed.csv"),[Delimiter=",", Columns=14, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    Fonte = Csv.Document(File.Contents("C:\Users\amanda.santos_corebi\Desktop\MBA_Xperiun_Data_ChallengeI\database\leads_closed.csv"),[Delimiter=",", Columns=14, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
 				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"mql_id", type text}, {"seller_id", type text}, {"sdr_id", type text}, {"sr_id", type text}, {"won_date", type datetime}, {"business_segment", type text}, {"lead_type", type text}, {"lead_behaviour_profile", type text}, {"has_company", Int64.Type}, {"has_gtin", Int64.Type}, {"average_stock", type text}, {"business_type", type text}, {"declared_product_catalog_size", Int64.Type}, {"declared_monthly_revenue", Int64.Type}}),
 				    #"Split Column by Delimiter" = Table.SplitColumn(Table.TransformColumnTypes(#"Tipo Alterado", {{"won_date", type text}}, "pt-BR"), "won_date", Splitter.SplitTextByDelimiter(" ", QuoteStyle.Csv), {"won_date.1", "won_date.2"}),

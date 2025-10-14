@@ -17,31 +17,25 @@ table dim_customers
 
 		annotation SummarizationSetBy = Automatic
 
-	column customer_zip_code_prefix
+	column geolocation_lat
 		dataType: string
-		lineageTag: 86853a96-8c21-4166-8c51-d8bbdfc68cb9
+		lineageTag: 9dc19446-5c2b-437c-a52b-64345077500d
 		summarizeBy: none
-		sourceColumn: customer_zip_code_prefix
+		sourceColumn: geolocation_lat
 
 		annotation SummarizationSetBy = Automatic
 
-	column Cliente = "Cliente" &" - "& RIGHT([customer_id], 8)
-		lineageTag: 9da3ce3b-bdb2-42b2-9880-03a7dba668ae
-		summarizeBy: none
-
-		annotation SummarizationSetBy = Automatic
-
-	column geolocation_zip_code_prefix
+	column geolocation_lng
 		dataType: string
-		lineageTag: 4047635b-d65b-4923-9f45-6c5893c7ce43
+		lineageTag: a086a856-40b9-40ed-83a7-ed919de62c61
 		summarizeBy: none
-		sourceColumn: geolocation_zip_code_prefix
+		sourceColumn: geolocation_lng
 
 		annotation SummarizationSetBy = Automatic
 
 	column geolocation_city
 		dataType: string
-		lineageTag: 20a4c982-d50d-46a5-b66f-d501c77d9138
+		lineageTag: 6d5e9798-5543-4ebb-9be8-b9f0aac92dcd
 		summarizeBy: none
 		sourceColumn: geolocation_city
 
@@ -49,17 +43,17 @@ table dim_customers
 
 	column geolocation_state
 		dataType: string
-		lineageTag: d349c87d-a477-40dd-b145-011fafa84d8d
+		lineageTag: 591d272c-b78d-4383-bf28-270ab803ecd7
 		summarizeBy: none
 		sourceColumn: geolocation_state
 
 		annotation SummarizationSetBy = Automatic
 
-	column CEP
+	column customer_zip_code_prefix
 		dataType: string
-		lineageTag: e0954247-0a0e-4c97-b8a7-a1ed259d77f9
+		lineageTag: 178917f0-c812-4506-b85b-c8663aba9a85
 		summarizeBy: none
-		sourceColumn: CEP
+		sourceColumn: customer_zip_code_prefix
 
 		annotation SummarizationSetBy = Automatic
 
@@ -68,14 +62,21 @@ table dim_customers
 		queryGroup: Dimensions
 		source =
 				let
-				    Fonte = Csv.Document(File.Contents(Source & "customers.csv"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    Fonte = Csv.Document(File.Contents("C:\Users\amanda.santos_corebi\Desktop\MBA_Xperiun_Data_ChallengeI\database\customers.csv"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
-				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"customer_id", type text}, {"customer_unique_id", type text}, {"customer_zip_code_prefix", type text}, {"customer_city", type text}, {"customer_state", type text}}),
-				    #"Removed Columns" = Table.RemoveColumns(#"Tipo Alterado",{"customer_city", "customer_state"}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Cabeçalhos Promovidos",{"customer_city", "customer_state"}),
 				    #"Merged Queries" = Table.NestedJoin(#"Removed Columns", {"customer_zip_code_prefix"}, dim_geolocation, {"geolocation_zip_code_prefix"}, "dim_geolocation", JoinKind.LeftOuter),
-				    #"Expanded dim_geolocation" = Table.ExpandTableColumn(#"Merged Queries", "dim_geolocation", {"geolocation_zip_code_prefix", "geolocation_city", "geolocation_state", "CEP"}, {"geolocation_zip_code_prefix", "geolocation_city", "geolocation_state", "CEP"})
+				    #"Expanded dim_geolocation" = Table.ExpandTableColumn(#"Merged Queries", "dim_geolocation", {"geolocation_lat", "geolocation_lng", "geolocation_city", "geolocation_state"}, {"geolocation_lat", "geolocation_lng", "geolocation_city", "geolocation_state"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Expanded dim_geolocation",{{"geolocation_lat", type number}, {"geolocation_lng", type number}}),
+				    #"Duplicatas Removidas" = Table.Distinct(#"Changed Type"),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Duplicatas Removidas",{{"customer_zip_code_prefix", type text}, {"geolocation_lat", type text}, {"geolocation_lng", type text}}),
+				    #"Dividir Coluna pela Posição" = Table.SplitColumn(#"Tipo Alterado1", "customer_zip_code_prefix", Splitter.SplitTextByPositions({0, 4}, false), {"customer_zip_code_prefix.1", "customer_zip_code_prefix.2"}),
+				    #"Tipo Alterado2" = Table.TransformColumnTypes(#"Dividir Coluna pela Posição",{{"customer_zip_code_prefix.1", Int64.Type}, {"customer_zip_code_prefix.2", Int64.Type}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado2",{"customer_zip_code_prefix.2"}),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Colunas Removidas",{{"customer_zip_code_prefix.1", "customer_zip_code_prefix"}}),
+				    #"Tipo Alterado3" = Table.TransformColumnTypes(#"Colunas Renomeadas",{{"customer_zip_code_prefix", type text}})
 				in
-				    #"Expanded dim_geolocation"
+				    #"Tipo Alterado3"
 
 	annotation PBI_ResultType = Table
 
